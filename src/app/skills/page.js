@@ -29,7 +29,17 @@ function SkillBar({ name, pct, color }) {
   )
 }
 
-// ── SCROLL REVEAL HOOK ─────────────────────────────────────────
+// ── SOFT SKILL CHIP ────────────────────────────────────────────
+function SoftChip({ name, icon, color }) {
+  return (
+    <div className="card-glass" style={{ padding: '18px 20px', borderRadius: '14px', display: 'flex', alignItems: 'center', gap: '12px', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}50, transparent)` }} />
+      <span style={{ fontSize: '1.4rem', flexShrink: 0 }}>{icon}</span>
+      <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#e2e8f0' }}>{name}</span>
+    </div>
+  )
+}
+
 function useScrollReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,68 +58,53 @@ export default function SkillsPage() {
     {
       name: 'Languages', color: '#818cf8', emoji: '💻',
       skills: [
-        { name: 'C / C++',    pct: 87 },
-        { name: 'JavaScript', pct: 80 },
-        { name: 'Java',       pct: 80 },
-        { name: 'TypeScript', pct: 75 },
-        { name: 'Python',     pct: 72 },
+        { name: 'JavaScript', pct: 88 },
+        { name: 'TypeScript',  pct: 78 },
+        { name: 'HTML',        pct: 92 },
+        { name: 'CSS',         pct: 88 },
+        { name: 'C Programming', pct: 80 },
       ],
     },
     {
       name: 'Frontend', color: '#22d3ee', emoji: '🎨',
       skills: [
-        { name: 'HTML / CSS',   pct: 90 },
-        { name: 'React',        pct: 85 },
-        { name: 'Tailwind CSS', pct: 85 },
-        { name: 'Next.js',      pct: 80 },
-        { name: 'React Native', pct: 75 },
+        { name: 'React',       pct: 85 },
+        { name: 'Next.js',     pct: 82 },
+        { name: 'Tailwind CSS',pct: 85 },
       ],
     },
     {
       name: 'Backend', color: '#34d399', emoji: '⚙️',
       skills: [
-        { name: 'REST APIs',  pct: 82 },
-        { name: 'Node.js',    pct: 78 },
-        { name: 'JWT Auth',   pct: 78 },
-        { name: 'Express.js', pct: 75 },
-        { name: 'FastAPI',    pct: 68 },
+        { name: 'Node.js',     pct: 80 },
+        { name: 'Express.js',  pct: 80 },
+        { name: 'REST API',    pct: 82 },
       ],
     },
     {
       name: 'Databases', color: '#fbbf24', emoji: '🗄️',
       skills: [
-        { name: 'MongoDB',     pct: 80 },
-        { name: 'MySQL / SQL', pct: 80 },
-        { name: 'Firebase',    pct: 70 },
-        { name: 'PostgreSQL',  pct: 65 },
+        { name: 'MongoDB',    pct: 82 },
+        { name: 'PostgreSQL', pct: 68 },
+        { name: 'Redis',      pct: 62 },
       ],
     },
     {
-      name: 'AI / ML', color: '#f472b6', emoji: '🤖',
+      name: 'Tools', color: '#fb923c', emoji: '🛠️',
       skills: [
-        { name: 'Prompt Engineering',   pct: 78 },
-        { name: 'Anthropic Claude API', pct: 74 },
-        { name: 'Vercel AI SDK',        pct: 68 },
-        { name: 'Tesseract OCR',        pct: 65 },
-      ],
-    },
-    {
-      name: 'Tools & DevOps', color: '#fb923c', emoji: '🛠️',
-      skills: [
-        { name: 'Git / GitHub',     pct: 85 },
-        { name: 'Vite',             pct: 80 },
-        { name: 'Vercel / Netlify', pct: 78 },
-        { name: 'Expo',             pct: 75 },
-        { name: 'PM2',              pct: 60 },
+        { name: 'Git',     pct: 85 },
+        { name: 'GitHub',  pct: 85 },
+        { name: 'Docker',  pct: 65 },
+        { name: 'MS-Word', pct: 82 },
       ],
     },
   ]
 
-  const alsoKnow = [
-    'OOPs', 'Data Structures & Algorithms', 'DBMS', 'SDLC',
-    'Android Programming', 'Arduino', 'PHP', 'Framer Motion',
-    'Radix UI', 'Zod', 'React Hook Form', 'Axios', 'Mongoose',
-    'Prisma', 'Razorpay', 'bcryptjs', 'Notion', 'Meta Business Suite',
+  const softSkills = [
+    { name: 'Object Oriented Programming', icon: '🧩', color: '#818cf8' },
+    { name: 'Effective Communication',     icon: '🗣️', color: '#22d3ee' },
+    { name: 'Teamwork',                    icon: '🤝', color: '#34d399' },
+    { name: 'Self-learning',               icon: '📚', color: '#f472b6' },
   ]
 
   return (
@@ -124,24 +119,24 @@ export default function SkillsPage() {
           <h1 style={{ fontSize: 'clamp(2.2rem, 6vw, 3.4rem)', fontWeight: 900, marginBottom: '16px', letterSpacing: '-0.035em' }}>
             Tech <span className="gradient-text">Skills</span>
           </h1>
-          <p style={{ color: '#64748b', maxWidth: '460px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            Languages, frameworks, and tools I use to build products — with honest self-assessments.
+          <p style={{ color: '#64748b', maxWidth: '440px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
+            Core technologies I build with every day — no fluff, just what I actually use.
           </p>
         </div>
       </section>
 
-      <div style={{ padding: '0 24px 100px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ padding: '0 24px 100px', maxWidth: '1100px', margin: '0 auto' }}>
 
-        {/* Categories grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '22px', marginBottom: '40px' }}>
+        {/* ── TECHNICAL SKILLS ──────────────────────────── */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginBottom: '40px' }}>
           {categories.map((cat, ci) => (
             <div key={cat.name} className={`card-glass reveal reveal-delay-${(ci % 3) + 1}`}
-              style={{ borderRadius: '20px', padding: '28px 28px 24px', position: 'relative', overflow: 'hidden' }}>
+              style={{ borderRadius: '20px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
 
-              {/* Top accent bar */}
+              {/* Top accent */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, ${cat.color}, ${cat.color}33)` }} />
 
-              {/* Category header */}
+              {/* Header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '26px' }}>
                 <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: `${cat.color}14`, border: `1px solid ${cat.color}28`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', flexShrink: 0 }}>
                   {cat.emoji}
@@ -152,7 +147,7 @@ export default function SkillsPage() {
                 </div>
               </div>
 
-              {/* Skill bars */}
+              {/* Bars */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {cat.skills.map(({ name, pct }) => (
                   <SkillBar key={name} name={name} pct={pct} color={cat.color} />
@@ -162,16 +157,14 @@ export default function SkillsPage() {
           ))}
         </div>
 
-        {/* Also Know */}
-        <div className="reveal" style={{ padding: '32px 28px', borderRadius: '18px', background: 'rgba(14,17,32,0.8)', border: '1px solid rgba(129,140,248,0.16)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-            <div style={{ height: '2px', width: '24px', background: 'linear-gradient(to right, #818cf8, #22d3ee)', borderRadius: '2px' }} />
-            <h3 style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Also Know</h3>
+        {/* ── SOFT SKILLS ───────────────────────────────── */}
+        <div className="reveal">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div className="line-decoration" />
+            <h2 style={{ fontSize: '0.8rem', fontWeight: 800, color: '#64748b', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Soft Skills</h2>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {alsoKnow.map(s => (
-              <span key={s} className="tech-badge" style={{ fontSize: '0.75rem', padding: '4px 12px' }}>{s}</span>
-            ))}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}>
+            {softSkills.map(s => <SoftChip key={s.name} {...s} />)}
           </div>
         </div>
       </div>

@@ -30,16 +30,16 @@ export default function AboutPage() {
     { year: '2023',   title: 'B.Sc. IT — Thakur College', desc: 'Started my degree in Information Technology. Built foundations in C, C++, Java, and web technologies.', color: '#22d3ee' },
     { year: '2024',   title: 'First Real Projects',   desc: 'Built ATM Management System, Railway Announcement System, and started exploring React and Node.js.', color: '#f472b6' },
     { year: '2025',   title: 'Going Full Stack',       desc: 'Launched CareOps, LexAgent, AI Learning Assistant, Vistora Chat App and multiple other production-level projects.', color: '#fbbf24' },
-    { year: '2025–26',title: 'Building Products',     desc: 'Currently building ShaktiCycle, PDFSolution, DogCare, and Partners — while actively seeking internship opportunities.', color: '#34d399' },
+    { year: '2025–26',title: 'Building Products',     desc: 'Currently building Paperbag, ShaktiCycle, PDFSolution, and DogCare — while actively seeking full-time and internship opportunities.', color: '#34d399' },
   ]
 
   const facts = [
     { icon: '📍', label: 'Location',   text: 'Borivali West, Mumbai, India' },
     { icon: '🎓', label: 'Education',  text: 'B.Sc. IT — Thakur College of Science & Commerce' },
-    { icon: '📅', label: 'Graduation', text: 'Expected: 2026' },
-    { icon: '💼', label: 'Status',     text: 'Open to internships & freelance' },
-    { icon: '🧠', label: 'Stack',      text: '15+ technologies mastered' },
-    { icon: '📦', label: 'Projects',   text: '17+ projects built & counting' },
+    { icon: '📊', label: 'CGPA',       text: '7.47 · Grade A (2023 – 2026)' },
+    { icon: '💼', label: 'Status',     text: 'Open to internships & full-time roles' },
+    { icon: '🧠', label: 'Stack',      text: '22 core technologies' },
+    { icon: '📦', label: 'Projects',   text: '18+ projects built & counting' },
   ]
 
   return (
@@ -70,10 +70,10 @@ export default function AboutPage() {
               My <span className="gradient-text">Story</span>
             </h2>
             {[
-              'My journey into technology began after lockdown in 2022 — watching a movie sparked curiosity about how digital products are built, and I\'ve been hooked ever since.',
-              'I\'m pursuing a B.Sc. in Information Technology at Thakur College of Science and Commerce, building strong foundations in C, C++, Java, Python, React, Node.js, and more.',
-              'I love building real products — not just tutorials. From AI-powered tools like LexAgent to mobile apps like Vistora, DogCare, and ShaktiCycle, every project teaches me something new.',
-              'Outside coding, I\'m an entrepreneur at heart — managing a petrol pump, building the clothing brand "Vistora", and always exploring new business ideas.',
+              'Full Stack Developer with hands-on experience building scalable web applications, AI-integrated platforms, and real-time systems using React, Next.js, Node.js, Express.js, TypeScript, MongoDB, and PostgreSQL.',
+              'Proven track record delivering end-to-end solutions across e-commerce, healthcare, legal tech, and SaaS domains. Strong command of REST APIs, JWT/OAuth authentication, Docker, and cloud deployments.',
+              'Pursuing a B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A). I love shipping real products — from AI-powered tools like LexAgent and Paperbag to mobile apps like ShaktiCycle and Vistora.',
+              'Outside coding, I\'m an entrepreneur at heart — managing a petrol pump, building the clothing brand "Vistora", and always exploring new business opportunities.',
             ].map((para, i) => (
               <p key={i} style={{ color: i === 0 ? '#94a3b8' : '#64748b', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
             ))}
@@ -114,7 +114,7 @@ export default function AboutPage() {
                 <h3 style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: '#818cf8', textTransform: 'uppercase' }}>Current Focus</h3>
               </div>
               {[
-                'Building ShaktiCycle, PDFSolution, DogCare & Partners',
+                'Building Paperbag, ShaktiCycle, PDFSolution & DogCare',
                 'Mastering DSA & System Design',
                 'Seeking internship opportunities',
                 'Exploring AI/ML integrations',

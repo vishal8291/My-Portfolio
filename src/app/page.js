@@ -86,21 +86,21 @@ function Counter({ to, suffix = '+', duration = 1400 }) {
 
 // ── TECH MARQUEE ───────────────────────────────────────────────
 const techStack = [
-  { name: 'React',        dot: '#61dafb' },
-  { name: 'Next.js',      dot: '#f1f5f9' },
-  { name: 'TypeScript',   dot: '#3b82f6' },
-  { name: 'Node.js',      dot: '#4ade80' },
-  { name: 'MongoDB',      dot: '#22d3ee' },
-  { name: 'Python',       dot: '#fbbf24' },
-  { name: 'FastAPI',      dot: '#34d399' },
-  { name: 'React Native', dot: '#61dafb' },
-  { name: 'PostgreSQL',   dot: '#818cf8' },
-  { name: 'Tailwind CSS', dot: '#38bdf8' },
-  { name: 'Java',         dot: '#f97316' },
-  { name: 'Expo',         dot: '#a78bfa' },
-  { name: 'Vercel',       dot: '#f1f5f9' },
-  { name: 'JWT Auth',     dot: '#f472b6' },
-  { name: 'Firebase',     dot: '#fbbf24' },
+  { name: 'JavaScript',  dot: '#fbbf24' },
+  { name: 'TypeScript',  dot: '#3b82f6' },
+  { name: 'React',       dot: '#61dafb' },
+  { name: 'Next.js',     dot: '#f1f5f9' },
+  { name: 'Node.js',     dot: '#4ade80' },
+  { name: 'Express.js',  dot: '#34d399' },
+  { name: 'MongoDB',     dot: '#22d3ee' },
+  { name: 'PostgreSQL',  dot: '#818cf8' },
+  { name: 'Redis',       dot: '#f87171' },
+  { name: 'Tailwind CSS',dot: '#38bdf8' },
+  { name: 'Docker',      dot: '#60a5fa' },
+  { name: 'Git',         dot: '#f97316' },
+  { name: 'REST API',    dot: '#a78bfa' },
+  { name: 'HTML',        dot: '#fb923c' },
+  { name: 'CSS',         dot: '#818cf8' },
 ]
 
 function TechMarquee() {
@@ -154,9 +154,9 @@ function Hero() {
         </p>
 
         {/* Bio */}
-        <p className="fade-up fade-up-3" style={{ fontSize: '1.02rem', color: '#64748b', maxWidth: '540px', margin: '0 auto 50px', lineHeight: 1.88 }}>
-          IT student at <span style={{ color: '#94a3b8', fontWeight: 600 }}>Thakur College, Mumbai</span> with 2+ years building
-          web apps, mobile apps, and AI-powered tools. Always shipping something new.
+        <p className="fade-up fade-up-3" style={{ fontSize: '1.02rem', color: '#64748b', maxWidth: '580px', margin: '0 auto 50px', lineHeight: 1.88 }}>
+          Full Stack Developer building scalable web apps, AI-integrated platforms, and real-time systems.
+          BSc. IT at <span style={{ color: '#94a3b8', fontWeight: 600 }}>Thakur College, Mumbai</span> — shipping across e-commerce, healthcare, legal tech &amp; SaaS.
         </p>
 
         {/* CTA buttons */}
@@ -198,9 +198,9 @@ function Hero() {
 function AboutPreview() {
   const stats = [
     { to: 2,  label: 'Years Coding',   suffix: '+', color: '#818cf8' },
-    { to: 17, label: 'Projects Built', suffix: '+', color: '#22d3ee' },
-    { to: 9,  label: 'Certifications', suffix: '+', color: '#f472b6' },
-    { to: 15, label: 'Technologies',   suffix: '+', color: '#fbbf24' },
+    { to: 18, label: 'Projects Built', suffix: '+', color: '#22d3ee' },
+    { to: 10, label: 'Certifications', suffix: '+', color: '#f472b6' },
+    { to: 22, label: 'Technologies',   suffix: '+', color: '#fbbf24' },
   ]
 
   return (
@@ -320,12 +320,12 @@ function ProjectsPreview() {
 // ── SKILLS PREVIEW ────────────────────────────────────────────
 function SkillsPreview() {
   const skills = [
-    { name: 'HTML / CSS',  color: '#f87171', pct: 90 },
-    { name: 'C / C++',     color: '#818cf8', pct: 87 },
+    { name: 'JavaScript',  color: '#fbbf24', pct: 88 },
     { name: 'React',       color: '#61dafb', pct: 85 },
-    { name: 'JavaScript',  color: '#fbbf24', pct: 80 },
-    { name: 'Java',        color: '#f97316', pct: 80 },
-    { name: 'Node.js',     color: '#4ade80', pct: 75 },
+    { name: 'Next.js',     color: '#818cf8', pct: 82 },
+    { name: 'Node.js',     color: '#4ade80', pct: 80 },
+    { name: 'TypeScript',  color: '#38bdf8', pct: 78 },
+    { name: 'MongoDB',     color: '#22d3ee', pct: 82 },
   ]
 
   return (
@@ -337,7 +337,7 @@ function SkillsPreview() {
           <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, marginBottom: '14px', letterSpacing: '-0.03em' }}>
             Tech <span className="gradient-text">Stack</span>
           </h2>
-          <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.96rem' }}>Languages and frameworks I ship with every day.</p>
+          <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.96rem' }}>Core technologies I build with across the full stack.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '14px', marginBottom: '52px' }}>

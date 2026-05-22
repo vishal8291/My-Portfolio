@@ -13,15 +13,16 @@ function useScrollReveal() {
 }
 
 const certifications = [
+  { title: 'Python with Data Science',        issuer: 'NPTEL',                     date: '2025', fileUrl: null,                     type: 'pdf',   color: '#34d399' },
   { title: 'Annual Extension Certificate',    issuer: 'Thakur College',            date: '2024', fileUrl: '/Annual Extension.png', type: 'image', color: '#818cf8' },
   { title: 'Deloitte Training Certificate',   issuer: 'Deloitte',                  date: '2025', fileUrl: '/Deloit.pdf',            type: 'pdf',   color: '#22d3ee' },
   { title: 'Disaster Management Certificate', issuer: 'Thakur College',            date: '2024', fileUrl: '/Disastermgmt.pdf',      type: 'pdf',   color: '#f472b6' },
   { title: 'DLLE Udaan Certificate',          issuer: 'DLLE',                      date: '2024', fileUrl: '/DLLEUdaan.pdf',         type: 'pdf',   color: '#fbbf24' },
-  { title: 'IIRS Remote Sensing Certificate', issuer: 'IIRS (ISRO)',               date: '2024', fileUrl: '/IIRS cerificate.pdf',   type: 'pdf',   color: '#34d399' },
+  { title: 'IIRS Remote Sensing Certificate', issuer: 'IIRS (ISRO)',               date: '2024', fileUrl: '/IIRS cerificate.pdf',   type: 'pdf',   color: '#14b8a6' },
   { title: 'IIT Participant Certificate',     issuer: 'IIT',                       date: '2023', fileUrl: '/IIT.pdf',               type: 'pdf',   color: '#fb923c' },
   { title: 'LiveMint Certification',          issuer: 'LiveMint',                  date: '2024', fileUrl: '/livemint.pdf',          type: 'pdf',   color: '#a78bfa' },
-  { title: 'TCS Certification',              issuer: 'Tata Consultancy Services', date: '2023', fileUrl: '/TCS.pdf',               type: 'pdf',   color: '#38bdf8' },
-  { title: 'TCS Advanced Certification',     issuer: 'Tata Consultancy Services', date: '2023', fileUrl: '/TCS2.pdf',              type: 'pdf',   color: '#86efac' },
+  { title: 'TCS Certification',               issuer: 'Tata Consultancy Services', date: '2023', fileUrl: '/TCS.pdf',               type: 'pdf',   color: '#38bdf8' },
+  { title: 'TCS Advanced Certification',      issuer: 'Tata Consultancy Services', date: '2023', fileUrl: '/TCS2.pdf',              type: 'pdf',   color: '#86efac' },
 ]
 
 function CertIcon({ color, type }) {
@@ -57,7 +58,7 @@ export default function CertificationsPage() {
             My <span className="gradient-text">Certifications</span>
           </h1>
           <p style={{ color: '#64748b', maxWidth: '460px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            {certifications.length} certifications from leading institutions and industry programs.
+            {certifications.length} certifications from leading institutions, government bodies, and industry programs.
           </p>
         </div>
       </section>
@@ -102,17 +103,23 @@ export default function CertificationsPage() {
                 <div style={{ flex: 1 }} />
 
                 <div style={{ borderTop: '1px solid rgba(129,140,248,0.1)', paddingTop: '14px' }}>
-                  <a href={fileUrl} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '0.82rem', fontWeight: 700, color, textDecoration: 'none', padding: '8px 18px', borderRadius: '9px', background: `${color}10`, border: `1px solid ${color}28`, transition: 'background 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.background = `${color}20`}
-                    onMouseLeave={e => e.currentTarget.style.background = `${color}10`}>
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/>
-                      <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                    View Certificate
-                  </a>
+                  {fileUrl ? (
+                    <a href={fileUrl} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '0.82rem', fontWeight: 700, color, textDecoration: 'none', padding: '8px 18px', borderRadius: '9px', background: `${color}10`, border: `1px solid ${color}28`, transition: 'background 0.2s' }}
+                      onMouseEnter={e => e.currentTarget.style.background = `${color}20`}
+                      onMouseLeave={e => e.currentTarget.style.background = `${color}10`}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                      View Certificate
+                    </a>
+                  ) : (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '0.82rem', fontWeight: 700, color: '#475569', padding: '8px 18px', borderRadius: '9px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                      🔒 Uploading soon
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

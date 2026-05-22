@@ -1,9 +1,20 @@
 const projects = [
   // ── CURRENTLY BUILDING ──────────────────────────────────────
   {
+    title: "Paperbag",
+    description: "Eco-friendly e-commerce platform with product catalog, cart, and Razorpay payment gateway. Features JWT + Google OAuth auth, Leaf AI chat assistant (Groq/LLaMA), referral system, coupon engine, real-time stock management, and PDF invoice export. Deployed on Vercel + Render.",
+    tech: ["Next.js 15", "Node.js", "Express.js", "MongoDB", "Razorpay", "Groq AI", "Docker"],
+    githubUrl: "https://github.com/vishal8291/paperbag",
+    liveUrl: null,
+    accent: "#34d399",
+    category: "Full Stack",
+    featured: true,
+    status: "building",
+  },
+  {
     title: "ShaktiCycle",
-    description: "Mobile health app for women's health tracking with SMS/email notifications, PDF health reports, and a Node.js + MongoDB backend. Built with React Native (Expo) and Fastify.",
-    tech: ["React Native", "Expo", "Node.js", "MongoDB", "Twilio", "JWT"],
+    description: "Cross-platform mobile health app for women's cycle tracking and wellness insights. Features an AI companion for personalized health recommendations, real-time data sync, push notifications, and secure health data storage. REST API backend with Express.js and MongoDB.",
+    tech: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB", "AI Integration"],
     githubUrl: "https://github.com/vishal8291/shakticycle",
     liveUrl: null,
     accent: "#ec4899",
@@ -13,8 +24,8 @@ const projects = [
   },
   {
     title: "PDFSolution",
-    description: "All-in-one PDF SaaS platform with OCR, merging, splitting, compression, conversion, and document generation. Includes Google Auth and Razorpay payments.",
-    tech: ["React", "TypeScript", "Vite", "Node.js", "MongoDB", "Tesseract OCR", "Razorpay"],
+    description: "All-in-one PDF SaaS platform supporting merge, split, OCR, compression, and format conversion. TypeScript-first React frontend with modular component architecture. Python microservice for OCR and file transformation pipelines.",
+    tech: ["React", "TypeScript", "Node.js", "MongoDB", "Python", "Docker"],
     githubUrl: "https://github.com/vishal8291/pdfsolution",
     liveUrl: "https://pdfsolution-seven.vercel.app",
     accent: "#f59e0b",
@@ -30,7 +41,7 @@ const projects = [
     liveUrl: "https://partners-roan.vercel.app",
     accent: "#8b5cf6",
     category: "Frontend",
-    featured: true,
+    featured: false,
     status: "building",
   },
   {
@@ -48,8 +59,8 @@ const projects = [
   // ── COMPLETED PROJECTS ────────────────────────────────────────
   {
     title: "LexAgent",
-    description: "AI-powered legal auditor for Indian SMEs. Analyzes documents, generates legal reports, and connects users with Chartered Accountants.",
-    tech: ["Python", "FastAPI", "React", "TypeScript", "MongoDB", "JWT"],
+    description: "AI agent for automated legal document analysis targeting Indian SMEs. FastAPI backend with document ingestion pipeline and AI-powered clause extraction. React dashboard for document upload, analysis results, and risk flagging. Integrated Claude AI SDK for natural language legal reasoning.",
+    tech: ["Python", "FastAPI", "React", "MongoDB", "Claude AI SDK"],
     githubUrl: "https://github.com/vishal8291/LexAgent",
     liveUrl: "https://lex-agent.vercel.app",
     accent: "#06b6d4",
@@ -57,9 +68,19 @@ const projects = [
     featured: false,
   },
   {
+    title: "Vistora Chat App",
+    description: "Real-time cross-platform chat app using WebSockets for instant, low-latency messaging. AI-powered chat assistant for automated responses and smart suggestions. Scalable Node.js backend with room-based messaging and presence tracking.",
+    tech: ["React Native", "TypeScript", "Node.js", "WebSockets", "AI"],
+    githubUrl: "https://github.com/vishal8291/vistora-chat-app",
+    liveUrl: null,
+    accent: "#f97316",
+    category: "Mobile",
+    featured: false,
+  },
+  {
     title: "CareOps",
-    description: "Healthcare operations platform managing workspaces, contacts, bookings, inventory, and messaging with a Python FastAPI backend and Next.js frontend.",
-    tech: ["Next.js", "Python", "FastAPI", "PostgreSQL", "TypeScript", "Zod"],
+    description: "Healthcare operations management platform with patient and staff workflow management. FastAPI Python backend with PostgreSQL for structured relational data and reporting. Next.js TypeScript frontend with real-time dashboard and operations tracking.",
+    tech: ["Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL"],
     githubUrl: "https://github.com/vishal8291/careops",
     liveUrl: "https://careops-frontend-one.vercel.app",
     accent: "#10b981",
@@ -84,16 +105,6 @@ const projects = [
     liveUrl: "https://ai-consultation-website-gamma.vercel.app",
     accent: "#6366f1",
     category: "Full Stack",
-    featured: false,
-  },
-  {
-    title: "Vistora Chat App",
-    description: "Real-time cross-platform chat application built with React Native and Expo. Features bottom tab navigation, messaging, and backend integration.",
-    tech: ["React Native", "Expo", "TypeScript", "Axios", "React Navigation"],
-    githubUrl: "https://github.com/vishal8291/vistora-chat-app",
-    liveUrl: null,
-    accent: "#f97316",
-    category: "Mobile",
     featured: false,
   },
   {
@@ -148,16 +159,6 @@ const projects = [
   },
 
   // ── EARLY PROJECTS ─────────────────────────────────────────────
-  {
-    title: "Timeline-based Historical Webpage",
-    description: "Responsive historical timeline webpage using HTML and CSS with semantic tags, cards, and visual styling to present historical data intuitively.",
-    tech: ["HTML", "CSS", "Responsive Design"],
-    githubUrl: "https://github.com/vishal8291/Timeline-based-Historical-Webpage",
-    liveUrl: null,
-    accent: "#94a3b8",
-    category: "Frontend",
-    featured: false,
-  },
   {
     title: "ATM Management System",
     description: "Feature-rich ATM system in Java with secure PIN authentication, balance inquiry, withdrawals, deposits, and transaction history.",
