@@ -33,6 +33,17 @@ const projects = [
     featured: true,
     status: "building",
   },
+  {
+    title: "DogCare",
+    description: "Cross-platform pet sitting and dog care mobile app with a claymorphism design. Features pet profiles, care scheduling, booking system, and real-time tracking. Built with React Native and Expo.",
+    tech: ["React Native", "Expo", "TypeScript", "Claymorphism Design"],
+    githubUrl: "https://github.com/vishal8291/dogcare",
+    liveUrl: null,
+    accent: "#f97316",
+    category: "Mobile",
+    featured: false,
+    status: "building",
+  },
 
   // ── COMPLETED PROJECTS ────────────────────────────────────────
   {
@@ -167,6 +178,6 @@ const projects = [
     category: "Backend",
     featured: false,
   },
-];
+]
 
-export default projects;
+export default projects
