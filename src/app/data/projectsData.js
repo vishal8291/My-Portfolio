@@ -5,7 +5,7 @@ const projects = [
     description: "Eco-friendly e-commerce platform with product catalog, cart, and Razorpay payment gateway. Features JWT + Google OAuth auth, Leaf AI chat assistant (Groq/LLaMA), referral system, coupon engine, real-time stock management, and PDF invoice export. Deployed on Vercel + Render.",
     tech: ["Next.js 15", "Node.js", "Express.js", "MongoDB", "Razorpay", "Groq AI", "Docker"],
     githubUrl: "https://github.com/vishal8291/paperbag",
-    liveUrl: null,
+    liveUrl: "https://frontend-delta-inky-96.vercel.app",
     accent: "#34d399",
     category: "Full Stack",
     featured: true,
