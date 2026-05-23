@@ -84,7 +84,7 @@ export default function ContactPage() {
             Get In <span className="gradient-text">Touch</span>
           </h1>
           <p style={{ color: '#64748b', maxWidth: '440px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            Have a project, internship offer, or just want to say hi? I&apos;d love to hear from you.
+            Have a project, job opportunity, or just want to say hi? I&apos;d love to hear from you.
           </p>
         </div>
       </section>

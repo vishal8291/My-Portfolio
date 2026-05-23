@@ -136,7 +136,7 @@ function Hero() {
         <div className="fade-up" style={{ marginBottom: '36px' }}>
           <span className="hero-badge">
             <span className="status-dot" />
-            Open to internships &amp; opportunities
+            Open to full-time opportunities
           </span>
         </div>
 
@@ -213,12 +213,12 @@ function AboutPreview() {
             About <span className="gradient-text">Me</span>
           </h2>
           <p style={{ color: '#94a3b8', lineHeight: 1.9, marginBottom: '16px', fontSize: '0.98rem' }}>
-            I&apos;m a passionate IT student at{' '}
+            I&apos;m a passionate Full Stack Developer from{' '}
             <span style={{ color: '#c4b5fd', fontWeight: 600 }}>Thakur College of Science and Commerce, Mumbai</span>{' '}
-            with a deep love for creating innovative digital solutions.
+            — B.Sc. IT graduate (2026, CGPA 7.47) with a deep love for creating innovative digital solutions.
           </p>
           <p style={{ color: '#64748b', lineHeight: 1.9, marginBottom: '38px', fontSize: '0.98rem' }}>
-            Currently seeking internship opportunities where I can contribute to meaningful projects and continue growing as a developer.
+            Actively seeking full-time developer roles where I can contribute to meaningful products and keep growing.
           </p>
           <Link href="/about" className="btn-outline"
             style={{ padding: '12px 28px', borderRadius: '10px', fontWeight: 600, fontSize: '0.9rem', color: '#a78bfa', textDecoration: 'none' }}>
@@ -381,7 +381,7 @@ function CTA() {
           <span className="gradient-text">Together</span>
         </h2>
         <p style={{ color: '#64748b', lineHeight: 1.9, fontSize: '1.02rem', maxWidth: '500px', margin: '0 auto 46px' }}>
-          Open to internships, freelance work, and collaborations. Drop me a message — I respond within 24 hours.
+          Open to full-time roles, freelance work, and collaborations. Drop me a message — I respond within 24 hours.
         </p>
         <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/contact" className="btn-primary"
