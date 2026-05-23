@@ -13,7 +13,7 @@ function useScrollReveal() {
 }
 
 const certifications = [
-  { title: 'Python with Data Science',        issuer: 'NPTEL',                     date: '2025', fileUrl: null,                     type: 'pdf',   color: '#34d399' },
+  { title: 'Python with Data Science',        issuer: 'NPTEL',                     date: '2025', fileUrl: '/NPTEL-Python-DataScience.pdf', type: 'pdf',   color: '#34d399' },
   { title: 'Annual Extension Certificate',    issuer: 'Thakur College',            date: '2024', fileUrl: '/Annual Extension.png', type: 'image', color: '#818cf8' },
   { title: 'Deloitte Training Certificate',   issuer: 'Deloitte',                  date: '2025', fileUrl: '/Deloit.pdf',            type: 'pdf',   color: '#22d3ee' },
   { title: 'Disaster Management Certificate', issuer: 'Thakur College',            date: '2024', fileUrl: '/Disastermgmt.pdf',      type: 'pdf',   color: '#f472b6' },

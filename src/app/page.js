@@ -165,7 +165,7 @@ function Hero() {
             style={{ padding: '15px 40px', borderRadius: '12px', fontWeight: 700, fontSize: '0.96rem', color: '#fff', textDecoration: 'none', letterSpacing: '0.03em' }}>
             View My Work →
           </Link>
-          <a href="/resume.pdf" download className="btn-outline"
+          <a href="/Resume.pdf" download className="btn-outline"
             style={{ padding: '15px 40px', borderRadius: '12px', fontWeight: 600, fontSize: '0.96rem', color: '#94a3b8', textDecoration: 'none' }}>
             Download Resume ↗
           </a>
@@ -388,7 +388,7 @@ function CTA() {
             style={{ padding: '15px 42px', borderRadius: '12px', fontWeight: 700, fontSize: '0.96rem', color: '#fff', textDecoration: 'none' }}>
             Get In Touch
           </Link>
-          <a href="/resume.pdf" download className="btn-outline"
+          <a href="/Resume.pdf" download className="btn-outline"
             style={{ padding: '15px 42px', borderRadius: '12px', fontWeight: 600, fontSize: '0.96rem', color: '#94a3b8', textDecoration: 'none', display: 'inline-block' }}>
             Download Resume
           </a>
