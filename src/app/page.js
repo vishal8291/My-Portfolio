@@ -176,94 +176,77 @@ function TechMarquee() {
   )
 }
 
-// ── HERO PHOTO ─────────────────────────────────────────────────
-function HeroPhoto() {
-  const floatingBadges = [
-    { label: 'React', color: '#61dafb', angle: 0,   dist: 155 },
-    { label: 'Node',  color: '#4ade80', angle: 72,  dist: 160 },
-    { label: 'AI',    color: '#f472b6', angle: 144, dist: 155 },
-    { label: 'Next',  color: '#818cf8', angle: 216, dist: 160 },
-    { label: 'Mongo', color: '#22d3ee', angle: 288, dist: 155 },
-  ]
+// ── SCROLL DOWN INDICATOR ──────────────────────────────────────
+function ScrollIndicator() {
   return (
-    <div className="photo-orbit-wrap">
-      {/* Outer glow */}
-      <div className="photo-glow" />
-      {/* Rotating ring */}
-      <div className="photo-ring-outer" />
-      <div className="photo-ring-inner" />
-      {/* Photo */}
-      <div className="photo-frame">
-        <img src="/photo.jpg" alt="Vishal Tiwari" className="hero-photo-img" />
-        <div className="photo-overlay" />
-      </div>
-      {/* Orbiting badges */}
-      {floatingBadges.map(({ label, color, angle, dist }) => {
-        const rad = (angle * Math.PI) / 180
-        const x = Math.cos(rad) * dist
-        const y = Math.sin(rad) * dist
-        return (
-          <div key={label} className="orbit-badge"
-            style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)`, borderColor: `${color}40`, color, animationDelay: `${angle / 72 * 0.4}s` }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: color, boxShadow: `0 0 6px ${color}` }} />
-            {label}
-          </div>
-        )
-      })}
-      {/* Deco dots */}
-      <div className="deco-dot deco-dot-1" />
-      <div className="deco-dot deco-dot-2" />
-      <div className="deco-dot deco-dot-3" />
-    </div>
+    <a href="#about-section" className="scroll-indicator" aria-label="Scroll down">
+      <div className="scroll-indicator-line" />
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </a>
   )
 }
 
-// ── HERO ──────────────────────────────────────────────────────
+// ── HERO (FULLBLEED PHOTO STYLE) ───────────────────────────────
 function Hero() {
   return (
-    <section className="hero-section">
-      <ParticleCanvas />
-      {/* Background orbs */}
-      <div className="hero-orb hero-orb-1" />
-      <div className="hero-orb hero-orb-2" />
-      <div className="hero-orb hero-orb-3" />
+    <>
+      <section className="hero-fb">
+        <ParticleCanvas />
 
-      <div className="hero-inner">
-        {/* LEFT — text */}
-        <div className="hero-text-col">
-          <div className="fade-up" style={{ marginBottom: '28px' }}>
-            <span className="hero-badge">
-              <span className="status-dot" />
-              Open to full-time opportunities
-            </span>
+        {/* Full-bleed photo — right side */}
+        <img src="/photo.jpg" alt="Vishal Tiwari" className="hero-fb-photo" />
+
+        {/* Gradient overlays */}
+        <div className="hero-fb-overlay-left" />
+        <div className="hero-fb-overlay-bottom" />
+        <div className="hero-fb-overlay-top" />
+
+        {/* Subtle purple tint over photo */}
+        <div className="hero-fb-tint" />
+
+        {/* Accent orb */}
+        <div className="hero-fb-orb" />
+
+        {/* ── Content anchored bottom-left ── */}
+        <div className="hero-fb-content">
+          <div className="fade-up hero-fb-badge">
+            <span className="status-dot" />
+            Open to full-time roles · Mumbai, India
           </div>
-          <h1 className="fade-up fade-up-1 hero-name">
-            Hi, I&apos;m{' '}
-            <span className="hero-name-gradient">Vishal Tiwari</span>
+
+          <h1 className="fade-up fade-up-1 hero-fb-heading-sm">Hi, I&apos;m</h1>
+          <h1 className="fade-up fade-up-2 hero-fb-heading-lg">
+            <span className="hero-fb-name-gradient">Vishal Tiwari</span>
           </h1>
-          <p className="fade-up fade-up-2 hero-role">
+          <p className="fade-up fade-up-3 hero-fb-role">
             <TypewriterRole />
           </p>
-          <p className="fade-up fade-up-3 hero-bio">
-            Full Stack Developer building scalable web apps, AI-integrated platforms, and real-time systems.
-            B.Sc. IT at{' '}
-            <span style={{ color: '#c4b5fd', fontWeight: 600 }}>Thakur College, Mumbai</span>
-            {' '}— shipping across e-commerce, healthcare, legal tech &amp; SaaS.
+          <p className="fade-up fade-up-4 hero-fb-bio">
+            Building scalable web apps, AI-integrated platforms &amp; real-time systems.
+            B.Sc. IT · Thakur College, Mumbai.
           </p>
-          <div className="fade-up fade-up-4 hero-cta">
-            <Link href="/projects" className="btn-primary btn-glow">
-              View My Work <span style={{ marginLeft: 6 }}>→</span>
+
+          <div className="fade-up fade-up-5 hero-fb-cta">
+            <Link href="/projects" className="hero-fb-btn-primary">
+              View My Work →
             </Link>
-            <a href="/Resume.pdf" download className="btn-outline">
-              Download Resume ↗
+            <Link href="/contact" className="hero-fb-btn-outline">
+              Contact Me
+            </Link>
+            <a href="/Resume.pdf" download className="hero-fb-btn-ghost">
+              Resume ↗
             </a>
           </div>
-          <div className="fade-up fade-up-5 hero-socials">
+
+          {/* Socials */}
+          <div className="fade-up fade-up-6 hero-fb-socials">
             {[
-              { icon: <GithubIcon />,   href: 'https://github.com/vishal8291',                        label: 'GitHub' },
-              { icon: <LinkedinIcon />, href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b', label: 'LinkedIn' },
-              { icon: <TwitterIcon />,  href: 'https://x.com/vishalT200',                             label: 'Twitter' },
-              { icon: <EmailIcon />,    href: 'mailto:vishaltiwari101999@gmail.com',                  label: 'Email' },
+              { icon: <GithubIcon size={17} />,   href: 'https://github.com/vishal8291',                        label: 'GitHub' },
+              { icon: <LinkedinIcon size={17} />, href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b', label: 'LinkedIn' },
+              { icon: <TwitterIcon size={17} />,  href: 'https://x.com/vishalT200',                             label: 'Twitter' },
+              { icon: <EmailIcon size={17} />,    href: 'mailto:vishaltiwari101999@gmail.com',                  label: 'Email' },
             ].map(({ icon, href, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label} className="social-link">
                 {icon}
@@ -272,17 +255,29 @@ function Hero() {
           </div>
         </div>
 
-        {/* RIGHT — photo */}
-        <div className="hero-photo-col fade-up fade-up-2">
-          <HeroPhoto />
-        </div>
-      </div>
+        {/* Scroll indicator */}
+        <ScrollIndicator />
 
-      {/* Full-width marquee below grid */}
-      <div className="fade-up fade-up-6" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Stats strip — bottom right */}
+        <div className="fade-up fade-up-6 hero-fb-stats">
+          {[
+            { val: '2+', label: 'Years' },
+            { val: '18+', label: 'Projects' },
+            { val: '10+', label: 'Certs' },
+          ].map(({ val, label }) => (
+            <div key={label} className="hero-fb-stat">
+              <span className="hero-fb-stat-val">{val}</span>
+              <span className="hero-fb-stat-label">{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech marquee just below hero */}
+      <div id="about-section" style={{ background: 'var(--bg)', paddingTop: '48px' }}>
         <TechMarquee />
       </div>
-    </section>
+    </>
   )
 }
 
