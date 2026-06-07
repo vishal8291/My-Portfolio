@@ -468,35 +468,146 @@ function SkillsPreview() {
   )
 }
 
-// ── EXPERIENCE TIMELINE ────────────────────────────────────────
+// ── 3D TIMELINE ────────────────────────────────────────────────
+const timelineItems = [
+  {
+    year: '2026', title: 'B.Sc. IT Graduate',
+    org: 'Thakur College of Science & Commerce',
+    desc: 'CGPA 7.47 — Mumbai University. Specialized in web technologies, databases, software engineering & AI applications.',
+    color: '#818cf8', icon: '🎓',
+    tags: ['Mumbai Univ.', 'CGPA 7.47', 'B.Sc. IT'],
+  },
+  {
+    year: '2025', title: 'Full-Stack Developer',
+    org: 'Freelance & Open Source',
+    desc: 'Building production SaaS — PDFSolution, AI tools, e-commerce systems. 18+ projects shipped & deployed on Render and Vercel.',
+    color: '#22d3ee', icon: '🚀',
+    tags: ['18+ Projects', 'SaaS', 'AI Tools'],
+  },
+  {
+    year: '2024', title: 'React Native Developer',
+    org: 'Personal Projects',
+    desc: 'Built DogCare app with Claymorphism design system, AI integrations, and real-time collaborative apps using Expo & Firebase.',
+    color: '#f472b6', icon: '📱',
+    tags: ['React Native', 'Expo', 'Firebase'],
+  },
+  {
+    year: '2023', title: 'Started B.Sc. IT',
+    org: 'Thakur College, Mumbai',
+    desc: 'First line of code turned into real projects — landing pages, mini-games, CLI tools. Fell in love with building things from scratch.',
+    color: '#34d399', icon: '💻',
+    tags: ['Web Basics', 'Python', 'C++'],
+  },
+]
+
+function HoloCard({ item, side }) {
+  return (
+    <TiltCard
+      className={`tl3d-card tl3d-card-${side}`}
+      style={{ '--c': item.color }}
+    >
+      {/* Animated scan line */}
+      <div className="tl3d-scan" />
+
+      {/* Top accent bar */}
+      <div className="tl3d-top-bar" style={{ background: `linear-gradient(90deg, ${item.color}, transparent)` }} />
+
+      {/* Ghost year behind content */}
+      <div className="tl3d-bg-year">{item.year}</div>
+
+      {/* Header row */}
+      <div className="tl3d-card-head">
+        <span className="tl3d-year-badge" style={{ color: item.color, borderColor: `${item.color}35`, background: `${item.color}10` }}>
+          {item.year}
+        </span>
+        <span className="tl3d-icon-badge">{item.icon}</span>
+      </div>
+
+      <h3 className="tl3d-title">{item.title}</h3>
+
+      <div className="tl3d-org">
+        <span className="tl3d-org-dot" style={{ background: item.color }} />
+        {item.org}
+      </div>
+
+      <p className="tl3d-desc">{item.desc}</p>
+
+      <div className="tl3d-tags">
+        {item.tags.map(t => (
+          <span key={t} className="tl3d-tag" style={{ color: item.color, background: `${item.color}10`, borderColor: `${item.color}30` }}>
+            {t}
+          </span>
+        ))}
+      </div>
+    </TiltCard>
+  )
+}
+
+function TLNode({ color, icon }) {
+  return (
+    <div className="tl3d-node" style={{ '--c': color }}>
+      {/* outer dashed ring */}
+      <div className="tl3d-ring tl3d-ring-outer" />
+      {/* inner solid ring */}
+      <div className="tl3d-ring tl3d-ring-inner" />
+      {/* glowing core */}
+      <div className="tl3d-core">
+        <span className="tl3d-core-icon">{icon}</span>
+      </div>
+    </div>
+  )
+}
+
 function Timeline() {
-  const items = [
-    { year: '2026', title: 'B.Sc. IT Graduate', org: 'Thakur College of Science & Commerce', desc: 'CGPA 7.47 — Mumbai University. Specialized in web tech, databases & AI.', color: '#818cf8' },
-    { year: '2025', title: 'Full-Stack Developer', org: 'Freelance & Open Source', desc: 'Building SaaS products, AI tools, e-commerce platforms & PDF utilities. Shipped 18+ projects.', color: '#22d3ee' },
-    { year: '2024', title: 'React Native Developer', org: 'Personal Projects', desc: 'DogCare app (Claymorphism), AI integrations, real-time apps with Expo & Firebase.', color: '#f472b6' },
-  ]
   return (
     <section className="section dark-section">
       <div className="container">
         <div className="reveal section-header">
           <div className="section-label">Journey</div>
           <h2 className="section-heading">My <span className="gradient-text">Timeline</span></h2>
+          <p style={{ color: '#64748b', fontSize: '0.96rem', lineHeight: 1.75 }}>
+            Every milestone that shaped who I am as a developer.
+          </p>
         </div>
-        <div className="timeline-wrap">
-          <div className="timeline-line" />
-          {items.map(({ year, title, org, desc, color }, i) => (
-            <div key={year} className={`timeline-item reveal reveal-delay-${i + 1}`}>
-              <div className="timeline-dot" style={{ borderColor: color, boxShadow: `0 0 14px ${color}66` }}>
-                <div style={{ width: 10, height: 10, borderRadius: '50%', background: color }} />
+
+        <div className="tl3d-wrap">
+          {/* Glowing vertical spine */}
+          <div className="tl3d-spine" />
+
+          {timelineItems.map((item, i) => {
+            const isLeft = i % 2 === 0
+            return (
+              <div key={item.year} className={`tl3d-row reveal reveal-delay-${Math.min(i + 1, 4)}`}>
+
+                {/* Left column */}
+                <div className="tl3d-col tl3d-col-left">
+                  {isLeft
+                    ? <HoloCard item={item} side="left" />
+                    : <div className="tl3d-empty-year" style={{ color: `${item.color}22` }}>{item.year}</div>
+                  }
+                </div>
+
+                {/* Center column — node */}
+                <div className="tl3d-col tl3d-col-center">
+                  {/* connector to left card */}
+                  {isLeft  && <div className="tl3d-connector tl3d-conn-l" style={{ '--c': item.color }} />}
+                  {/* connector to right card */}
+                  {!isLeft && <div className="tl3d-connector tl3d-conn-r" style={{ '--c': item.color }} />}
+
+                  <TLNode color={item.color} icon={item.icon} />
+                </div>
+
+                {/* Right column */}
+                <div className="tl3d-col tl3d-col-right">
+                  {!isLeft
+                    ? <HoloCard item={item} side="right" />
+                    : <div className="tl3d-empty-year" style={{ color: `${item.color}22` }}>{item.year}</div>
+                  }
+                </div>
+
               </div>
-              <TiltCard className="timeline-card card-glass">
-                <div className="timeline-year" style={{ color }}>{year}</div>
-                <h3 className="timeline-title">{title}</h3>
-                <div className="timeline-org">{org}</div>
-                <p className="timeline-desc">{desc}</p>
-              </TiltCard>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
