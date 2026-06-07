@@ -237,6 +237,85 @@ function VideoModal({ video, onClose }) {
   )
 }
 
+// ── IMPACT SHOWCASE ────────────────────────────────────────────
+const impactProjects = [
+  {
+    title: '🛑 POSH & ICC Compliance Campaign',
+    role: 'Lead Presenter & Coordinator',
+    timeline: 'Dec 2024',
+    desc: 'Organized campus-wide drives at Thakur College to educate students on regulatory frameworks, cyberbullying, and grievance redressal mechanisms.',
+    metrics: ['30+ Team Members Managed', 'Zero-Tolerance Awareness Built'],
+  },
+  {
+    title: '♻️ Campus Waste Segregation Drive',
+    role: 'Campaign Organizer',
+    timeline: 'Dec 2024',
+    desc: 'Led a peer-to-peer environmental compliance initiative. Coordinated the generation of crowdsourced media to implement smart waste sorting inside academic blocks.',
+    metrics: ['Campus-Wide Mobilization', 'Peer-to-Peer Training'],
+  },
+  {
+    title: '📊 Social Media Impact Field Survey',
+    role: 'Chief Field Researcher',
+    timeline: 'Jan 2025',
+    desc: 'Deployed a localized data collection system using QR codes in high-traffic public hubs (Thakur Village / Mall) to analyze algorithmic social media impact on students.',
+    metrics: ['Real-World Data Sourcing', 'UX Demographics Validated'],
+  },
+]
+
+function ImpactShowcase() {
+  return (
+    <section className="py-16 px-6">
+      <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ marginBottom: '40px' }}>
+          <div className="college-hero-badge" style={{ marginBottom: '14px' }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }} />
+            Leadership &amp; Social Infrastructure
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800, letterSpacing: '-0.03em',
+            background: 'linear-gradient(135deg, #38bdf8 0%, #34d399 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            marginBottom: '10px',
+          }}>
+            Beyond the Classroom
+          </h2>
+          <p style={{ color: '#64748b', fontSize: '0.95rem', maxWidth: '540px', lineHeight: 1.6 }}>
+            Real-world data collection, public advocacy, and community mobilization.
+          </p>
+        </div>
+
+        {/* Card grid */}
+        <div className="impact-showcase-grid">
+          {impactProjects.map((p, i) => (
+            <div key={i} className="impact-showcase-card">
+              {/* Timeline badge */}
+              <div style={{ marginBottom: '16px' }}>
+                <span className="impact-timeline-badge">{p.timeline}</span>
+              </div>
+
+              <h3 className="impact-card-title">{p.title}</h3>
+              <p className="impact-card-role">{p.role}</p>
+              <p className="impact-card-desc">{p.desc}</p>
+
+              {/* Metrics */}
+              <div className="impact-card-metrics">
+                {p.metrics.map((m, idx) => (
+                  <div key={idx} className="impact-metric-row">
+                    <span className="impact-metric-arrow">▹</span>
+                    {m}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ── IMPACT STATS ───────────────────────────────────────────────
 function ImpactStats() {
   const stats = [
@@ -334,6 +413,9 @@ export default function CollegePage() {
           )}
         </div>
       </section>
+
+      {/* ── IMPACT SHOWCASE ──────────────────────── */}
+      <ImpactShowcase />
 
       {/* ── MODAL ────────────────────────────────── */}
       {activeVideo && <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />}
