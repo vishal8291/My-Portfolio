@@ -1155,6 +1155,12 @@ html { scroll-behavior: smooth; }
 .filter-count {
   background: rgba(255,255,255,0.15); border-radius: 999px;
   padding: 1px 7px; font-size: 0.7rem; font-weight: 800;
+  transition: background 0.22s, color 0.22s;
+}
+.filter-icon { font-size: 0.95rem; line-height: 1; }
+/* Override active tab to use per-category colour via inline style */
+.college-filter-btn.active {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.35);
 }
 
 /* Grid */
