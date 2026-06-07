@@ -76,6 +76,20 @@ function VideoCard({ video, onClick }) {
       onMouseLeave={() => { setHovered(false); tiltLeave() }}
       onClick={() => onClick(video)}
     >
+      {/* spinning conic-gradient border ring */}
+      <div className="vc-spin-border" style={{ '--a': video.accent }} />
+
+      {/* floating particle dots */}
+      <div className="vc-particles" aria-hidden="true">
+        {[1,2,3,4,5].map(n => (
+          <span key={n} className={`vp-dot vp-dot-${n}`} style={{ '--a': video.accent }} />
+        ))}
+      </div>
+
+      {/* expanding ripple circles */}
+      <div className="vc-ripple vc-ripple-a" style={{ '--a': video.accent }} />
+      <div className="vc-ripple vc-ripple-b" style={{ '--a': video.accent }} />
+
       {/* accent glow */}
       <div className="vc-glow" />
 
@@ -306,6 +320,23 @@ function PolaroidCard({ photo, index, onClick }) {
       onMouseLeave={onLeave}
       onClick={() => onClick(photo)}
     >
+      {/* outer orbit rings — visible because polaroid has overflow:visible */}
+      <div className="pol-orbit pol-orbit-1" style={{ '--a': photo.accent }} />
+      <div className="pol-orbit pol-orbit-2" style={{ '--a': photo.accent }} />
+
+      {/* corner glow nodes */}
+      <span className="pol-node pol-node-tl" style={{ '--a': photo.accent }} />
+      <span className="pol-node pol-node-tr" style={{ '--a': photo.accent }} />
+      <span className="pol-node pol-node-bl" style={{ '--a': photo.accent }} />
+      <span className="pol-node pol-node-br" style={{ '--a': photo.accent }} />
+
+      {/* floating particles */}
+      <div className="pol-particles" aria-hidden="true">
+        {[1,2,3,4].map(n => (
+          <span key={n} className={`pp-dot pp-dot-${n}`} style={{ '--a': photo.accent }} />
+        ))}
+      </div>
+
       <div className="pol-frame">
         <div className="pol-img-wrap">
           <img src={photo.src} alt={photo.title} loading="lazy" className="pol-img" />
