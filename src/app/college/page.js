@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ── VIDEO DATA ─────────────────────────────────────────────────
@@ -237,6 +238,206 @@ function VideoModal({ video, onClose }) {
   )
 }
 
+// ── PHOTO GALLERY DATA ─────────────────────────────────────────
+const photos = [
+  {
+    id: 'p1',
+    src: '/images/college/waste-drive-team.jpeg',
+    title: 'Waste Segregation Drive',
+    caption: 'Students holding Waste Management posters during the campus awareness session.',
+    tag: 'Dec 2024 · Thakur College',
+    category: 'DLLE',
+    accent: '#34d399',
+    wide: true,
+  },
+  {
+    id: 'p2',
+    src: '/images/college/waste-drive-session.jpeg',
+    title: 'Waste Drive — Classroom Session',
+    caption: 'Conducting the peer education session on smart waste sorting inside academic blocks.',
+    tag: 'Dec 2024 · Thakur College',
+    category: 'DLLE',
+    accent: '#34d399',
+    wide: false,
+  },
+  {
+    id: 'p3',
+    src: '/images/college/survey-thakur-mall.jpeg',
+    title: 'Field Survey — Thakur Mall',
+    caption: 'QR-code based data collection outside Thakur Mall on social media impact on students.',
+    tag: 'Jan 2025 · Thakur Mall',
+    category: 'Survey',
+    accent: '#38bdf8',
+    wide: false,
+  },
+  {
+    id: 'p4',
+    src: '/images/college/survey-pizza-hut.jpeg',
+    title: 'Field Survey — Oberoi Park',
+    caption: 'Team deploying the survey at high-traffic hubs using Impact of Social Media boards.',
+    tag: 'Jan 2025 · Kandivali East',
+    category: 'Survey',
+    accent: '#38bdf8',
+    wide: false,
+  },
+  {
+    id: 'p5',
+    src: '/images/college/survey-outdoor.jpeg',
+    title: 'Social Media Survey — Field Team',
+    caption: 'Field research team with QR code forms analyzing algorithmic social media impact.',
+    tag: 'Jan 2025 · Thakur Village',
+    category: 'Survey',
+    accent: '#38bdf8',
+    wide: false,
+  },
+  {
+    id: 'p6',
+    src: '/images/college/dlle-rally.jpeg',
+    title: 'DLLE Department March',
+    caption: 'Department of Lifelong Learning & Extension street march under Thakur College banner.',
+    tag: 'Feb 2025 · Kandivali East',
+    category: 'DLLE',
+    accent: '#c084fc',
+    wide: true,
+  },
+  {
+    id: 'p7',
+    src: '/images/college/voter-awareness.jpeg',
+    title: 'Voter Awareness Drive',
+    caption: 'Classroom presentation on voter rights and civic responsibility ahead of elections.',
+    tag: 'Nov 2024 · Thakur College',
+    category: 'Voter Awareness',
+    accent: '#fbbf24',
+    wide: false,
+  },
+]
+
+// ── PHOTO LIGHTBOX ─────────────────────────────────────────────
+function PhotoLightbox({ photo, onClose, onPrev, onNext }) {
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape')      onClose()
+      if (e.key === 'ArrowRight')  onNext()
+      if (e.key === 'ArrowLeft')   onPrev()
+    }
+    window.addEventListener('keydown', handleKey)
+    document.body.style.overflow = 'hidden'
+    return () => { window.removeEventListener('keydown', handleKey); document.body.style.overflow = '' }
+  }, [onClose, onNext, onPrev])
+
+  if (!photo) return null
+
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="photo-lightbox" onClick={e => e.stopPropagation()}>
+        {/* Nav arrows */}
+        <button className="lb-arrow lb-arrow-left" onClick={onPrev} aria-label="Previous">‹</button>
+        <button className="lb-arrow lb-arrow-right" onClick={onNext} aria-label="Next">›</button>
+        <button className="modal-close" onClick={onClose} aria-label="Close">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Image */}
+        <div className="lb-img-wrap">
+          <img src={photo.src} alt={photo.title} className="lb-img" />
+          <div className="lb-glow" style={{ background: `radial-gradient(ellipse at center, ${photo.accent}18 0%, transparent 70%)` }} />
+        </div>
+
+        {/* Info */}
+        <div className="lb-info">
+          <span className="lb-tag" style={{ color: photo.accent, background: `${photo.accent}15`, borderColor: `${photo.accent}30` }}>
+            📍 {photo.tag}
+          </span>
+          <h3 className="lb-title">{photo.title}</h3>
+          <p className="lb-caption">{photo.caption}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── PHOTO GALLERY ──────────────────────────────────────────────
+function PhotoGallery() {
+  const [activePhoto, setActivePhoto] = useState(null)
+  const activeIdx = photos.findIndex(p => p.id === activePhoto?.id)
+
+  const openPhoto = (photo) => setActivePhoto(photo)
+  const closePhoto = () => setActivePhoto(null)
+  const prevPhoto = () => setActivePhoto(photos[(activeIdx - 1 + photos.length) % photos.length])
+  const nextPhoto = () => setActivePhoto(photos[(activeIdx + 1) % photos.length])
+
+  return (
+    <section style={{ paddingBottom: '80px' }}>
+      <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 24px' }}>
+
+        {/* Header */}
+        <div style={{ marginBottom: '32px' }}>
+          <div className="college-hero-badge" style={{ marginBottom: '14px' }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#c084fc', boxShadow: '0 0 8px #c084fc' }} />
+            On the Ground
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800, letterSpacing: '-0.03em',
+            background: 'linear-gradient(135deg, #c084fc 0%, #818cf8 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            marginBottom: '10px',
+          }}>
+            Field Documentation
+          </h2>
+          <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            GPS-verified photos from real campus drives, field surveys, and community marches.
+          </p>
+        </div>
+
+        {/* Masonry grid */}
+        <div className="photo-gallery-grid">
+          {photos.map((photo) => (
+            <div
+              key={photo.id}
+              className={`pg-card ${photo.wide ? 'pg-wide' : ''}`}
+              onClick={() => openPhoto(photo)}
+              style={{ '--accent': photo.accent }}
+            >
+              <img
+                src={photo.src}
+                alt={photo.title}
+                className="pg-img"
+                loading="lazy"
+              />
+              <div className="pg-overlay">
+                <span className="pg-cat-badge" style={{ background: `${photo.accent}22`, borderColor: `${photo.accent}40`, color: photo.accent }}>
+                  {photo.category}
+                </span>
+                <div className="pg-hover-info">
+                  <p className="pg-hover-title">{photo.title}</p>
+                  <p className="pg-hover-tag">📍 {photo.tag}</p>
+                </div>
+                <div className="pg-expand-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {activePhoto && (
+        <PhotoLightbox
+          photo={activePhoto}
+          onClose={closePhoto}
+          onPrev={prevPhoto}
+          onNext={nextPhoto}
+        />
+      )}
+    </section>
+  )
+}
+
 // ── IMPACT SHOWCASE ────────────────────────────────────────────
 const impactProjects = [
   {
@@ -416,6 +617,9 @@ export default function CollegePage() {
 
       {/* ── IMPACT SHOWCASE ──────────────────────── */}
       <ImpactShowcase />
+
+      {/* ── PHOTO GALLERY ────────────────────────── */}
+      <PhotoGallery />
 
       {/* ── MODAL ────────────────────────────────── */}
       {activeVideo && <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />}
