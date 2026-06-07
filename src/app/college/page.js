@@ -98,109 +98,16 @@ const videos = [
     icon: '🗣️',
   },
 
-  // ── DLLE ──
-  {
-    id: 9,
-    title: 'DLLE Community Visit — Day 1',
-    category: 'DLLE',
-    tag: 'Department of Lifelong Learning',
-    src: '/videos/dlle-visit1.mp4',
-    description: 'First day of our DLLE community outreach visit — interaction with local residents, needs assessment, and documentation of grassroots issues.',
-    role: 'Field Volunteer',
-    accent: '#38bdf8',
-    icon: '🤝',
-  },
-  {
-    id: 10,
-    title: 'DLLE Community Visit — Day 2',
-    category: 'DLLE',
-    tag: 'Department of Lifelong Learning',
-    src: '/videos/dlle-visit2.mp4',
-    description: 'Follow-up community visit focusing on skill-building sessions and welfare programmes conducted with local residents as part of DLLE extension work.',
-    role: 'Field Volunteer',
-    accent: '#0ea5e9',
-    icon: '🏘️',
-  },
-  {
-    id: 11,
-    title: 'DLLE Social Awareness Drive',
-    category: 'DLLE',
-    tag: 'Social Extension Activity',
-    src: '/videos/dlle-drive.mp4',
-    description: 'Social awareness drive conducted under DLLE, covering environmental hygiene, digital literacy, and civic responsibility in underserved communities.',
-    role: 'Campaign Volunteer',
-    accent: '#22d3ee',
-    icon: '🌍',
-  },
-  {
-    id: 12,
-    title: 'DLLE Field Activity',
-    category: 'DLLE',
-    tag: 'Community Engagement',
-    src: '/videos/dlle-activity.mp4',
-    description: 'Live field activity under the DLLE programme — collaborative problem-solving, resource distribution, and real-world community engagement exercises.',
-    role: 'Activity Lead',
-    accent: '#67e8f9',
-    icon: '📋',
-  },
-
-  // ── FUN ──
-  {
-    id: 13,
-    title: 'College Fest — Opening Ceremony',
-    category: 'Fun',
-    tag: 'Annual Cultural Fest',
-    src: '/videos/fun-fest1.mp4',
-    description: 'The electric opening ceremony of our annual college fest — performances, introductions, and the energy that makes college life unforgettable.',
-    role: 'Participant',
-    accent: '#fb923c',
-    icon: '🎉',
-  },
-  {
-    id: 14,
-    title: 'Fest Moments & Performances',
-    category: 'Fun',
-    tag: 'Stage Performances',
-    src: '/videos/fun-fest2.mp4',
-    description: 'Candid moments and stage performances from the college fest — dance, drama, and pure joy captured in these college memories.',
-    role: 'Performer',
-    accent: '#f97316',
-    icon: '🎤',
-  },
-  {
-    id: 15,
-    title: 'Fun Highlights Reel',
-    category: 'Fun',
-    tag: 'College Memories',
-    src: '/videos/fun-fest3.mp4',
-    description: 'A highlights reel of the best fun moments from the college year — candid laughs, group photos, and the bonds we built together.',
-    role: 'Co-organiser',
-    accent: '#fb7185',
-    icon: '😄',
-  },
-  {
-    id: 16,
-    title: 'Fest Memories',
-    category: 'Fun',
-    tag: 'Cultural Celebrations',
-    src: '/videos/fun-fest4.mp4',
-    description: 'Cultural celebrations and team moments — the people, the energy, and the spirit that define three years of college life at Thakur.',
-    role: 'Volunteer',
-    accent: '#f43f5e',
-    icon: '🎊',
-  },
 ]
 
 // ── CATEGORIES ─────────────────────────────────────────────────
-const CATEGORIES = ['All', 'POSH', 'Food & Nutrition', 'Youth Parliament', 'DLLE', 'Fun']
+const CATEGORIES = ['All', 'POSH', 'Food & Nutrition', 'Youth Parliament']
 
 const CATEGORY_META = {
   'All':             { color: '#818cf8', icon: '🎬' },
   'POSH':            { color: '#f472b6', icon: '🛡️' },
   'Food & Nutrition':{ color: '#34d399', icon: '🥗' },
   'Youth Parliament':{ color: '#fbbf24', icon: '🏛️' },
-  'DLLE':            { color: '#38bdf8', icon: '🤝' },
-  'Fun':             { color: '#fb923c', icon: '🎉' },
 }
 
 // ── VIDEO CARD ─────────────────────────────────────────────────
@@ -333,10 +240,10 @@ function VideoModal({ video, onClose }) {
 // ── IMPACT STATS ───────────────────────────────────────────────
 function ImpactStats() {
   const stats = [
-    { val: '1000+', label: 'Students Reached', icon: '👥', color: '#818cf8' },
-    { val: '5+',    label: 'Activities Led',   icon: '🏆', color: '#f472b6' },
-    { val: '5',     label: 'Categories',       icon: '🎯', color: '#34d399' },
-    { val: '16',    label: 'Videos Captured',  icon: '🎬', color: '#fbbf24' },
+    { val: '500+', label: 'Students Reached', icon: '👥', color: '#818cf8' },
+    { val: '3+',   label: 'Activities Led',   icon: '🏆', color: '#f472b6' },
+    { val: '3',    label: 'Categories',       icon: '🎯', color: '#34d399' },
+    { val: '8',    label: 'Videos Captured',  icon: '🎬', color: '#fbbf24' },
   ]
   return (
     <div className="impact-stats">
