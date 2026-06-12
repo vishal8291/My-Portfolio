@@ -236,6 +236,10 @@ function Hero() {
   return (
     <>
       <section className="hero-fb">
+        {/* Background video — plays at low opacity behind particles */}
+        <video className="hero-bg-video" autoPlay muted loop playsInline poster="/assets/dev-bg.png">
+          <source src="/assets/hero-bg.mp4" type="video/mp4" />
+        </video>
         <ParticleCanvas />
 
         {/* Full-bleed photo — right side */}
@@ -380,7 +384,7 @@ function AboutPreview() {
 function ProjectsPreview() {
   const featured = projects.filter(p => p.status === 'building').slice(0, 3)
   return (
-    <section className="section dark-section">
+    <section className="section dark-section projects-section">
       <div className="container">
         <div className="reveal section-header">
           <div className="section-label-game">QUEST_LOG</div>
@@ -487,7 +491,7 @@ function SkillsPreview() {
     { name: 'MongoDB',     color: '#22d3ee', pct: 82, delay: 400 },
   ]
   return (
-    <section className="section">
+    <section className="section skills-section">
       <div className="container">
         <div className="reveal section-header">
           <div className="section-label-game">SKILL_TREE</div>
