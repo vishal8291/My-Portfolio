@@ -214,6 +214,11 @@ function TechMarquee() {
   )
 }
 
+// ── GLITCH TEXT ────────────────────────────────────────────────
+function GlitchText({ children, className = '' }) {
+  return <span className={`glitch-text ${className}`}>{children}</span>
+}
+
 // ── SCROLL DOWN INDICATOR ──────────────────────────────────────
 function ScrollIndicator() {
   return (
@@ -256,7 +261,7 @@ function Hero() {
 
           <h1 className="fade-up fade-up-1 hero-fb-heading-sm">Hi, I&apos;m</h1>
           <h1 className="fade-up fade-up-2 hero-fb-heading-lg">
-            <span className="hero-fb-name-gradient">Vishal Tiwari</span>
+            <GlitchText className="hero-fb-name-gradient">Vishal Tiwari</GlitchText>
           </h1>
           <p className="fade-up fade-up-3 hero-fb-role">
             <TypewriterRole />
@@ -331,7 +336,7 @@ function AboutPreview() {
     <section className="section about-section">
       <div className="container about-grid">
         <div className="reveal-left about-text">
-          <div className="section-label">About Me</div>
+          <div className="section-label-game">ABOUT.EXE</div>
           <h2 className="section-heading">
             Passionate about <span className="gradient-text">Building</span>
           </h2>
@@ -378,7 +383,7 @@ function ProjectsPreview() {
     <section className="section dark-section">
       <div className="container">
         <div className="reveal section-header">
-          <div className="section-label">Work</div>
+          <div className="section-label-game">QUEST_LOG</div>
           <h2 className="section-heading">Currently <span className="gradient-text">Building</span></h2>
           <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.96rem', maxWidth: '400px', margin: '0 auto' }}>
             Active projects shipping right now.
@@ -485,7 +490,7 @@ function SkillsPreview() {
     <section className="section">
       <div className="container">
         <div className="reveal section-header">
-          <div className="section-label">Expertise</div>
+          <div className="section-label-game">SKILL_TREE</div>
           <h2 className="section-heading">Tech <span className="gradient-text">Stack</span></h2>
           <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.96rem' }}>
             Core technologies I build with across the full stack.
@@ -601,7 +606,7 @@ function Timeline() {
     <section className="section dark-section">
       <div className="container">
         <div className="reveal section-header">
-          <div className="section-label">Journey</div>
+          <div className="section-label-game">MISSION_LOG</div>
           <h2 className="section-heading">My <span className="gradient-text">Timeline</span></h2>
           <p style={{ color: '#64748b', fontSize: '0.96rem', lineHeight: 1.75 }}>
             Every milestone that shaped who I am as a developer.
@@ -659,7 +664,7 @@ function CTA() {
       <div className="cta-orb cta-orb-1" />
       <div className="cta-orb cta-orb-2" />
       <div className="reveal cta-inner">
-        <div className="section-label">Let&apos;s Connect</div>
+        <div className="section-label-game">OPEN_COMMS</div>
         <h2 className="section-heading cta-heading">
           Let&apos;s Build Something{' '}
           <span className="gradient-text">Together</span>
