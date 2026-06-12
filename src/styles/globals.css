@@ -2146,3 +2146,100 @@ html { scroll-behavior: smooth; }
   .photo-orbit-wrap { width: 240px; height: 240px; }
   .skills-rings-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   AWWWARDS-LEVEL ENHANCEMENTS
+   Cursor glow · Film grain · Cinematic loading screen
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── CUSTOM CURSOR (fine-pointer only) ───────────────────────── */
+.custom-cursor,
+.custom-cursor * { cursor: none !important; }
+
+.cg-dot {
+  position: fixed; top: 0; left: 0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 10px rgba(129,140,248,.95), 0 0 20px rgba(129,140,248,.4);
+  pointer-events: none; z-index: 9001;
+  opacity: 0; will-change: transform;
+  mix-blend-mode: screen;
+  transition: background .18s, box-shadow .18s, opacity .28s;
+}
+
+.cg-orb {
+  position: fixed; top: 0; left: 0;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,140,248,.13), transparent 70%);
+  pointer-events: none; z-index: 9000;
+  opacity: 0; will-change: transform;
+  transition: background .4s, opacity .28s;
+}
+
+/* ── FILM GRAIN OVERLAY ──────────────────────────────────────── */
+.grain-fx {
+  position: fixed; inset: 0; z-index: 8999;
+  pointer-events: none; opacity: .038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── LOADING SCREEN ──────────────────────────────────────────── */
+.ls-wrap {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #07090f;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  transition: transform .92s cubic-bezier(.76,0,.24,1);
+}
+.ls-wrap.ls-out { transform: translateY(-100%); }
+
+/* Corner HUD brackets */
+.ls-corner { position: absolute; width: 30px; height: 30px; }
+.ls-tl { top: 28px; left: 28px; border-top: 1.5px solid rgba(129,140,248,.4); border-left: 1.5px solid rgba(129,140,248,.4); }
+.ls-tr { top: 28px; right: 28px; border-top: 1.5px solid rgba(129,140,248,.4); border-right: 1.5px solid rgba(129,140,248,.4); }
+.ls-bl { bottom: 28px; left: 28px; border-bottom: 1.5px solid rgba(129,140,248,.4); border-left: 1.5px solid rgba(129,140,248,.4); }
+.ls-br { bottom: 28px; right: 28px; border-bottom: 1.5px solid rgba(129,140,248,.4); border-right: 1.5px solid rgba(129,140,248,.4); }
+
+.ls-body { text-align: center; }
+
+/* Name letters */
+.ls-name {
+  display: flex; justify-content: center;
+  gap: 2px; margin-bottom: 22px; overflow: hidden;
+}
+.ls-char {
+  display: inline-block;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-weight: 900; letter-spacing: -.04em; line-height: 1;
+  opacity: 0; transform: translateY(64px);
+  animation: ls-char-in .58s cubic-bezier(.76,0,.24,1) forwards;
+}
+@keyframes ls-char-in { to { opacity: 1; transform: translateY(0); } }
+
+/* Neon sweep line */
+.ls-sweep {
+  height: 1px; width: 0; margin: 0 auto 18px;
+  background: linear-gradient(90deg, transparent, #818cf8 30%, #22d3ee 70%, transparent);
+  box-shadow: 0 0 16px rgba(129,140,248,.7);
+  animation: ls-sweep-in .72s .54s cubic-bezier(.76,0,.24,1) forwards;
+}
+@keyframes ls-sweep-in { to { width: min(75vw, 460px); } }
+
+/* Sub label */
+.ls-role {
+  font-size: .68rem; font-weight: 700; letter-spacing: .28em;
+  text-transform: uppercase; color: #475569;
+  opacity: 0; animation: ls-fade .5s .96s ease forwards;
+}
+@keyframes ls-fade { to { opacity: 1; } }
+
+/* Bottom progress bar */
+.ls-bar {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, #818cf8, #22d3ee, #f472b6);
+  box-shadow: 0 0 10px rgba(129,140,248,.6);
+  animation: ls-bar-in 1.85s .08s ease-in-out forwards;
+}
+@keyframes ls-bar-in { to { width: 100%; } }

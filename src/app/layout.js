@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import ClientEffects from './components/ClientEffects'
 import '../styles/globals.css'
 
 export const metadata = {
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
       }}>
+        <ClientEffects />
         <Navbar />
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />

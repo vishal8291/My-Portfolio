@@ -10,9 +10,11 @@ const TwitterIcon  = ({ size = 20 }) => <svg width={size} height={size} viewBox=
 const EmailIcon    = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 const ExternalIcon = ({ size = 13 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
 
-// ── PARTICLE CANVAS BACKGROUND ─────────────────────────────────
+// ── PARTICLE CANVAS BACKGROUND (mouse-reactive) ────────────────
 function ParticleCanvas() {
   const canvasRef = useRef(null)
+  const mouse = useRef({ x: -1000, y: -1000 })
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -26,11 +28,15 @@ function ParticleCanvas() {
     resize()
     window.addEventListener('resize', resize)
 
+    const onMouse = e => { mouse.current = { x: e.clientX, y: e.clientY } }
+    window.addEventListener('mousemove', onMouse)
+
     const COLORS = ['rgba(129,140,248,', 'rgba(192,132,252,', 'rgba(34,211,238,', 'rgba(244,114,182,']
-    for (let i = 0; i < 55; i++) {
+    const SPEED_CAP = 2.2
+    for (let i = 0; i < 65; i++) {
       particles.push({
         x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
         r: Math.random() * 1.8 + 0.4,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
         alpha: Math.random() * 0.5 + 0.15,
@@ -39,34 +45,66 @@ function ParticleCanvas() {
 
     const draw = () => {
       ctx.clearRect(0, 0, W, H)
+      const { x: mx, y: my } = mouse.current
+
       particles.forEach(p => {
+        // Mouse repulsion
+        const dx = p.x - mx; const dy = p.y - my
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < 130 && dist > 0) {
+          const force = (130 - dist) / 130 * 0.9
+          p.vx += (dx / dist) * force
+          p.vy += (dy / dist) * force
+        }
+        // Velocity cap + damping
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy)
+        if (speed > SPEED_CAP) { p.vx = (p.vx / speed) * SPEED_CAP; p.vy = (p.vy / speed) * SPEED_CAP }
+        p.vx *= 0.978; p.vy *= 0.978
+
         p.x += p.vx; p.y += p.vy
         if (p.x < 0) p.x = W; if (p.x > W) p.x = 0
         if (p.y < 0) p.y = H; if (p.y > H) p.y = 0
+
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
         ctx.fillStyle = `${p.color}${p.alpha})`
         ctx.fill()
       })
+
+      // Connection lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 140) {
+          const d = Math.sqrt(dx * dx + dy * dy)
+          if (d < 140) {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(129,140,248,${0.08 * (1 - dist / 140)})`
+            ctx.strokeStyle = `rgba(129,140,248,${0.09 * (1 - d / 140)})`
             ctx.lineWidth = 0.6
             ctx.stroke()
           }
         }
       }
+
+      // Soft glow at cursor position
+      if (mx > -900 && my > -900) {
+        const g = ctx.createRadialGradient(mx, my, 0, mx, my, 110)
+        g.addColorStop(0, 'rgba(129,140,248,0.055)')
+        g.addColorStop(1, 'transparent')
+        ctx.fillStyle = g
+        ctx.fillRect(0, 0, W, H)
+      }
+
       animId = requestAnimationFrame(draw)
     }
     draw()
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', resize)
+      window.removeEventListener('mousemove', onMouse)
+    }
   }, [])
 
   return <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
