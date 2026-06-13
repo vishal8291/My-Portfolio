@@ -960,33 +960,36 @@ html { scroll-behavior: smooth; }
 @media (max-width: 760px) {
   .tl3d-spine { left: 28px; }
   .tl3d-row {
-    grid-template-columns: 56px 1fr;
-    grid-template-rows: auto;
-    margin-bottom: 48px;
+    grid-template-columns: 48px 1fr;
+    margin-bottom: 28px;
+    align-items: flex-start;
   }
-  .tl3d-col-left  { display: none; }
   .tl3d-col-center {
     grid-column: 1; grid-row: 1;
-    padding: 0; justify-content: flex-start; align-items: center;
+    padding: 0; padding-top: 10px;
+    justify-content: center; align-items: flex-start;
   }
+  /* Both left and right go into col 2; hide whichever only has the ghost year */
+  .tl3d-col-left {
+    display: flex;
+    grid-column: 2; grid-row: 1;
+    padding-left: 12px; padding-right: 0;
+    justify-content: flex-start;
+  }
+  .tl3d-col-left:has(.tl3d-empty-year) { display: none !important; }
   .tl3d-col-right {
     grid-column: 2; grid-row: 1;
-    padding-left: 16px; justify-content: flex-start;
+    padding-left: 12px;
+    justify-content: flex-start;
   }
-  /* Always show right side on mobile regardless of index */
-  .tl3d-row .tl3d-col-right .tl3d-card-left,
-  .tl3d-row .tl3d-col-right .tl3d-card-right {
-    margin: 0; max-width: 100%;
-  }
-  /* On even rows, move left card to right column */
-  .tl3d-row .tl3d-col-left .tl3d-card {
-    display: none; /* hidden on mobile — only right col shows */
-  }
+  .tl3d-col-right:has(.tl3d-empty-year) { display: none !important; }
+  .tl3d-col-left .tl3d-card,
+  .tl3d-col-right .tl3d-card { max-width: 100%; width: 100%; }
   .tl3d-connector { display: none; }
-  .tl3d-empty-year { display: none; }
-  .tl3d-node { width: 48px; height: 48px; }
-  .tl3d-core { width: 30px; height: 30px; }
-  .tl3d-core-icon { font-size: 0.85rem; }
+  .tl3d-empty-year { display: none !important; }
+  .tl3d-node { width: 44px; height: 44px; }
+  .tl3d-core { width: 28px; height: 28px; }
+  .tl3d-core-icon { font-size: 0.8rem; }
 }
 
 /* ── CTA SECTION ─────────────────────────────────────────── */
@@ -2470,3 +2473,143 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 .cta-inner { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS FIXES
+   Main page · College / Life page · Shared components
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── HOMEPAGE HERO — small screens ──────────────────────────── */
+@media (max-width: 480px) {
+  .hero-fb-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 48px;
+  }
+  .hero-fb-heading-sm { font-size: 1.3rem; }
+  .hero-fb-heading-lg { font-size: clamp(2rem, 11vw, 2.8rem) !important; }
+  .hero-fb-badge      { font-size: 0.68rem; padding: 4px 10px; }
+  .hero-fb-bio        { font-size: 0.86rem; margin-bottom: 24px; }
+  .hero-fb-cta        { flex-direction: column; align-items: stretch; gap: 9px; }
+  .hero-fb-btn-primary,
+  .hero-fb-btn-outline { text-align: center; justify-content: center; }
+  .hero-fb-btn-ghost   { display: none; }
+  .hero-fb-socials     { gap: 8px; }
+}
+
+/* ── HOMEPAGE — about / stats ────────────────────────────────── */
+@media (max-width: 480px) {
+  .about-section > .container { padding: 0 16px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card  { padding: 22px 14px !important; }
+}
+
+/* ── HOMEPAGE — skills rings ─────────────────────────────────── */
+@media (max-width: 420px) {
+  .skills-rings-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+/* ── HOMEPAGE — projects grid ────────────────────────────────── */
+@media (max-width: 480px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card  { margin: 0; }
+}
+
+/* ── HOMEPAGE — CTA section ──────────────────────────────────── */
+@media (max-width: 480px) {
+  .cta-section    { padding: 70px 16px; }
+  .cta-inner > div { flex-direction: column; align-items: stretch; }
+  .cta-inner > div > a { text-align: center; }
+  .cta-heading    { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .cta-sub        { font-size: 0.9rem; margin-bottom: 28px; }
+}
+
+/* ── COLLEGE / LIFE PAGE — hero ──────────────────────────────── */
+@media (max-width: 640px) {
+  .college-hero        { padding: 40px 0 32px; }
+  .college-hero-sub    { max-width: 100%; font-size: 0.93rem; margin-bottom: 36px; }
+  .college-hero-title  { font-size: clamp(2rem, 8vw, 3rem); }
+}
+
+/* ── COLLEGE — video grid ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .college-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 601px) and (max-width: 860px) {
+  .college-video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── COLLEGE — video card on mobile ─────────────────────────── */
+@media (max-width: 480px) {
+  .vc-wrap     { border-radius: 16px; }
+  .vc-info     { padding: 14px 14px 16px; }
+  .vc-title    { font-size: 0.92rem; }
+  .vc-desc     { font-size: 0.78rem; -webkit-line-clamp: 2; }
+  .vc-spin-border { display: none; }
+  .vc-particles   { display: none; }
+}
+
+/* ── COLLEGE — video modal ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .modal-backdrop  { padding: 12px; align-items: flex-end; }
+  .modal-container {
+    border-radius: 20px 20px 14px 14px;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+  .modal-info      { padding: 18px 18px 24px; }
+  .modal-title     { font-size: 1.1rem; }
+  .modal-desc      { font-size: 0.88rem; margin-bottom: 16px; }
+  .modal-meta      { gap: 14px; flex-wrap: wrap; }
+  .modal-close     { top: 10px; right: 10px; }
+}
+
+/* ── COLLEGE — photo lightbox ────────────────────────────────── */
+@media (max-width: 640px) {
+  .photo-lightbox  { border-radius: 16px; padding: 12px; }
+  .lb-img-wrap     { border-radius: 10px; }
+  .lb-info         { padding: 14px 4px 4px; }
+  .lb-title        { font-size: 1rem; }
+  .lb-caption      { font-size: 0.82rem; }
+  .lb-arrow-left   { left: 4px; }
+  .lb-arrow-right  { right: 4px; }
+}
+
+/* ── COLLEGE — flip cards ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .flip-wrap  { height: 240px; }
+  .flip-front-title { font-size: 0.88rem; }
+  .flip-back-desc   { font-size: 0.78rem; -webkit-line-clamp: 4; }
+}
+
+/* ── COLLEGE — polaroid grid ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .polaroid-grid { grid-template-columns: 1fr; }
+  .pol-wide      { grid-column: span 1; }
+  .polaroid      { --rot: 0deg !important; }
+}
+
+/* ── COLLEGE — showcase section ──────────────────────────────── */
+@media (max-width: 480px) {
+  .showcase-inner  { padding: 0 14px; }
+  .section3d-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .section3d-sub   { font-size: 0.88rem; }
+}
+
+/* ── SHARED — section headers on mobile ─────────────────────── */
+@media (max-width: 480px) {
+  .section-label-game { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .section-heading    { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .section-header     { margin-bottom: 44px; }
+  .container          { padding: 0 16px; }
+}
+
+/* ── SHARED — navbar safe zone on very small screens ─────────── */
+@media (max-width: 360px) {
+  .hero-fb-heading-lg { font-size: 1.9rem !important; }
+  .hero-fb-cta > a    { padding: 11px 16px; font-size: 0.85rem; }
+}
