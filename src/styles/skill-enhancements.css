@@ -1,0 +1,49 @@
+/* ══════════════════════════════════════════════════════════════
+   SKILL ENHANCEMENTS
+   responsive-3d-scaling · ui-ux-3d-overlay · gsap-3d-timeline-sync
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── SCROLL HUD — bottom pill (ui-ux-3d-overlay) ─────────────── */
+.scroll-hud {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13, 16, 32, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(129, 140, 248, 0.22);
+  border-radius: 100px;
+  padding: 8px 22px;
+  pointer-events: none;
+  z-index: 8990;
+  animation: scroll-hud-fade 2.2s ease-in-out infinite;
+  white-space: nowrap;
+}
+.scroll-hud-text {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(129, 140, 248, 0.7);
+}
+.scroll-hud-arr {
+  font-size: 0.75rem;
+  color: rgba(34, 211, 238, 0.7);
+  animation: scroll-hud-bounce 1.3s ease-in-out infinite;
+}
+@keyframes scroll-hud-fade {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+@keyframes scroll-hud-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@media (max-width: 480px) { .scroll-hud { display: none; } }
+
+/* responsive-3d-scaling: prevent touch scroll conflict on canvas */
+canvas { touch-action: none; }

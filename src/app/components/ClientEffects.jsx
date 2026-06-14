@@ -142,6 +142,81 @@ function GameHUD() {
   )
 }
 
+// ── SCROLL HUD — bottom pill (ui-ux-3d-overlay) ───────────────
+function ScrollHUD() {
+  const [visible, setVisible] = useState(true)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const onScroll = () => { if (window.scrollY > 120) setVisible(false) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  if (!visible) return null
+  return (
+    <div className="scroll-hud" aria-hidden="true">
+      <span className="scroll-hud-text">SCROLL_TO_EXPLORE</span>
+      <span className="scroll-hud-arr">↓</span>
+    </div>
+  )
+}
+
+// ── GSAP SCROLL ANIMATIONS (gsap-3d-timeline-sync) ────────────
+function GSAPScrollAnimations() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    Promise.all([
+      import('gsap'),
+      import('gsap/ScrollTrigger'),
+    ]).then(([{ gsap }, { ScrollTrigger }]) => {
+      gsap.registerPlugin(ScrollTrigger)
+
+      // Hero photo — parallax (moves at 0.2x scroll speed)
+      gsap.to('.hero-fb-photo', {
+        yPercent: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero-fb',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+
+      // Section labels — x-axis slide in
+      gsap.utils.toArray('.section-label-game').forEach(el => {
+        gsap.from(el, {
+          x: -28,
+          opacity: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        })
+      })
+
+      // Timeline cards — alternate left/right entry
+      gsap.utils.toArray('.tl3d-card').forEach((el, i) => {
+        gsap.from(el, {
+          x: i % 2 === 0 ? -40 : 40,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          clearProps: 'opacity,x',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        })
+      })
+    }).catch(() => {})
+  }, [])
+  return null
+}
+
 // ── ROOT EXPORT ────────────────────────────────────────────────
 export default function ClientEffects() {
   return (
@@ -149,6 +224,8 @@ export default function ClientEffects() {
       <LoadingScreen />
       <CursorGlow />
       <GameHUD />
+      <ScrollHUD />
+      <GSAPScrollAnimations />
       {/* Film grain */}
       <div className="grain-fx" aria-hidden="true" />
       {/* CRT scanlines */}

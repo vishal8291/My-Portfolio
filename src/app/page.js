@@ -32,8 +32,14 @@ function ParticleCanvas() {
     window.addEventListener('mousemove', onMouse)
 
     const COLORS = ['rgba(129,140,248,', 'rgba(192,132,252,', 'rgba(34,211,238,', 'rgba(244,114,182,']
+    // responsive-3d-scaling: device quality tier
+    const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent)
     const SPEED_CAP = 2.2
-    for (let i = 0; i < 65; i++) {
+    const PARTICLE_COUNT = isMobile ? 22 : 65
+    const SHOW_LINES = !isMobile           // fps-performance-profiler: skip O(n²) on mobile
+    const FRAME_MS   = isMobile ? 1000 / 30 : 0  // fps-performance-profiler: 30fps cap on mobile
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * W, y: Math.random() * H,
         vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
@@ -43,7 +49,12 @@ function ParticleCanvas() {
       })
     }
 
-    const draw = () => {
+    let lastFrameTime = 0
+    const draw = (timestamp) => {
+      animId = requestAnimationFrame(draw)
+      if (FRAME_MS > 0 && timestamp - lastFrameTime < FRAME_MS) return
+      lastFrameTime = timestamp
+
       ctx.clearRect(0, 0, W, H)
       const { x: mx, y: my } = mouse.current
 
@@ -71,19 +82,21 @@ function ParticleCanvas() {
         ctx.fill()
       })
 
-      // Connection lines
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const d = Math.sqrt(dx * dx + dy * dy)
-          if (d < 140) {
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(129,140,248,${0.09 * (1 - d / 140)})`
-            ctx.lineWidth = 0.6
-            ctx.stroke()
+      // Connection lines — desktop only
+      if (SHOW_LINES) {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x
+            const dy = particles[i].y - particles[j].y
+            const d = Math.sqrt(dx * dx + dy * dy)
+            if (d < 140) {
+              ctx.beginPath()
+              ctx.moveTo(particles[i].x, particles[i].y)
+              ctx.lineTo(particles[j].x, particles[j].y)
+              ctx.strokeStyle = `rgba(129,140,248,${0.09 * (1 - d / 140)})`
+              ctx.lineWidth = 0.6
+              ctx.stroke()
+            }
           }
         }
       }
@@ -96,14 +109,21 @@ function ParticleCanvas() {
         ctx.fillStyle = g
         ctx.fillRect(0, 0, W, H)
       }
-
-      animId = requestAnimationFrame(draw)
     }
-    draw()
+    animId = requestAnimationFrame(draw)
+
+    // fps-performance-profiler: pause when tab hidden
+    const onVisibility = () => {
+      if (document.hidden) cancelAnimationFrame(animId)
+      else animId = requestAnimationFrame(draw)
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMouse)
+      document.removeEventListener('visibilitychange', onVisibility)
     }
   }, [])
 

@@ -2,6 +2,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ClientEffects from './components/ClientEffects'
 import '../styles/globals.css'
+import '../styles/skill-enhancements.css'
 
 export const metadata = {
   title: 'Vishal Tiwari — Full Stack Developer',
