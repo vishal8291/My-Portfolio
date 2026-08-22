@@ -21,7 +21,7 @@ export default function Footer() {
   ]
 
   const contactItems = [
-    { icon: '✉', text: 'vishaltiwari101999@gmail.com', href: 'mailto:vishaltiwari101999@gmail.com' },
+    { icon: '✉', text: 'vishal.buildss@gmail.com', href: 'mailto:vishal.buildss@gmail.com' },
     { icon: '📱', text: '+91 8291569470',              href: 'tel:+918291569470' },
     { icon: '📍', text: 'Borivali West, Mumbai',       href: null },
   ]

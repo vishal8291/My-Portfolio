@@ -313,7 +313,7 @@ function Hero() {
               { icon: <GithubIcon size={17} />,   href: 'https://github.com/vishal8291',                        label: 'GitHub' },
               { icon: <LinkedinIcon size={17} />, href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b', label: 'LinkedIn' },
               { icon: <TwitterIcon size={17} />,  href: 'https://x.com/vishalT200',                             label: 'Twitter' },
-              { icon: <EmailIcon size={17} />,    href: 'mailto:vishaltiwari101999@gmail.com',                  label: 'Email' },
+              { icon: <EmailIcon size={17} />,    href: 'mailto:vishal.buildss@gmail.com',                     label: 'Email' },
             ].map(({ icon, href, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label} className="social-link">
                 {icon}
