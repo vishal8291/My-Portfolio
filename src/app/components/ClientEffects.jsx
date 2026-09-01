@@ -24,7 +24,7 @@ function LoadingScreen() {
         <div className="ls-name">
           {'VISHAL.'.split('').map((c, i) => (
             <span key={i} className="ls-char"
-              style={{ animationDelay: `${i * 0.072}s`, color: c === '.' ? '#818cf8' : '#f1f5f9' }}>{c}</span>
+              style={{ animationDelay: `${i * 0.072}s`, color: c === '.' ? '#ef4444' : '#ffffff' }}>{c}</span>
           ))}
         </div>
         <div className="ls-sweep" />
@@ -89,10 +89,5 @@ function CursorGlow() {
 
 // ── ROOT EXPORT ────────────────────────────────────────────────
 export default function ClientEffects() {
-  return (
-    <>
-      <LoadingScreen />
-      <CursorGlow />
-    </>
-  )
+  return <LoadingScreen />
 }

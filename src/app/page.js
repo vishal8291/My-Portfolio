@@ -152,10 +152,10 @@ const techStack = [
   { name: 'JavaScript', dot: '#fbbf24' }, { name: 'TypeScript', dot: '#3b82f6' },
   { name: 'React',      dot: '#61dafb' }, { name: 'Next.js',    dot: '#f1f5f9' },
   { name: 'Node.js',   dot: '#4ade80'  }, { name: 'Express.js', dot: '#34d399' },
-  { name: 'MongoDB',   dot: '#22d3ee'  }, { name: 'PostgreSQL', dot: '#818cf8' },
+  { name: 'MongoDB',   dot: '#f87171'  }, { name: 'PostgreSQL', dot: '#ef4444' },
   { name: 'Redis',     dot: '#f87171'  }, { name: 'Tailwind',   dot: '#38bdf8' },
   { name: 'Docker',    dot: '#60a5fa'  }, { name: 'Git',        dot: '#f97316' },
-  { name: 'REST API',  dot: '#a78bfa'  }, { name: 'React Native', dot: '#61dafb' },
+  { name: 'REST API',  dot: '#ef4444'  }, { name: 'React Native', dot: '#61dafb' },
 ]
 function TechStrip() {
   const doubled = [...techStack, ...techStack]
@@ -202,9 +202,9 @@ function About() {
 
         <div className="about-stats-grid">
           {[
-            { to: 2,  label: 'Years Coding',    suffix: '+', color: '#818cf8' },
-            { to: 18, label: 'Projects Built',  suffix: '+', color: '#22d3ee' },
-            { to: 10, label: 'Certificates',    suffix: '+', color: '#f472b6' },
+            { to: 2,  label: 'Years Coding',    suffix: '+', color: '#ef4444' },
+            { to: 18, label: 'Projects Built',  suffix: '+', color: '#f87171' },
+            { to: 10, label: 'Certificates',    suffix: '+', color: '#ffffff' },
             { to: 22, label: 'Technologies',    suffix: '+', color: '#fbbf24' },
           ].map(({ to, label, suffix, color }) => (
             <div key={label} className="about-stat-card card-glass">
@@ -292,12 +292,12 @@ const skillCategories = [
   },
   {
     label: 'Database',
-    color: '#22d3ee',
+    color: '#f87171',
     skills: ['MongoDB', 'PostgreSQL', 'Redis', 'Prisma', 'Supabase'],
   },
   {
     label: 'Tools & Cloud',
-    color: '#a78bfa',
+    color: '#ef4444',
     skills: ['Docker', 'Git', 'AWS', 'Vercel', 'Firebase'],
   },
 ]
@@ -342,19 +342,19 @@ const timelineItems = [
     year: '2026', title: 'B.Sc. IT Graduate',
     org: 'Thakur College of Science & Commerce',
     desc: 'CGPA 7.47 — Mumbai University. Specialized in web technologies, databases, software engineering & AI.',
-    color: '#818cf8',
+    color: '#ef4444',
   },
   {
     year: '2025', title: 'Full-Stack Developer',
     org: 'Freelance & Open Source',
     desc: 'Building production SaaS — PDFSolution, AI tools, e-commerce systems. 18+ projects shipped on Vercel & Render.',
-    color: '#22d3ee',
+    color: '#f87171',
   },
   {
     year: '2024', title: 'React Native Developer',
     org: 'Personal Projects',
     desc: 'Built DogCare app with Claymorphism design, AI integrations, and real-time features using Expo & Firebase.',
-    color: '#f472b6',
+    color: '#ffffff',
   },
   {
     year: '2023', title: 'Started Coding',
@@ -452,4 +452,5 @@ export default function Home() {
     </>
   )
 }
+
 
