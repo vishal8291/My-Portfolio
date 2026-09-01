@@ -25,7 +25,7 @@
 body {
   background: var(--bg);
   color: var(--text-1);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Aptos', 'Aptos Display', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -140,13 +140,14 @@ html { scroll-behavior: smooth; }
 }
 .marquee-track {
   display: flex;
-  gap: 12px;
-  animation: marquee 30s linear infinite;
+  gap: 18px;
+  animation: marquee 34s linear infinite;
   width: max-content;
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-wrap {
   overflow: hidden;
+  padding: 6px 0;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
@@ -155,24 +156,40 @@ html { scroll-behavior: smooth; }
 .tech-chip {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 16px;
+  gap: 10px;
+  padding: 13px 26px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  background: rgba(14, 17, 32, 0.85);
-  border: 1px solid rgba(129, 140, 248, 0.2);
-  color: #475569;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  letter-spacing: 0.01em;
+  background: linear-gradient(160deg, rgba(28, 22, 22, 0.92), rgba(10, 10, 14, 0.92));
+  border: 1px solid rgba(239, 68, 68, 0.16);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 10px 24px -12px rgba(0, 0, 0, 0.55);
+  color: #cbd5e1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   white-space: nowrap;
   flex-shrink: 0;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   cursor: default;
 }
 .tech-chip:hover {
-  border-color: rgba(129, 140, 248, 0.4);
-  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fff;
+  transform: translateY(-3px);
+  background: linear-gradient(160deg, rgba(40, 24, 24, 0.95), rgba(12, 12, 16, 0.95));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 16px 32px -14px rgba(239, 68, 68, 0.35);
+}
+.tech-chip .tech-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 9px 1px currentColor;
 }
 
 /* ── NAVBAR ─────────────────────────────────────────────── */
@@ -2718,7 +2735,7 @@ html { scroll-behavior: smooth; }
   font-size: 0.73rem; color: #475569;
   font-weight: 600; letter-spacing: 0.03em;
 }
-.tech-strip-wrap { padding: 44px 0 0; }
+.tech-strip-wrap { padding: 56px 0 0; }
 
 /* ── TYPOGRAPHY HELPERS ──────────────────────────────────── */
 .section-eyebrow {
