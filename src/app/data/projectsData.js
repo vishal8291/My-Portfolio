@@ -1,8 +1,25 @@
 const projects = [
+  // ── REAL CLIENT PROJECT ──────────────────────────────────────
+  {
+    title: "MAHAGRO INDIA",
+    description: "Bilingual booking site for a mushroom cultivation training institute in Maharashtra. Vite + vanilla JS frontend, PHP and MySQL backend, Razorpay checkout with a WhatsApp and UPI fallback, and strict security headers with input sanitization safe for Marathi text.",
+    tech: ["Vite", "Vanilla JS", "PHP 8", "MySQL", "Razorpay"],
+    githubUrl: "https://github.com/vishal8291/mahagro-india",
+    liveUrl: "https://mahagroindia.com",
+    accent: "#ef4444",
+    category: "Full Stack",
+    featured: true,
+    image: "/images/projects/mahagro.jpg",
+    isClientProject: true,
+    challenge: "MAHAGRO INDIA needed a fast, trustworthy booking site for their 2 day live training program, one that worked for a bilingual audience (many prospective students are more comfortable in Marathi) and never lost a registration even if the payment gateway had issues.",
+    solution: "Built a lightweight Vite + vanilla JS frontend with a real time English/Marathi language switcher, plus a PHP and MySQL backend. Wired Razorpay for card/UPI payments with an invisible fallback to WhatsApp and manual UPI if the gateway is ever unavailable, so registrations never get blocked.",
+    result: ["96% Smaller JS Bundle", "Bilingual English + Marathi", "Zero Downtime Payment Fallback"],
+  },
+
   // ── CURRENTLY BUILDING ──────────────────────────────────────
   {
     title: "Paperbag",
-    description: "Eco-friendly e-commerce platform with product catalog, cart, and Razorpay payment gateway. Features JWT + Google OAuth auth, Leaf AI chat assistant (Groq/LLaMA), referral system, coupon engine, real-time stock management, and PDF invoice export. Deployed on Vercel + Render.",
+    description: "Eco friendly ecommerce platform with product catalog, cart, and Razorpay payment gateway. Features JWT plus Google OAuth auth, Leaf AI chat assistant (Groq/LLaMA), referral system, coupon engine, real time stock management, and PDF invoice export. Deployed on Vercel and Render.",
     tech: ["Next.js 15", "Node.js", "Express.js", "MongoDB", "Razorpay", "Groq AI", "Docker"],
     githubUrl: "https://github.com/vishal8291/paperbag",
     liveUrl: "https://frontend-delta-inky-96.vercel.app",
@@ -10,10 +27,11 @@ const projects = [
     category: "Full Stack",
     featured: true,
     status: "building",
+    image: "/images/projects/paperbag.jpg",
   },
   {
     title: "ShaktiCycle",
-    description: "Cross-platform mobile health app for women's cycle tracking and wellness insights. Features an AI companion for personalized health recommendations, real-time data sync, push notifications, and secure health data storage. REST API backend with Express.js and MongoDB.",
+    description: "Cross platform mobile health app for women's cycle tracking and wellness insights. Features an AI companion for personalized health recommendations, real time data sync, push notifications, and secure health data storage. REST API backend with Express.js and MongoDB.",
     tech: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB", "AI Integration"],
     githubUrl: "https://github.com/vishal8291/shakticycle",
     liveUrl: null,
@@ -21,10 +39,11 @@ const projects = [
     category: "Mobile",
     featured: true,
     status: "building",
+    image: "/images/projects/shakticycle.jpg",
   },
   {
     title: "PDFSolution",
-    description: "All-in-one PDF SaaS platform supporting merge, split, OCR, compression, and format conversion. TypeScript-first React frontend with modular component architecture. Python microservice for OCR and file transformation pipelines.",
+    description: "All in one PDF SaaS platform supporting merge, split, OCR, compression, and format conversion. TypeScript first React frontend with modular component architecture. Python microservice for OCR and file transformation pipelines.",
     tech: ["React", "TypeScript", "Node.js", "MongoDB", "Python", "Docker"],
     githubUrl: "https://github.com/vishal8291/pdfsolution",
     liveUrl: "https://pdfsolution-seven.vercel.app",
@@ -32,6 +51,7 @@ const projects = [
     category: "Full Stack",
     featured: true,
     status: "building",
+    image: "/images/projects/pdfsolution.jpg",
   },
   {
     title: "Partners",
@@ -46,7 +66,7 @@ const projects = [
   },
   {
     title: "DogCare",
-    description: "Cross-platform pet sitting and dog care mobile app with a claymorphism design. Features pet profiles, care scheduling, booking system, and real-time tracking. Built with React Native and Expo.",
+    description: "Cross platform pet sitting and dog care mobile app with a claymorphism design. Features pet profiles, care scheduling, booking system, and real time tracking. Built with React Native and Expo.",
     tech: ["React Native", "Expo", "TypeScript", "Claymorphism Design"],
     githubUrl: "https://github.com/vishal8291/dogcare",
     liveUrl: null,
@@ -59,7 +79,7 @@ const projects = [
   // ── COMPLETED PROJECTS ────────────────────────────────────────
   {
     title: "LexAgent",
-    description: "AI agent for automated legal document analysis targeting Indian SMEs. FastAPI backend with document ingestion pipeline and AI-powered clause extraction. React dashboard for document upload, analysis results, and risk flagging. Integrated Claude AI SDK for natural language legal reasoning.",
+    description: "AI agent for automated legal document analysis targeting Indian SMEs. FastAPI backend with document ingestion pipeline and AI powered clause extraction. React dashboard for document upload, analysis results, and risk flagging. Integrated Claude AI SDK for natural language legal reasoning.",
     tech: ["Python", "FastAPI", "React", "MongoDB", "Claude AI SDK"],
     githubUrl: "https://github.com/vishal8291/LexAgent",
     liveUrl: "https://lex-agent.vercel.app",
@@ -69,7 +89,7 @@ const projects = [
   },
   {
     title: "Vistora Chat App",
-    description: "Real-time cross-platform chat app using WebSockets for instant, low-latency messaging. AI-powered chat assistant for automated responses and smart suggestions. Scalable Node.js backend with room-based messaging and presence tracking.",
+    description: "Real time cross platform chat app using WebSockets for instant, low latency messaging. AI powered chat assistant for automated responses and smart suggestions. Scalable Node.js backend with room based messaging and presence tracking.",
     tech: ["React Native", "TypeScript", "Node.js", "WebSockets", "AI"],
     githubUrl: "https://github.com/vishal8291/vistora-chat-app",
     liveUrl: null,
@@ -79,7 +99,7 @@ const projects = [
   },
   {
     title: "CareOps",
-    description: "Healthcare operations management platform with patient and staff workflow management. FastAPI Python backend with PostgreSQL for structured relational data and reporting. Next.js TypeScript frontend with real-time dashboard and operations tracking.",
+    description: "Healthcare operations management platform with patient and staff workflow management. FastAPI Python backend with PostgreSQL for structured relational data and reporting. Next.js TypeScript frontend with real time dashboard and operations tracking.",
     tech: ["Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL"],
     githubUrl: "https://github.com/vishal8291/careops",
     liveUrl: "https://careops-frontend-one.vercel.app",
@@ -89,7 +109,7 @@ const projects = [
   },
   {
     title: "AI Learning Assistant",
-    description: "Interactive AI-powered learning assistant with real-time streaming chat, built using Vercel AI SDK and Next.js with Radix UI components.",
+    description: "Interactive AI powered learning assistant with real time streaming chat, built using Vercel AI SDK and Next.js with Radix UI components.",
     tech: ["Next.js", "TypeScript", "Vercel AI SDK", "Tailwind CSS", "Radix UI"],
     githubUrl: "https://github.com/vishal8291/ai-learning-assistant",
     liveUrl: "https://ai-learning-assistant-self.vercel.app",
@@ -99,7 +119,7 @@ const projects = [
   },
   {
     title: "AI Consultation Website",
-    description: "AI-powered consultation platform with authentication, smooth animations, and MongoDB backend integration.",
+    description: "AI powered consultation platform with authentication, smooth animations, and MongoDB backend integration.",
     tech: ["Next.js", "TypeScript", "MongoDB", "Framer Motion", "bcryptjs"],
     githubUrl: "https://github.com/vishal8291/ai-consultation-website",
     liveUrl: "https://ai-consultation-website-gamma.vercel.app",
@@ -109,7 +129,7 @@ const projects = [
   },
   {
     title: "Aaple Sarkar",
-    description: "Cross-platform mobile app for accessing Indian government services. Built with Expo and React Native with TypeScript and React Navigation.",
+    description: "Cross platform mobile app for accessing Indian government services. Built with Expo and React Native with TypeScript and React Navigation.",
     tech: ["React Native", "Expo", "TypeScript", "React Navigation"],
     githubUrl: "https://github.com/vishal8291/aaple-sarkar",
     liveUrl: null,
@@ -119,7 +139,7 @@ const projects = [
   },
   {
     title: "Expense Tracker",
-    description: "Mobile expense tracking app with Firebase real-time database, local push notifications, and category-based spending analytics.",
+    description: "Mobile expense tracking app with Firebase real time database, local push notifications, and category based spending analytics.",
     tech: ["React Native", "Expo", "Firebase", "TypeScript", "React Navigation"],
     githubUrl: "https://github.com/vishal8291/ExpenseTracker",
     liveUrl: null,
@@ -129,7 +149,7 @@ const projects = [
   },
   {
     title: "ContextOS",
-    description: "Python-based AI orchestration and context management system powered by the Anthropic Claude SDK.",
+    description: "Python based AI orchestration and context management system powered by the Anthropic Claude SDK.",
     tech: ["Python", "Anthropic SDK", "AI Agents"],
     githubUrl: "https://github.com/vishal8291/contextOS",
     liveUrl: null,
@@ -147,21 +167,10 @@ const projects = [
     category: "Frontend",
     featured: false,
   },
-  {
-    title: "Portfolio Website",
-    description: "This portfolio — built with Next.js and Tailwind CSS featuring a dark neon design, animated sections, projects showcase, and skills display.",
-    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
-    githubUrl: "https://github.com/vishal8291/My-Portfolio",
-    liveUrl: "https://my-portfolio-vishal12.vercel.app",
-    accent: "#38bdf8",
-    category: "Frontend",
-    featured: false,
-  },
-
   // ── EARLY PROJECTS ─────────────────────────────────────────────
   {
     title: "ATM Management System",
-    description: "Feature-rich ATM system in Java with secure PIN authentication, balance inquiry, withdrawals, deposits, and transaction history.",
+    description: "Feature rich ATM system in Java with secure PIN authentication, balance inquiry, withdrawals, deposits, and transaction history.",
     tech: ["Java", "OOPs", "Data Structures"],
     githubUrl: "https://github.com/vishal8291/Atm-Management-System",
     liveUrl: null,

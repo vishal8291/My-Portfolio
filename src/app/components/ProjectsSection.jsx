@@ -26,12 +26,27 @@ export default function ProjectsSection() {
         {featured.map((project) => (
           <div key={project.title} className="card-glass"
             style={{ borderRadius: '18px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ height: '3px', background: `linear-gradient(to right, ${project.accent}cc, ${project.accent}22)` }} />
+            {project.image ? (
+              <div style={{ height: '150px', overflow: 'hidden', position: 'relative', background: '#0f172a' }}>
+                <img src={project.image} alt={`${project.title} live preview`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} loading="lazy" />
+                <div style={{ position: 'absolute', inset: 0, boxShadow: `inset 0 0 0 2px ${project.accent}55` }} />
+              </div>
+            ) : (
+              <div style={{ height: '3px', background: `linear-gradient(to right, ${project.accent}cc, ${project.accent}22)` }} />
+            )}
             <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', color: project.accent, textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
-                {project.category}
-              </span>
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#f1f5f9', marginBottom: '10px' }}>{project.title}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <span style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', color: project.accent, textTransform: 'uppercase' }}>
+                  {project.category}
+                </span>
+                {project.isClientProject && (
+                  <span style={{ fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#0f172a', background: '#fbbf24', padding: '2px 8px', borderRadius: '999px' }}>
+                    Real Client
+                  </span>
+                )}
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', marginBottom: '10px' }}>{project.title}</h3>
               <p style={{ color: '#4e6280', fontSize: '0.86rem', lineHeight: 1.7, marginBottom: '16px', flex: 1 }}>
                 {project.description.length > 120 ? project.description.slice(0, 120) + '…' : project.description}
               </p>

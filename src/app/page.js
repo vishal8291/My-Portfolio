@@ -13,7 +13,7 @@ const ExternalIcon = ({ size = 14 }) => <svg width={size} height={size} viewBox=
 
 // ── TYPEWRITER ─────────────────────────────────────────────────
 function TypewriterRole() {
-  const roles = ['Full-Stack Developer', 'React Native Dev', 'AI Builder', 'SaaS Maker']
+  const roles = ['Full Stack Developer', 'React Native Dev', 'AI Builder', 'SaaS Maker']
   const [index, setIndex]         = useState(0)
   const [displayed, setDisplayed] = useState('')
   const [deleting, setDeleting]   = useState(false)
@@ -120,7 +120,7 @@ function Hero() {
             <TypewriterRole />
           </motion.p>
           <motion.p className="hero-bio" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.32, ease }}>
-            Building scalable web apps, AI-integrated platforms &amp; real-time systems.
+            Building scalable web apps, AI integrated platforms &amp; real time systems.
             B.Sc. IT · Thakur College, Mumbai.
           </motion.p>
 
@@ -193,12 +193,33 @@ function TechStrip() {
         <div className="marquee-track">
           {doubled.map(({ name, dot }, i) => (
             <span key={`${name}-${i}`} className="tech-chip">
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: dot, flexShrink: 0 }} />
+              <span className="tech-dot" style={{ background: dot, color: dot }} />
               {name}
             </span>
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+// ── TRUSTED BY ─────────────────────────────────────────────────
+function TrustedBy() {
+  return (
+    <div style={{ padding: '48px 24px', textAlign: 'center' }}>
+      <p style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '24px' }}>
+        Trusted By
+      </p>
+      <a href="https://mahagroindia.com" target="_blank" rel="noopener noreferrer"
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '16px', padding: '16px 28px', borderRadius: '16px', textDecoration: 'none', border: '1px solid rgba(0,0,0,0.08)', background: '#ffffff', transition: 'border-color 0.2s, transform 0.2s' }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(239,68,68,0.35)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(0)' }}>
+        <img src="/images/mahagro-logo.png" alt="MAHAGRO INDIA logo" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>MAHAGRO INDIA</div>
+          <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Live client, mushroom cultivation training institute</div>
+        </div>
+      </a>
     </div>
   )
 }
@@ -228,7 +249,7 @@ function About() {
           <p className="body-text" style={{ marginBottom: '14px' }}>
             I'm a Full Stack Developer from{' '}
             <span style={{ color: 'var(--violet)', fontWeight: 600 }}>Thakur College of Science and Commerce, Mumbai</span>
-            {' '}— B.Sc. IT graduate (2026, CGPA 7.47).
+            {'. '}B.Sc. IT graduate (2026, CGPA 7.47).
           </p>
           <p className="body-text muted" style={{ marginBottom: '36px' }}>
             I love creating fast, accessible, and beautiful digital experiences.
@@ -304,7 +325,15 @@ function Projects() {
               <div className="flip-card-inner">
                 {/* Front */}
                 <div className="flip-card-face flip-card-front card-glass">
-                  <div className="project-accent-bar" style={{ background: project.accent }} />
+                  {project.image ? (
+                    <div style={{ height: '130px', overflow: 'hidden', position: 'relative', background: '#0f172a', flexShrink: 0 }}>
+                      <img src={project.image} alt={`${project.title} live preview`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} loading="lazy" />
+                      <div style={{ position: 'absolute', inset: 0, boxShadow: `inset 0 0 0 2px ${project.accent}55` }} />
+                    </div>
+                  ) : (
+                    <div className="project-accent-bar" style={{ background: project.accent }} />
+                  )}
                   <div className="project-card-inner" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                       <span className="category-badge" style={{ color: project.accent, background: `${project.accent}18`, border: `1px solid ${project.accent}35` }}>
@@ -440,10 +469,10 @@ function Skills() {
 
 // ── TIMELINE ───────────────────────────────────────────────────
 const timelineItems = [
-  { year: '2026', title: 'B.Sc. IT Graduate',      org: 'Thakur College of Science & Commerce', desc: 'CGPA 7.47 — Mumbai University. Specialized in web technologies, databases, software engineering & AI.', color: '#ef4444' },
-  { year: '2025', title: 'Full-Stack Developer',    org: 'Freelance & Open Source',              desc: 'Building production SaaS — PDFSolution, AI tools, e-commerce systems. 18+ projects shipped on Vercel & Render.', color: '#dc2626' },
-  { year: '2024', title: 'React Native Developer',  org: 'Personal Projects',                    desc: 'Built DogCare app with Claymorphism design, AI integrations, and real-time features using Expo & Firebase.', color: '#f87171' },
-  { year: '2023', title: 'Started Coding',          org: 'Thakur College, Mumbai',               desc: 'First line of code turned into real projects — landing pages, mini-games, CLI tools. Fell in love with building.', color: '#b91c1c' },
+  { year: '2026', title: 'B.Sc. IT Graduate',      org: 'Thakur College of Science & Commerce', desc: 'CGPA 7.47, Mumbai University. Specialized in web technologies, databases, software engineering & AI.', color: '#ef4444' },
+  { year: '2025', title: 'Full Stack Developer',    org: 'Freelance & Open Source',              desc: 'Building production SaaS: PDFSolution, AI tools, ecommerce systems. 18+ projects shipped on Vercel & Render.', color: '#dc2626' },
+  { year: '2024', title: 'React Native Developer',  org: 'Personal Projects',                    desc: 'Built DogCare app with Claymorphism design, AI integrations, and real time features using Expo & Firebase.', color: '#f87171' },
+  { year: '2023', title: 'Started Coding',          org: 'Thakur College, Mumbai',               desc: 'First line of code turned into real projects: landing pages, mini games, CLI tools. Fell in love with building.', color: '#b91c1c' },
 ]
 
 function Timeline() {
@@ -519,8 +548,8 @@ function CTA() {
           Let's Build Something <span className="gradient-text">Together</span>
         </h2>
         <p className="body-text muted cta-sub">
-          Open to full-time roles, freelance, and collaborations.
-          Drop a message — I respond within 24 hours.
+          Open to full time roles, freelance, and collaborations.
+          Drop a message, I respond within 24 hours.
         </p>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/contact" className="btn-primary" style={{ padding: '16px 52px', fontSize: '1rem' }}>
@@ -561,6 +590,7 @@ export default function Home() {
     <>
       <Hero />
       <TechStrip />
+      <TrustedBy />
       <div className="section-divider" />
       <About />
       <div className="section-divider" />

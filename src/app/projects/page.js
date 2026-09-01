@@ -38,7 +38,7 @@ export default function ProjectsPage() {
             My <span className="gradient-text">Projects</span>
           </h1>
           <p style={{ color: '#64748b', maxWidth: '480px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            {projects.length} projects across web, mobile, and AI — from early experiments to production apps.
+            {projects.length} projects across web, mobile, and AI, from early experiments to production apps.
           </p>
         </div>
       </section>
@@ -84,8 +84,16 @@ export default function ProjectsPage() {
             <div key={project.title} className={`card-glass card-featured reveal reveal-delay-${(i % 3) + 1}`}
               style={{ borderRadius: '20px', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
 
-              {/* Accent bar */}
-              <div style={{ height: '3px', background: `linear-gradient(to right, ${project.accent}, ${project.accent}22)` }} />
+              {project.image ? (
+                <div style={{ height: '170px', overflow: 'hidden', position: 'relative', background: '#0f172a' }}>
+                  <img src={project.image} alt={`${project.title} live preview`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} loading="lazy" />
+                  <div style={{ position: 'absolute', inset: 0, boxShadow: `inset 0 0 0 2px ${project.accent}55` }} />
+                </div>
+              ) : (
+                /* Accent bar */
+                <div style={{ height: '3px', background: `linear-gradient(to right, ${project.accent}, ${project.accent}22)` }} />
+              )}
 
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 {/* Status + category row */}
@@ -107,11 +115,40 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                <h2 style={{ fontSize: '1.04rem', fontWeight: 700, color: '#f1f5f9', marginBottom: '10px', lineHeight: 1.35 }}>{project.title}</h2>
+                {project.isClientProject && (
+                  <span style={{ display: 'inline-block', marginBottom: '10px', fontSize: '0.64rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0f172a', background: '#fbbf24', padding: '3px 10px', borderRadius: '999px', width: 'fit-content' }}>
+                    Real Client Project
+                  </span>
+                )}
 
-                <p style={{ color: '#64748b', fontSize: '0.86rem', lineHeight: 1.75, marginBottom: '18px', flex: 1 }}>
-                  {project.description}
-                </p>
+                <h2 style={{ fontSize: '1.04rem', fontWeight: 700, color: '#0f172a', marginBottom: '10px', lineHeight: 1.35 }}>{project.title}</h2>
+
+                {project.challenge ? (
+                  <div style={{ marginBottom: '18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div>
+                      <span style={{ display: 'block', fontSize: '0.62rem', fontWeight: 800, letterSpacing: '0.09em', textTransform: 'uppercase', color: project.accent, marginBottom: '4px' }}>Challenge</span>
+                      <p style={{ color: '#64748b', fontSize: '0.83rem', lineHeight: 1.65, margin: 0 }}>{project.challenge}</p>
+                    </div>
+                    <div>
+                      <span style={{ display: 'block', fontSize: '0.62rem', fontWeight: 800, letterSpacing: '0.09em', textTransform: 'uppercase', color: project.accent, marginBottom: '4px' }}>Solution</span>
+                      <p style={{ color: '#64748b', fontSize: '0.83rem', lineHeight: 1.65, margin: 0 }}>{project.solution}</p>
+                    </div>
+                    {project.result && (
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.62rem', fontWeight: 800, letterSpacing: '0.09em', textTransform: 'uppercase', color: project.accent, marginBottom: '6px' }}>Result</span>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                          {project.result.map(r => (
+                            <span key={r} style={{ fontSize: '0.74rem', fontWeight: 700, color: project.accent, background: `${project.accent}14`, border: `1px solid ${project.accent}40`, padding: '4px 10px', borderRadius: '999px' }}>{r}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p style={{ color: '#64748b', fontSize: '0.86rem', lineHeight: 1.75, marginBottom: '18px', flex: 1 }}>
+                    {project.description}
+                  </p>
+                )}
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '18px' }}>
                   {project.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
