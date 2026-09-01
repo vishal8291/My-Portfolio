@@ -109,12 +109,6 @@ function Hero() {
       <div className="container hero-clean-inner">
         {/* Left */}
         <div className="hero-text">
-          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease }}>
-            <div className="hero-available-badge">
-              <span className="status-dot" />
-              Available for work · Mumbai, India
-            </div>
-          </motion.div>
 
           <motion.h1 className="hero-greeting" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.08, ease }}>
             Hi, I'm

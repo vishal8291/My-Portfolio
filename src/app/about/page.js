@@ -54,7 +54,7 @@ export default function AboutPage() {
           <h1 style={{ fontSize: 'clamp(2.4rem, 7vw, 3.8rem)', fontWeight: 900, marginBottom: '20px', letterSpacing: '-0.035em', lineHeight: 1.05 }}>
             About <span className="gradient-text">Me</span>
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.85, maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.85, maxWidth: '560px', margin: '0 auto' }}>
             I&apos;m Vishal Tiwari — a Full Stack Developer from Mumbai who started coding out of curiosity and never stopped. Here&apos;s my story.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023–2026). I love shipping real products — from AI-powered tools like LexAgent and Paperbag to mobile apps like ShaktiCycle and Vistora.',
               'Outside coding, I\'m an entrepreneur at heart — managing a petrol pump, building the clothing brand "Vistora", and always exploring new business opportunities.',
             ].map((para, i) => (
-              <p key={i} style={{ color: i === 0 ? '#94a3b8' : '#64748b', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
+              <p key={i} style={{ color: '#475569', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
             ))}
 
             <div style={{ marginTop: '32px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                 See Projects →
               </Link>
               <Link href="/contact" className="btn-outline"
-                style={{ padding: '12px 26px', borderRadius: '10px', fontWeight: 600, fontSize: '0.875rem', color: '#a78bfa', textDecoration: 'none' }}>
+                style={{ padding: '12px 26px', borderRadius: '10px', fontWeight: 600, fontSize: '0.875rem', color: '#dc2626', textDecoration: 'none' }}>
                 Get in Touch
               </Link>
             </div>
@@ -101,17 +101,17 @@ export default function AboutPage() {
                   <span style={{ fontSize: '1.15rem', flexShrink: 0 }}>{icon}</span>
                   <div>
                     <div style={{ fontSize: '0.67rem', fontWeight: 700, letterSpacing: '0.08em', color: '#475569', textTransform: 'uppercase', marginBottom: '2px' }}>{label}</div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.875rem', fontWeight: 500 }}>{text}</div>
+                    <div style={{ color: '#475569', fontSize: '0.875rem', fontWeight: 500 }}>{text}</div>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Current Focus */}
-            <div style={{ padding: '24px 26px', borderRadius: '18px', background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.22)' }}>
+            <div style={{ padding: '24px 26px', borderRadius: '18px', background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.18)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <span className="status-dot" />
-                <h3 style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: '#818cf8', textTransform: 'uppercase' }}>Current Focus</h3>
+                <h3 style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: '#ef4444', textTransform: 'uppercase' }}>Current Focus</h3>
               </div>
               {[
                 'Building Paperbag, ShaktiCycle, PDFSolution & DogCare',
@@ -119,8 +119,8 @@ export default function AboutPage() {
                 'Seeking full-time developer roles',
                 'Exploring AI/ML integrations',
               ].map(item => (
-                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '11px', color: '#94a3b8', fontSize: '0.875rem' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#818cf8', flexShrink: 0, boxShadow: '0 0 6px #818cf8' }} />
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '11px', color: '#475569', fontSize: '0.875rem' }}>
+                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#ef4444', flexShrink: 0, boxShadow: '0 0 6px #ef4444' }} />
                   {item}
                 </div>
               ))}
@@ -130,7 +130,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── JOURNEY TIMELINE ─────────────────────────────── */}
-      <section style={{ padding: '80px 24px 100px', background: 'rgba(8,10,20,0.7)', position: 'relative' }}>
+      <section style={{ padding: '80px 24px 100px', background: 'rgba(239,68,68,0.04)', position: 'relative' }}>
         <div style={{ maxWidth: '740px', margin: '0 auto' }}>
           <div className="reveal" style={{ textAlign: 'center', marginBottom: '64px' }}>
             <div className="line-decoration" style={{ margin: '0 auto 18px' }} />
@@ -148,13 +148,13 @@ export default function AboutPage() {
                 <div style={{
                   position: 'absolute', left: '-38px', top: '6px',
                   width: '16px', height: '16px', borderRadius: '50%',
-                  background: color, border: '2px solid #07090f',
+                  background: color, border: '2px solid #ffffff',
                   boxShadow: `0 0 14px ${color}80`,
                 }} />
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
                   <span style={{ fontSize: '0.72rem', fontWeight: 800, color, letterSpacing: '0.06em', background: `${color}14`, padding: '2px 10px', borderRadius: '999px', border: `1px solid ${color}30` }}>{year}</span>
                 </div>
-                <h3 style={{ fontSize: '1.08rem', fontWeight: 700, color: '#e2e8f0', marginBottom: '8px' }}>{title}</h3>
+                <h3 style={{ fontSize: '1.08rem', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{title}</h3>
                 <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.78 }}>{desc}</p>
               </div>
             ))}
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}60, transparent)` }} />
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}20, transparent)` }} />
                 <div style={{ fontSize: '2.4rem', marginBottom: '14px' }}>{icon}</div>
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#94a3b8', lineHeight: 1.3 }}>{name}</div>
+                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#334155', lineHeight: 1.3 }}>{name}</div>
               </div>
             ))}
           </div>

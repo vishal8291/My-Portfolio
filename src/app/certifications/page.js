@@ -92,12 +92,12 @@ export default function CertificationsPage() {
                 {/* Icon + year */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '18px' }}>
                   <CertIcon color={color} type={type} />
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#475569', letterSpacing: '0.06em', background: 'rgba(255,255,255,0.04)', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#475569', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.05)', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(0,0,0,0.1)' }}>
                     {date}
                   </span>
                 </div>
 
-                <h2 style={{ fontSize: '0.97rem', fontWeight: 700, color: '#f1f5f9', marginBottom: '6px', lineHeight: 1.45 }}>{title}</h2>
+                <h2 style={{ fontSize: '0.97rem', fontWeight: 700, color: '#0f172a', marginBottom: '6px', lineHeight: 1.45 }}>{title}</h2>
                 <p style={{ fontSize: '0.78rem', fontWeight: 700, color, marginBottom: '20px', letterSpacing: '0.03em' }}>{issuer}</p>
 
                 <div style={{ flex: 1 }} />
@@ -116,7 +116,7 @@ export default function CertificationsPage() {
                       View Certificate
                     </a>
                   ) : (
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '0.82rem', fontWeight: 700, color: '#475569', padding: '8px 18px', borderRadius: '9px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '0.82rem', fontWeight: 700, color: '#475569', padding: '8px 18px', borderRadius: '9px', background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.1)' }}>
                       🔒 Uploading soon
                     </span>
                   )}

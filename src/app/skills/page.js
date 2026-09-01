@@ -19,10 +19,10 @@ function SkillBar({ name, pct, color }) {
   return (
     <div ref={rowRef}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-        <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#94a3b8' }}>{name}</span>
+        <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#334155' }}>{name}</span>
         <span style={{ fontSize: '0.72rem', color, fontWeight: 700, background: `${color}12`, padding: '2px 8px', borderRadius: '999px', border: `1px solid ${color}22` }}>{pct}%</span>
       </div>
-      <div style={{ height: '5px', background: 'rgba(255,255,255,0.05)', borderRadius: '999px', overflow: 'hidden' }}>
+      <div style={{ height: '5px', background: 'rgba(0,0,0,0.08)', borderRadius: '999px', overflow: 'hidden' }}>
         <div ref={fillRef} className="skill-bar-fill" style={{ background: `linear-gradient(to right, ${color}70, ${color})` }} />
       </div>
     </div>
@@ -35,7 +35,7 @@ function SoftChip({ name, icon, color }) {
     <div className="card-glass" style={{ padding: '18px 20px', borderRadius: '14px', display: 'flex', alignItems: 'center', gap: '12px', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}50, transparent)` }} />
       <span style={{ fontSize: '1.4rem', flexShrink: 0 }}>{icon}</span>
-      <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#e2e8f0' }}>{name}</span>
+      <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0f172a' }}>{name}</span>
     </div>
   )
 }
@@ -142,7 +142,7 @@ export default function SkillsPage() {
                   {cat.emoji}
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '0.82rem', fontWeight: 800, color: '#e2e8f0', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{cat.name}</h2>
+                  <h2 style={{ fontSize: '0.82rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{cat.name}</h2>
                   <p style={{ fontSize: '0.7rem', color: '#475569', marginTop: '2px' }}>{cat.skills.length} skills</p>
                 </div>
               </div>

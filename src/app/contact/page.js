@@ -94,7 +94,7 @@ export default function ContactPage() {
 
           {/* Contact info */}
           <div className="reveal-left">
-            <h2 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px', color: '#e2e8f0', letterSpacing: '-0.015em' }}>
+            <h2 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px', color: '#0f172a', letterSpacing: '-0.015em' }}>
               Contact Details
             </h2>
             <p style={{ color: '#64748b', fontSize: '0.875rem', marginBottom: '28px', lineHeight: 1.75 }}>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                     <span style={{ color, flexShrink: 0, display: 'flex' }}>{icon}</span>
                     <div>
                       <div style={{ fontSize: '0.67rem', color: '#475569', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '2px' }}>{label}</div>
-                      <div style={{ fontSize: '0.84rem', color: '#94a3b8', wordBreak: 'break-all', fontWeight: 500 }}>{value}</div>
+                      <div style={{ fontSize: '0.84rem', color: '#475569', wordBreak: 'break-all', fontWeight: 500 }}>{value}</div>
                     </div>
                   </>
                 )
