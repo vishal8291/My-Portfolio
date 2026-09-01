@@ -51,7 +51,11 @@ export default function Navbar() {
           boxShadow: '0 2px 20px rgba(0,0,0,0.08)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-        } : { background: 'transparent' }),
+        } : {
+          background: 'rgba(255,255,255,0.85)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+        }),
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
@@ -59,7 +63,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <span style={{ fontSize: '1.45rem', fontWeight: 900, letterSpacing: '-0.03em' }}>
-                <span style={{ background: 'linear-gradient(135deg, #ef4444, #dc2626)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>V</span>
+                <span className="gradient-text">V</span>
                 <span style={{ color: '#111827' }}>ishal</span>
                 <span style={{ color: '#ef4444', fontWeight: 900, fontSize: '1.7rem', lineHeight: 0 }}>.</span>
               </span>

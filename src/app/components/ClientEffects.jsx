@@ -24,7 +24,7 @@ function LoadingScreen() {
         <div className="ls-name">
           {'VISHAL.'.split('').map((c, i) => (
             <span key={i} className="ls-char"
-              style={{ animationDelay: `${i * 0.072}s`, color: c === '.' ? '#ef4444' : '#ffffff' }}>{c}</span>
+              style={{ animationDelay: `${i * 0.072}s`, color: c === '.' ? '#ef4444' : '#0f172a' }}>{c}</span>
           ))}
         </div>
         <div className="ls-sweep" />
