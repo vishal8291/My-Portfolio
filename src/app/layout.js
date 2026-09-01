@@ -42,8 +42,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body style={{
-        background: '#07090f',
-        color: '#f1f5f9',
+        background: '#ffffff',
+        color: '#0f172a',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',

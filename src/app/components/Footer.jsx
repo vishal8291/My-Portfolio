@@ -27,7 +27,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer style={{ background: '#06080e', borderTop: '1px solid rgba(239,68,68,0.12)', padding: '64px 24px 32px' }}>
+    <footer style={{ background: '#fef2f2', borderTop: '1px solid rgba(239,68,68,0.18)', padding: '64px 24px 32px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', marginBottom: '56px' }}>
@@ -40,7 +40,7 @@ export default function Footer() {
                 <span style={{ color: '#ef4444' }}>.</span>
               </div>
             </Link>
-            <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.78, maxWidth: '240px', marginBottom: '22px' }}>
+            <p style={{ color: '#374151', fontSize: '0.875rem', lineHeight: 1.78, maxWidth: '240px', marginBottom: '22px' }}>
               IT Student &amp; Full-Stack Developer from Mumbai, building real-world digital solutions.
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -54,13 +54,13 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#475569', marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#374151', marginBottom: '20px' }}>
               Navigation
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {navLinks.map(({ href, label }) => (
                 <Link key={href} href={href}
-                  style={{ color: '#64748b', fontSize: '0.875rem', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
+                  style={{ color: '#374151', fontSize: '0.875rem', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
                   onMouseEnter={e => e.currentTarget.style.color = '#ef4444'}
                   onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                   {label}
@@ -71,20 +71,20 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#475569', marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#374151', marginBottom: '20px' }}>
               Contact
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {contactItems.map(({ icon, text, href }) =>
                 href ? (
                   <a key={text} href={href}
-                    style={{ color: '#64748b', fontSize: '0.875rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', transition: 'color 0.2s' }}
+                    style={{ color: '#374151', fontSize: '0.875rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', transition: 'color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.color = '#ef4444'}
                     onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                     <span style={{ fontSize: '0.85rem' }}>{icon}</span>{text}
                   </a>
                 ) : (
-                  <span key={text} style={{ color: '#64748b', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span key={text} style={{ color: '#374151', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{ fontSize: '0.85rem' }}>{icon}</span>{text}
                   </span>
                 )
@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Status */}
           <div>
-            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#475569', marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#374151', marginBottom: '20px' }}>
               Status
             </h3>
             <div style={{ padding: '16px', borderRadius: '14px', background: 'rgba(52,211,153,0.06)', border: '1px solid rgba(52,211,153,0.18)', marginBottom: '14px' }}>
@@ -102,7 +102,7 @@ export default function Footer() {
                 <span className="status-dot" />
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#34d399' }}>Available for work</span>
               </div>
-              <p style={{ fontSize: '0.78rem', color: '#64748b', lineHeight: 1.6 }}>Open to internships, freelance, and collaborations.</p>
+              <p style={{ fontSize: '0.78rem', color: '#374151', lineHeight: 1.6 }}>Open to internships, freelance, and collaborations.</p>
             </div>
             <Link href="/contact" className="btn-primary"
               style={{ display: 'block', textAlign: 'center', padding: '10px 20px', borderRadius: '10px', fontSize: '0.82rem', fontWeight: 700, color: '#fff', textDecoration: 'none' }}>
@@ -113,14 +113,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: '1px solid rgba(239,68,68,0.1)', paddingTop: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <p style={{ color: '#334155', fontSize: '0.82rem' }}>
+          <p style={{ color: '#374151', fontSize: '0.82rem' }}>
             Designed &amp; built by{' '}
             <span style={{ background: 'linear-gradient(135deg,#ef4444,#ffffff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: 700 }}>
               Vishal Tiwari
             </span>
             {' '}· {new Date().getFullYear()}
           </p>
-          <p style={{ color: '#334155', fontSize: '0.82rem' }}>
+          <p style={{ color: '#374151', fontSize: '0.82rem' }}>
             Built with Next.js &amp; Tailwind CSS
           </p>
         </div>
@@ -128,4 +128,5 @@ export default function Footer() {
     </footer>
   )
 }
+
 

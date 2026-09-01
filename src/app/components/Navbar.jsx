@@ -46,9 +46,9 @@ export default function Navbar() {
         position: 'fixed', top: 0, width: '100%', zIndex: 100,
         transition: 'background 0.35s, border-color 0.35s, box-shadow 0.35s, backdrop-filter 0.35s',
         ...(scrolled ? {
-          background: 'rgba(7,9,15,0.96)',
-          borderBottom: '1px solid rgba(239,68,68,0.16)',
-          boxShadow: '0 2px 28px rgba(0,0,0,0.55)',
+          background: 'rgba(255,255,255,0.97)',
+          borderBottom: '1px solid rgba(239,68,68,0.15)',
+          boxShadow: '0 2px 20px rgba(0,0,0,0.08)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
         } : { background: 'transparent' }),
@@ -60,7 +60,7 @@ export default function Navbar() {
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <span style={{ fontSize: '1.45rem', fontWeight: 900, letterSpacing: '-0.03em' }}>
                 <span style={{ background: 'linear-gradient(135deg, #ef4444, #dc2626)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>V</span>
-                <span style={{ color: '#f1f5f9' }}>ishal</span>
+                <span style={{ color: '#111827' }}>ishal</span>
                 <span style={{ color: '#ef4444', fontWeight: 900, fontSize: '1.7rem', lineHeight: 0 }}>.</span>
               </span>
             </Link>
@@ -92,7 +92,7 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button className="show-mobile" onClick={() => setMenuOpen(!menuOpen)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', padding: '6px', borderRadius: '8px', alignItems: 'center', justifyContent: 'center' }}>
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '6px', borderRadius: '8px', alignItems: 'center', justifyContent: 'center' }}>
               {menuOpen
                 ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
@@ -105,17 +105,17 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <button onClick={() => setMenuOpen(false)}
-          style={{ position: 'absolute', top: '22px', right: '24px', background: 'none', border: 'none', cursor: 'pointer', color: '#64748b' }}>
+          style={{ position: 'absolute', top: '22px', right: '24px', background: 'none', border: 'none', cursor: 'pointer', color: '#374151' }}>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
         <div style={{ position: 'absolute', top: '22px', left: '24px', fontSize: '1.3rem', fontWeight: 900 }}>
-          <span className="gradient-text">V</span><span style={{ color: '#f1f5f9' }}>ishal</span><span style={{ color: '#ef4444' }}>.</span>
+          <span className="gradient-text">V</span><span style={{ color: '#111827' }}>ishal</span><span style={{ color: '#ef4444' }}>.</span>
         </div>
         {links.map(({ href, label }) => (
           <Link key={href} href={href} onClick={() => setMenuOpen(false)}
-            style={{ fontSize: '1.7rem', fontWeight: 800, textDecoration: 'none', letterSpacing: '-0.02em', color: pathname === href ? '#ef4444' : '#e2e8f0', transition: 'color 0.2s' }}>
+            style={{ fontSize: '1.7rem', fontWeight: 800, textDecoration: 'none', letterSpacing: '-0.02em', color: pathname === href ? '#ef4444' : '#111827', transition: 'color 0.2s' }}>
             {label}
           </Link>
         ))}
