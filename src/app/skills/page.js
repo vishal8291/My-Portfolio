@@ -95,7 +95,7 @@ export default function SkillsPage() {
         { name: 'Git',     pct: 85 },
         { name: 'GitHub',  pct: 85 },
         { name: 'Docker',  pct: 65 },
-        { name: 'MS-Word', pct: 82 },
+        { name: 'MS Word', pct: 82 },
       ],
     },
   ]
@@ -104,7 +104,7 @@ export default function SkillsPage() {
     { name: 'Object Oriented Programming', icon: '🧩', color: '#818cf8' },
     { name: 'Effective Communication',     icon: '🗣️', color: '#22d3ee' },
     { name: 'Teamwork',                    icon: '🤝', color: '#34d399' },
-    { name: 'Self-learning',               icon: '📚', color: '#f472b6' },
+    { name: 'Self learning',               icon: '📚', color: '#f472b6' },
   ]
 
   return (
@@ -120,7 +120,7 @@ export default function SkillsPage() {
             Tech <span className="gradient-text">Skills</span>
           </h1>
           <p style={{ color: '#64748b', maxWidth: '440px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            Core technologies I build with every day — no fluff, just what I actually use.
+            Core technologies I build with every day, no fluff, just what I actually use.
           </p>
         </div>
       </section>

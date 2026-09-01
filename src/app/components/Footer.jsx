@@ -41,7 +41,7 @@ export default function Footer() {
               </div>
             </Link>
             <p style={{ color: '#374151', fontSize: '0.875rem', lineHeight: 1.78, maxWidth: '240px', marginBottom: '22px' }}>
-              IT Student &amp; Full-Stack Developer from Mumbai, building real-world digital solutions.
+              IT Student &amp; Full Stack Developer from Mumbai, building real world digital solutions.
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
               {socials.map(({ href, label, icon }) => (

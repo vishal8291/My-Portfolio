@@ -17,7 +17,7 @@ export default function AboutPage() {
   useScrollReveal()
 
   const interests = [
-    { name: 'Full-Stack Web Dev', icon: '🌐', color: '#818cf8' },
+    { name: 'Full Stack Web Dev', icon: '🌐', color: '#818cf8' },
     { name: 'Mobile Apps',        icon: '📱', color: '#22d3ee' },
     { name: 'AI / ML',            icon: '🤖', color: '#f472b6' },
     { name: 'Data Structures',    icon: '🧩', color: '#fbbf24' },
@@ -26,18 +26,18 @@ export default function AboutPage() {
   ]
 
   const journey = [
-    { year: '2022',   title: 'The Spark',             desc: 'After lockdown, curiosity about technology led me to start learning programming — watching a movie was the unexpected trigger.', color: '#818cf8' },
-    { year: '2023',   title: 'B.Sc. IT — Thakur College', desc: 'Started my degree in Information Technology. Built foundations in C, C++, Java, and web technologies.', color: '#22d3ee' },
+    { year: '2022',   title: 'The Spark',             desc: 'After lockdown, curiosity about technology led me to start learning programming. Watching a movie was the unexpected trigger.', color: '#818cf8' },
+    { year: '2023',   title: 'B.Sc. IT, Thakur College', desc: 'Started my degree in Information Technology. Built foundations in C, C++, Java, and web technologies.', color: '#22d3ee' },
     { year: '2024',   title: 'First Real Projects',   desc: 'Built ATM Management System, Railway Announcement System, and started exploring React and Node.js.', color: '#f472b6' },
-    { year: '2025',   title: 'Going Full Stack',       desc: 'Launched CareOps, LexAgent, AI Learning Assistant, Vistora Chat App and multiple other production-level projects.', color: '#fbbf24' },
-    { year: '2026',   title: 'Degree Completed & Building Products', desc: 'Graduated with B.Sc. IT (CGPA 7.47). Building Paperbag, ShaktiCycle, PDFSolution, and DogCare — actively seeking full-time opportunities.', color: '#34d399' },
+    { year: '2025',   title: 'Going Full Stack',       desc: 'Launched CareOps, LexAgent, AI Learning Assistant, Vistora Chat App and multiple other production level projects.', color: '#fbbf24' },
+    { year: '2026',   title: 'Degree Completed & Building Products', desc: 'Graduated with B.Sc. IT (CGPA 7.47). Building Paperbag, ShaktiCycle, PDFSolution, and DogCare, actively seeking full time opportunities.', color: '#34d399' },
   ]
 
   const facts = [
     { icon: '📍', label: 'Location',   text: 'Borivali West, Mumbai, India' },
-    { icon: '🎓', label: 'Education',  text: 'B.Sc. IT — Thakur College of Science & Commerce' },
-    { icon: '📊', label: 'CGPA',       text: '7.47 · Grade A (2023 – 2026)' },
-    { icon: '💼', label: 'Status',     text: 'Open to full-time roles' },
+    { icon: '🎓', label: 'Education',  text: 'B.Sc. IT, Thakur College of Science & Commerce' },
+    { icon: '📊', label: 'CGPA',       text: '7.47 · Grade A (2023 to 2026)' },
+    { icon: '💼', label: 'Status',     text: 'Open to full time roles' },
     { icon: '🧠', label: 'Stack',      text: '22 core technologies' },
     { icon: '📦', label: 'Projects',   text: '18+ projects built & counting' },
   ]
@@ -55,7 +55,7 @@ export default function AboutPage() {
             About <span className="gradient-text">Me</span>
           </h1>
           <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.85, maxWidth: '560px', margin: '0 auto' }}>
-            I&apos;m Vishal Tiwari — a Full Stack Developer from Mumbai who started coding out of curiosity and never stopped. Here&apos;s my story.
+            I&apos;m Vishal Tiwari, a Full Stack Developer from Mumbai who started coding out of curiosity and never stopped. Here&apos;s my story.
           </p>
         </div>
       </section>
@@ -70,10 +70,10 @@ export default function AboutPage() {
               My <span className="gradient-text">Story</span>
             </h2>
             {[
-              'Full Stack Developer with hands-on experience building scalable web applications, AI-integrated platforms, and real-time systems using React, Next.js, Node.js, Express.js, TypeScript, MongoDB, and PostgreSQL.',
-              'Proven track record delivering end-to-end solutions across e-commerce, healthcare, legal tech, and SaaS domains. Strong command of REST APIs, JWT/OAuth authentication, Docker, and cloud deployments.',
-              'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023–2026). I love shipping real products — from AI-powered tools like LexAgent and Paperbag to mobile apps like ShaktiCycle and Vistora.',
-              'Outside coding, I\'m an entrepreneur at heart — managing a petrol pump, building the clothing brand "Vistora", and always exploring new business opportunities.',
+              'Full Stack Developer with hands on experience building scalable web applications, AI integrated platforms, and real time systems using React, Next.js, Node.js, Express.js, TypeScript, MongoDB, and PostgreSQL.',
+              'Proven track record delivering solutions from start to finish across ecommerce, healthcare, legal tech, and SaaS domains. Strong command of REST APIs, JWT/OAuth authentication, Docker, and cloud deployments.',
+              'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023 to 2026). I love shipping real products, from AI powered tools like LexAgent and Paperbag to mobile apps like ShaktiCycle and Vistora.',
+              'Outside coding, I\'m an entrepreneur at heart, managing a petrol pump, building the clothing brand "Vistora", and always exploring new business opportunities.',
             ].map((para, i) => (
               <p key={i} style={{ color: '#475569', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
             ))}
@@ -116,7 +116,7 @@ export default function AboutPage() {
               {[
                 'Building Paperbag, ShaktiCycle, PDFSolution & DogCare',
                 'Mastering DSA & System Design',
-                'Seeking full-time developer roles',
+                'Seeking full time developer roles',
                 'Exploring AI/ML integrations',
               ].map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '11px', color: '#475569', fontSize: '0.875rem' }}>

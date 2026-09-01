@@ -50,10 +50,10 @@ const packages = [
       'Everything in Starter',
       '24 posts/month + 4 Reels/TikTok scripts',
       'Email newsletter (2x/month)',
-      'Multi-page website with booking integration',
+      'Multi page website with booking integration',
       'SEO setup + Google Business profile',
       'Weekly analytics report',
-      'Bi-weekly strategy call (45 min)',
+      'Biweekly strategy call (45 min)',
       'Priority Slack/WhatsApp support',
     ],
   },
@@ -61,18 +61,18 @@ const packages = [
     name: 'Authority',
     price: '$1,799',
     period: '/month',
-    tag: 'Full-service',
+    tag: 'Full service',
     tagColor: '#34d399',
     accent: '#34d399',
     glow: 'rgba(52,211,153,0.12)',
     border: 'rgba(52,211,153,0.25)',
-    description: 'Done-for-you personal brand system. You coach — I handle everything else.',
+    description: 'Done for you personal brand system. You coach, I handle everything else.',
     features: [
       'Everything in Growth',
       '40 posts/month across all platforms',
-      'Short-form video editing (4 videos/month)',
+      'Short form video editing (4 videos/month)',
       'Lead magnet design + delivery automation',
-      'Full sales funnel (opt-in → thank you → upsell)',
+      'Full sales funnel (signup → thank you → upsell)',
       'Custom automation (Zapier / Make)',
       'Monthly brand audit & refresh',
       'Weekly calls + unlimited async support',
@@ -87,15 +87,15 @@ const faqs = [
   },
   {
     q: 'How fast can I get started?',
-    a: 'Onboarding takes 3–5 days. After our kickoff call, content and your first website draft are ready within 7 days.',
+    a: 'Onboarding takes 3 to 5 days. After our kickoff call, content and your first website draft are ready within 7 days.',
   },
   {
     q: 'Can I pause or cancel anytime?',
-    a: 'Yes. Month-to-month, no contracts. Cancel with 7 days notice.',
+    a: 'Yes. Month to month, no contracts. Cancel with 7 days notice.',
   },
   {
     q: 'What if I already have a website?',
-    a: 'We can audit and improve your existing site, or rebuild it — whichever makes more sense for your goals.',
+    a: 'We can audit and improve your existing site, or rebuild it, whichever makes more sense for your goals.',
   },
   {
     q: 'Do you work with fitness coaches only?',
@@ -133,7 +133,7 @@ export default function ServicesPage() {
         </h1>
 
         <p style={{ fontSize: '1.1rem', color: '#475569', lineHeight: 1.7, maxWidth: '600px', margin: '0 auto 40px' }}>
-          I handle your social content, website, and online presence — so you can spend your time coaching,
+          I handle your social content, website, and online presence, so you can spend your time coaching,
           not stressing about Canva templates and Instagram algorithms.
         </p>
 
@@ -186,7 +186,7 @@ export default function ServicesPage() {
           Choose Your Package
         </h2>
         <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '56px', fontSize: '0.95rem' }}>
-          All packages include a free 30-min discovery call before you commit to anything.
+          All packages include a free 30 minute discovery call before you commit to anything.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', alignItems: 'start' }}>
@@ -272,7 +272,7 @@ export default function ServicesPage() {
             { step: '01', title: 'Discovery Call', body: 'We talk for 30 minutes. I learn about your niche, goals, and current struggles. Zero pressure, zero pitch.' },
             { step: '02', title: 'Brand Blueprint', body: 'I audit your current presence and deliver a strategy doc: positioning, content pillars, and a 30-day roadmap.' },
             { step: '03', title: 'I Build Everything', body: 'Content, website, automations. You get drafts to approve. My job is to make this feel effortless for you.' },
-            { step: '04', title: 'You Grow, I Iterate', body: 'Monthly reviews, data-driven tweaks, and ongoing content. The system gets stronger every month.' },
+            { step: '04', title: 'You Grow, I Iterate', body: 'Monthly reviews, data driven tweaks, and ongoing content. The system gets stronger every month.' },
           ].map(({ step, title, body }) => (
             <div key={step} style={{
               padding: '28px 24px', borderRadius: '16px',
@@ -333,7 +333,7 @@ export default function ServicesPage() {
           Ready to Fill Your Calendar With Clients?
         </h2>
         <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '32px', lineHeight: 1.6 }}>
-          Book a free 30-minute strategy call. No obligation — just a real conversation about your goals.
+          Book a free 30 minute strategy call. No obligation, just a real conversation about your goals.
         </p>
         <Link href="/contact"
           style={{
@@ -346,7 +346,7 @@ export default function ServicesPage() {
           Book Free Call →
         </Link>
         <p style={{ marginTop: '16px', fontSize: '0.78rem', color: '#475569' }}>
-          Spots are limited — I work with max 5 clients at a time.
+          Spots are limited, I work with max 5 clients at a time.
         </p>
       </section>
 

@@ -98,7 +98,7 @@ export default function ContactPage() {
               Contact Details
             </h2>
             <p style={{ color: '#64748b', fontSize: '0.875rem', marginBottom: '28px', lineHeight: 1.75 }}>
-              Reach me through any of these channels — I typically respond within 24 hours.
+              Reach me through any of these channels. I typically respond within 24 hours.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '36px' }}>
               {contactInfo.map(({ label, value, href, icon, color }) => {
