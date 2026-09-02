@@ -119,9 +119,6 @@ export default function SkillsPage() {
           <h1 style={{ fontSize: 'clamp(2.2rem, 6vw, 3.4rem)', fontWeight: 900, marginBottom: '16px', letterSpacing: '-0.035em' }}>
             Tech <span className="gradient-text">Skills</span>
           </h1>
-          <p style={{ color: '#64748b', maxWidth: '440px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            Core technologies I build with every day, no fluff, just what I actually use.
-          </p>
         </div>
       </section>
 

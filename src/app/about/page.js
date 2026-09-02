@@ -17,12 +17,12 @@ export default function AboutPage() {
   useScrollReveal()
 
   const interests = [
-    { name: 'Full Stack Web Dev', icon: '🌐', color: '#818cf8' },
-    { name: 'Mobile Apps',        icon: '📱', color: '#22d3ee' },
-    { name: 'AI / ML',            icon: '🤖', color: '#f472b6' },
-    { name: 'Data Structures',    icon: '🧩', color: '#fbbf24' },
-    { name: 'Entrepreneurship',   icon: '🚀', color: '#34d399' },
-    { name: 'Game Development',   icon: '🎮', color: '#fb923c' },
+    { name: 'Full Stack Engineering', icon: '🌐', color: '#818cf8' },
+    { name: 'Mobile Engineering',     icon: '📱', color: '#22d3ee' },
+    { name: 'AI / ML',                icon: '🤖', color: '#f472b6' },
+    { name: 'Data Structures',        icon: '🧩', color: '#fbbf24' },
+    { name: 'Entrepreneurship',       icon: '🚀', color: '#34d399' },
+    { name: 'Game Development',       icon: '🎮', color: '#fb923c' },
   ]
 
   const journey = [
@@ -55,7 +55,7 @@ export default function AboutPage() {
             About <span className="gradient-text">Me</span>
           </h1>
           <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.85, maxWidth: '560px', margin: '0 auto' }}>
-            I&apos;m Vishal Tiwari, a Full Stack Developer from Mumbai who started coding out of curiosity and never stopped. Here&apos;s my story.
+            Full Stack Developer based in Mumbai, focused on building scalable platforms and AI integrated systems.
           </p>
         </div>
       </section>
@@ -70,10 +70,10 @@ export default function AboutPage() {
               My <span className="gradient-text">Story</span>
             </h2>
             {[
-              'Full Stack Developer with hands on experience building scalable web applications, AI integrated platforms, and real time systems using React, Next.js, Node.js, Express.js, TypeScript, MongoDB, and PostgreSQL.',
-              'Proven track record delivering solutions from start to finish across ecommerce, healthcare, legal tech, and SaaS domains. Strong command of REST APIs, JWT/OAuth authentication, Docker, and cloud deployments.',
-              'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023 to 2026). I love shipping real products, from AI powered tools like LexAgent and Paperbag to mobile apps like ShaktiCycle and Vistora.',
-              'Outside coding, I\'m an entrepreneur at heart, managing a petrol pump, building the clothing brand "Vistora", and always exploring new business opportunities.',
+              'Full Stack Developer with hands on experience building scalable, production grade platforms and AI integrated systems for real world use cases.',
+              'Proven track record delivering solutions from start to finish across ecommerce, healthcare, and legal technology domains, with strong command of authentication, deployment, and cloud infrastructure practices.',
+              'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023 to 2026). Shipped production systems including LexAgent, Paperbag, ShaktiCycle, and Vistora.',
+              'Outside engineering, I manage a petrol pump and run the clothing brand Vistora, alongside ongoing business development work.',
             ].map((para, i) => (
               <p key={i} style={{ color: '#475569', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
             ))}

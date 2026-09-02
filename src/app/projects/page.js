@@ -23,7 +23,6 @@ export default function ProjectsPage() {
   useScrollReveal()
 
   const filtered = filter === 'All' ? projects : projects.filter(p => p.category === filter)
-  const building = projects.filter(p => p.status === 'building')
 
   return (
     <div style={{ paddingTop: '68px' }}>
@@ -37,30 +36,10 @@ export default function ProjectsPage() {
           <h1 style={{ fontSize: 'clamp(2.2rem, 6vw, 3.4rem)', fontWeight: 900, marginBottom: '16px', letterSpacing: '-0.035em' }}>
             My <span className="gradient-text">Projects</span>
           </h1>
-          <p style={{ color: '#64748b', maxWidth: '480px', margin: '0 auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
-            {projects.length} projects across web, mobile, and AI, from early experiments to production apps.
-          </p>
         </div>
       </section>
 
       <div style={{ padding: '0 24px 100px', maxWidth: '1200px', margin: '0 auto' }}>
-
-        {/* Currently Building banner */}
-        <div className="reveal" style={{ marginBottom: '48px', padding: '24px 28px', borderRadius: '18px', background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.22)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(to right, #4f46e5, #7c3aed, transparent)' }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fbbf24', boxShadow: '0 0 8px #fbbf24', flexShrink: 0, animation: 'pulse-dot 2.5s ease-in-out infinite' }} />
-            <span style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', color: '#64748b', textTransform: 'uppercase' }}>Currently Building</span>
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {building.map(p => (
-              <span key={p.title}
-                style={{ padding: '7px 18px', borderRadius: '999px', fontSize: '0.875rem', fontWeight: 700, background: `${p.accent}12`, border: `1px solid ${p.accent}38`, color: p.accent, letterSpacing: '0.01em' }}>
-                {p.title}
-              </span>
-            ))}
-          </div>
-        </div>
 
         {/* Filters */}
         <div className="reveal" style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '44px' }}>
@@ -101,13 +80,7 @@ export default function ProjectsPage() {
                   <span style={{ fontSize: '0.64rem', fontWeight: 800, letterSpacing: '0.1em', color: project.accent, textTransform: 'uppercase', background: `${project.accent}12`, padding: '3px 10px', borderRadius: '999px', border: `1px solid ${project.accent}25` }}>
                     {project.category}
                   </span>
-                  {project.status === 'building' && (
-                    <span className="building-badge">
-                      <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#fbbf24' }} />
-                      Building
-                    </span>
-                  )}
-                  {project.liveUrl && project.status !== 'building' && (
+                  {project.liveUrl && (
                     <span className="live-badge">
                       <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#34d399' }} />
                       Live
@@ -150,11 +123,7 @@ export default function ProjectsPage() {
                   </p>
                 )}
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '18px' }}>
-                  {project.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
-                </div>
-
-                <div style={{ borderTop: '1px solid rgba(129,140,248,0.1)', paddingTop: '14px', display: 'flex', gap: '14px', alignItems: 'center' }}>
+                <div style={{ borderTop: '1px solid rgba(129,140,248,0.1)', paddingTop: '14px', display: 'flex', gap: '14px', alignItems: 'center', marginTop: 'auto' }}>
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', color: '#475569', textDecoration: 'none', fontSize: '0.82rem', fontWeight: 600, transition: 'color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.color = '#a78bfa'}

@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import projects from './data/projectsData'
 
@@ -10,31 +10,6 @@ const LinkedinIcon = ({ size = 20 }) => <svg width={size} height={size} viewBox=
 const TwitterIcon  = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
 const EmailIcon    = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 const ExternalIcon = ({ size = 14 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-
-// ── TYPEWRITER ─────────────────────────────────────────────────
-function TypewriterRole() {
-  const roles = ['Full Stack Developer', 'React Native Dev', 'AI Builder', 'SaaS Maker']
-  const [index, setIndex]         = useState(0)
-  const [displayed, setDisplayed] = useState('')
-  const [deleting, setDeleting]   = useState(false)
-  useEffect(() => {
-    const target = roles[index]
-    if (!deleting && displayed === target) {
-      const t = setTimeout(() => setDeleting(true), 2400)
-      return () => clearTimeout(t)
-    }
-    if (deleting && displayed === '') {
-      setDeleting(false)
-      setIndex(i => (i + 1) % roles.length)
-      return
-    }
-    const speed = deleting ? 32 : 76
-    const t = setTimeout(() =>
-      setDisplayed(prev => deleting ? prev.slice(0, -1) : target.slice(0, prev.length + 1)), speed)
-    return () => clearTimeout(t)
-  }, [displayed, deleting, index])
-  return <span className="typewriter-text">{displayed}<span className="cursor-blink" /></span>
-}
 
 // ── COUNTER ────────────────────────────────────────────────────
 function Counter({ to, suffix = '+', duration = 1400 }) {
@@ -59,36 +34,6 @@ function Counter({ to, suffix = '+', duration = 1400 }) {
     return () => observer.disconnect()
   }, [to, duration])
   return <span ref={ref}>{val}{suffix}</span>
-}
-
-// ── 3D TILT CARD ───────────────────────────────────────────────
-function TiltCard({ children, className, style, amount = 13 }) {
-  const ref = useRef(null)
-  const rawX = useMotionValue(0)
-  const rawY = useMotionValue(0)
-  const sx = useSpring(rawX, { stiffness: 260, damping: 22 })
-  const sy = useSpring(rawY, { stiffness: 260, damping: 22 })
-  const rotX = useTransform(sy, [-0.5, 0.5], [amount, -amount])
-  const rotY = useTransform(sx, [-0.5, 0.5], [-amount, amount])
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      style={{ ...style, rotateX: rotX, rotateY: rotY, transformPerspective: 900, transformStyle: 'preserve-3d' }}
-      onMouseMove={e => {
-        const r = ref.current?.getBoundingClientRect()
-        if (!r) return
-        rawX.set((e.clientX - r.left) / r.width - 0.5)
-        rawY.set((e.clientY - r.top) / r.height - 0.5)
-      }}
-      onMouseLeave={() => { rawX.set(0); rawY.set(0) }}
-      whileHover={{ scale: 1.04, boxShadow: '0 24px 60px rgba(239,68,68,0.18)' }}
-      transition={{ type: 'spring', stiffness: 300, damping: 26 }}
-    >
-      {children}
-    </motion.div>
-  )
 }
 
 // ── HERO ───────────────────────────────────────────────────────
@@ -117,11 +62,11 @@ function Hero() {
             Vishal Tiwari
           </motion.h1>
           <motion.p className="hero-role" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24, ease }}>
-            <TypewriterRole />
+            Full Stack Developer
           </motion.p>
           <motion.p className="hero-bio" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.32, ease }}>
-            Building scalable web apps, AI integrated platforms &amp; real time systems.
-            B.Sc. IT · Thakur College, Mumbai.
+            Engineering scalable platforms and AI integrated systems for production use.
+            B.Sc. IT, Thakur College, Mumbai.
           </motion.p>
 
           <motion.div className="hero-cta-row" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.4, ease }}>
@@ -175,34 +120,6 @@ function Hero() {
   )
 }
 
-// ── TECH STRIP ─────────────────────────────────────────────────
-const techStack = [
-  { name: 'JavaScript', dot: '#fbbf24' }, { name: 'TypeScript', dot: '#3b82f6' },
-  { name: 'React',      dot: '#61dafb' }, { name: 'Next.js',    dot: '#374151' },
-  { name: 'Node.js',   dot: '#4ade80'  }, { name: 'Express.js', dot: '#34d399' },
-  { name: 'MongoDB',   dot: '#f87171'  }, { name: 'PostgreSQL', dot: '#60a5fa' },
-  { name: 'Redis',     dot: '#f87171'  }, { name: 'Tailwind',   dot: '#38bdf8' },
-  { name: 'Docker',    dot: '#60a5fa'  }, { name: 'Git',        dot: '#f97316' },
-  { name: 'REST API',  dot: '#ef4444'  }, { name: 'React Native', dot: '#61dafb' },
-]
-function TechStrip() {
-  const doubled = [...techStack, ...techStack]
-  return (
-    <div className="tech-strip-wrap">
-      <div className="marquee-wrap">
-        <div className="marquee-track">
-          {doubled.map(({ name, dot }, i) => (
-            <span key={`${name}-${i}`} className="tech-chip">
-              <span className="tech-dot" style={{ background: dot, color: dot }} />
-              {name}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ── TRUSTED BY ─────────────────────────────────────────────────
 function TrustedBy() {
   return (
@@ -215,10 +132,7 @@ function TrustedBy() {
         onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(239,68,68,0.35)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
         onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(0)' }}>
         <img src="/images/mahagro-logo.png" alt="MAHAGRO INDIA logo" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
-        <div style={{ textAlign: 'left' }}>
-          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>MAHAGRO INDIA</div>
-          <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Live client, mushroom cultivation training institute</div>
-        </div>
+        <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>MAHAGRO INDIA</div>
       </a>
     </div>
   )
@@ -244,16 +158,12 @@ function About() {
         >
           <p className="section-eyebrow">About me</p>
           <h2 className="section-heading">
-            Passionate about <span className="gradient-text">Building</span>
+            Professional <span className="gradient-text">Background</span>
           </h2>
-          <p className="body-text" style={{ marginBottom: '14px' }}>
+          <p className="body-text" style={{ marginBottom: '36px' }}>
             I'm a Full Stack Developer from{' '}
             <span style={{ color: 'var(--violet)', fontWeight: 600 }}>Thakur College of Science and Commerce, Mumbai</span>
             {'. '}B.Sc. IT graduate (2026, CGPA 7.47).
-          </p>
-          <p className="body-text muted" style={{ marginBottom: '36px' }}>
-            I love creating fast, accessible, and beautiful digital experiences.
-            Always learning, always shipping.
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <Link href="/about" className="btn-primary">My Story →</Link>
@@ -293,7 +203,7 @@ function About() {
 // ── 3D FLIP PROJECT CARDS ─────────────────────────────────────
 function Projects() {
   const ease = [0.22, 1, 0.36, 1]
-  const featured = projects.filter(p => p.status === 'building').slice(0, 3)
+  const featured = projects.filter(p => p.featured).slice(0, 3)
 
   return (
     <section className="section dark-section">
@@ -306,10 +216,7 @@ function Projects() {
           transition={{ duration: 0.6, ease }}
         >
           <p className="section-eyebrow">Work</p>
-          <h2 className="section-heading">Currently <span className="gradient-text">Building</span></h2>
-          <p className="body-text muted" style={{ maxWidth: '380px', margin: '0 auto' }}>
-            Active projects shipping right now.
-          </p>
+          <h2 className="section-heading">Selected <span className="gradient-text">Projects</span></h2>
         </motion.div>
 
         <div className="projects-grid">
@@ -339,16 +246,9 @@ function Projects() {
                       <span className="category-badge" style={{ color: project.accent, background: `${project.accent}18`, border: `1px solid ${project.accent}35` }}>
                         {project.category}
                       </span>
-                      <span className="building-badge">
-                        <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#fbbf24', display: 'inline-block' }} />
-                        Building
-                      </span>
                     </div>
                     <h3 className="project-title">{project.title}</h3>
                     <p className="project-desc">{project.description.slice(0, 115)}…</p>
-                    <div className="tech-tags">
-                      {project.tech.slice(0, 4).map(t => <span key={t} className="tech-badge">{t}</span>)}
-                    </div>
                     <div style={{ marginTop: 'auto', paddingTop: '16px', textAlign: 'center' }}>
                       <span style={{ fontSize: '0.75rem', color: '#9ca3af', letterSpacing: '0.05em' }}>Hover to flip ↻</span>
                     </div>
@@ -360,11 +260,6 @@ function Projects() {
                   <div className="flip-back-accent" style={{ background: project.accent }} />
                   <span className="flip-back-cat" style={{ color: project.accent }}>{project.category}</span>
                   <h3 className="flip-back-title">{project.title}</h3>
-                  <div className="flip-back-tags">
-                    {project.tech.map(t => (
-                      <span key={t} className="tech-badge" style={{ fontSize: '0.72rem' }}>{t}</span>
-                    ))}
-                  </div>
                   <div className="flip-back-actions">
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '9px 20px', fontSize: '0.82rem', borderRadius: '9px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                       <GithubIcon size={13} /> GitHub
@@ -398,74 +293,6 @@ function Projects() {
 }
 
 // ── SKILLS with 3D TILT ────────────────────────────────────────
-const skillCategories = [
-  { label: 'Frontend',    color: '#3b82f6', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React Native'] },
-  { label: 'Backend',     color: '#16a34a', skills: ['Node.js', 'Express.js', 'Python', 'REST API', 'WebSockets'] },
-  { label: 'Database',    color: '#ef4444', skills: ['MongoDB', 'PostgreSQL', 'Redis', 'Prisma', 'Supabase'] },
-  { label: 'Tools',       color: '#f97316', skills: ['Docker', 'Git', 'AWS', 'Vercel', 'Firebase'] },
-]
-
-function Skills() {
-  const ease = [0.22, 1, 0.36, 1]
-  return (
-    <section className="section">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <p className="section-eyebrow">Expertise</p>
-          <h2 className="section-heading">Tech <span className="gradient-text">Stack</span></h2>
-          <p className="body-text muted">Core technologies I build with across the full stack.</p>
-        </motion.div>
-
-        <div className="skills-cats-grid">
-          {skillCategories.map(({ label, color, skills }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, delay: i * 0.1, ease }}
-            >
-              <TiltCard className="skill-cat-card card-glass" style={{ '--cat-color': color }}>
-                <div className="skill-cat-header" style={{ color }}>
-                  <span className="skill-cat-dot" style={{ background: color }} />
-                  {label}
-                </div>
-                <div className="skill-pills">
-                  {skills.map(s => (
-                    <motion.span
-                      key={s}
-                      className="skill-pill"
-                      whileHover={{ scale: 1.1, y: -2, color: '#ef4444', borderColor: 'rgba(239,68,68,0.5)' }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                    >
-                      {s}
-                    </motion.span>
-                  ))}
-                </div>
-              </TiltCard>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          style={{ textAlign: 'center', marginTop: '44px' }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease }}
-        >
-          <Link href="/skills" className="btn-outline" style={{ padding: '13px 36px' }}>View Full Stack →</Link>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
 
 // ── TIMELINE ───────────────────────────────────────────────────
 const timelineItems = [
@@ -589,14 +416,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TechStrip />
       <TrustedBy />
       <div className="section-divider" />
       <About />
       <div className="section-divider" />
       <Projects />
-      <div className="section-divider" />
-      <Skills />
       <div className="section-divider" />
       <Timeline />
       <div className="section-divider" />
