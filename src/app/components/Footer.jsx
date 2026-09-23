@@ -16,7 +16,6 @@ export default function Footer() {
             <h4>Pages</h4>
             <ul>
               {nav.map(({ href, label }) => <li key={href}><Link href={href}>{label}</Link></li>)}
-              <li><Link href="/college">Beyond code</Link></li>
             </ul>
           </div>
           <div>

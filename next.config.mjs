@@ -9,6 +9,8 @@ const nextConfig = {
     return [
       { source: '/skills', destination: '/about#skills', permanent: true },
       { source: '/certifications', destination: '/about#certifications', permanent: true },
+      // 'Beyond code' (college activities) retired 2026-09-23.
+      { source: '/college', destination: '/about', permanent: true },
     ]
   },
 };

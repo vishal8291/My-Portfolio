@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Retired "Beyond code" page and its media (kept locally, not published)
+archive/

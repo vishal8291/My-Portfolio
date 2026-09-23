@@ -370,14 +370,6 @@ img { height: auto; }
 .contact-card dt { font: 500 0.72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .contact-card dd { margin: 0; color: var(--ink); font-weight: 600; word-break: break-word; }
 
-/* ── Media grid (Beyond code page) ──────────────────────── */
-.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-.media { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg); }
-.media img, .media video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--surface); }
-.media-body { padding: 14px 16px 16px; }
-.media-body h3 { font-size: 1rem; margin-bottom: 4px; }
-.media-body p { font-size: 0.9rem; color: var(--muted); }
-
 /* ── Footer ─────────────────────────────────────────────── */
 .footer { border-top: 1px solid var(--border); background: var(--surface); padding-block: 48px 32px; font-size: 0.95rem; }
 .footer-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
