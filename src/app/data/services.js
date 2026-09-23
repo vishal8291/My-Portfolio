@@ -27,7 +27,7 @@ export const services = [
   },
   {
     title: 'Care after launch',
-    what: 'I keep an eye on your site with automatic checks every 10 minutes, fix what breaks, and make updates when you need them.',
+    what: 'I keep an eye on your site with automatic checks around the clock, fix what breaks, and make updates when you need them.',
     proof: ['mahagroindia.com', 'monitored since launch'],
   },
 ]

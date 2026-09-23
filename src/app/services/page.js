@@ -16,7 +16,7 @@ const included = [
   'Email sent from your domain, so it reaches the inbox, not spam',
   'The source code and every login, handed to you',
   'A plain-language guide to running your site',
-  'Automatic checks every 10 minutes after launch',
+  'Automatic uptime checks after launch',
 ]
 
 const goodFit = [

@@ -13,7 +13,7 @@ const projects = [
       'Booking website for a mushroom-farming training institute in Mumbai, in English and Marathi, with online payments and an admin panel.',
     tech: ['Vite', 'JavaScript', 'PHP 8', 'MySQL', 'Razorpay', 'Resend'],
     liveUrl: 'https://mahagroindia.com',
-    githubUrl: 'https://github.com/vishal8291/mahagro-india',
+    githubUrl: null, // private: client code
     image: '/images/projects/mahagro.jpg',
     featured: true,
     caseStudy: {
@@ -27,7 +27,7 @@ const projects = [
       ],
       now: [
         'Live at mahagroindia.com since September 2026',
-        'Checked automatically every 10 minutes',
+        'Checked automatically around the clock',
         'Handed over with a written guide, source code and technical docs',
       ],
     },
@@ -41,7 +41,7 @@ const projects = [
       'My own online store for printable adventure kits for children. Takes payments and delivers each paid PDF through a private download link.',
     tech: ['React', 'Vite', 'Vercel Functions', 'Supabase', 'Razorpay', 'Tailwind CSS'],
     liveUrl: 'https://wonderquest.vishal-tiwari.me',
-    githubUrl: 'https://github.com/vishal8291/wonder-quest',
+    githubUrl: null, // repo is private or gone: a link here would 404
     image: '/images/projects/wonderquest.jpg',
     featured: true,
   },
@@ -51,10 +51,10 @@ const projects = [
     year: 2026,
     category: 'Website',
     summary:
-      'Site for my small-business studio. Enquiry form with an admin dashboard, email alerts, and checks that post a test enquiry every 10 minutes.',
+      'Site for my small-business studio. Enquiry form with an admin dashboard, email alerts, and automatic checks that post a test enquiry.',
     tech: ['Next.js', 'TypeScript', 'MongoDB', 'Resend', 'GitHub Actions'],
     liveUrl: 'https://customeai.tech',
-    githubUrl: 'https://github.com/vishal8291/ai-consultation-website',
+    githubUrl: null, // private: business code
     image: '/images/projects/customai.jpg',
     featured: true,
   },
@@ -67,7 +67,7 @@ const projects = [
       'Online store with catalogue, cart, Razorpay checkout, coupons, referrals, stock tracking, invoice export and an AI shopping assistant.',
     tech: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Razorpay', 'Docker'],
     liveUrl: 'https://frontend-delta-inky-96.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/paperbag',
+    githubUrl: null, // private: product code
     image: '/images/projects/paperbag.jpg',
     featured: true,
   },
@@ -79,7 +79,7 @@ const projects = [
     summary: 'PDF tools in one place: merge, split, compress, convert and OCR.',
     tech: ['React', 'TypeScript', 'Node.js', 'Python', 'MongoDB', 'Docker'],
     liveUrl: 'https://pdfsolution-seven.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/pdfsolution',
+    githubUrl: null, // private: product code
     image: '/images/projects/pdfsolution.jpg',
     featured: true,
   },
@@ -92,7 +92,7 @@ const projects = [
       'Reads legal documents for small businesses, pulls out the key clauses and flags risky ones, with a dashboard to upload and review.',
     tech: ['Python', 'FastAPI', 'React', 'MongoDB', 'Claude API'],
     liveUrl: 'https://lex-agent.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/LexAgent',
+    githubUrl: null, // repo is private or gone: a link here would 404
     image: '/images/projects/lexagent.jpg',
     featured: true,
   },
@@ -116,7 +116,7 @@ const projects = [
     summary: 'Operations dashboard for a clinic: patient and staff workflows, reports and live status.',
     tech: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL'],
     liveUrl: 'https://careops-frontend-one.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/careops',
+    githubUrl: null, // repo is private or gone: a link here would 404
   },
   {
     title: 'AI Learning Assistant',
@@ -126,7 +126,7 @@ const projects = [
     summary: 'Study assistant with streaming AI chat and an accessible interface.',
     tech: ['Next.js', 'TypeScript', 'Vercel AI SDK', 'Radix UI'],
     liveUrl: 'https://ai-learning-assistant-self.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/ai-learning-assistant',
+    githubUrl: null, // repo is private or gone: a link here would 404
   },
   {
     title: 'Partners',
@@ -146,7 +146,7 @@ const projects = [
     summary: 'Pet-sitting app with pet profiles, care schedules and bookings.',
     tech: ['React Native', 'Expo', 'TypeScript'],
     liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/dogcare',
+    githubUrl: null, // repo is private or gone: a link here would 404
   },
   {
     title: 'Vistora Chat',
