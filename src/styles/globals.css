@@ -343,6 +343,10 @@ img { height: auto; }
 .rows a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.92rem; }
 .rows a:hover { text-decoration: underline; }
 
+.cert-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; border-top: 0; }
+.cert-rows li { border-top: 1px solid var(--border); border-bottom: 0; }
+@media (max-width: 760px) { .cert-rows { grid-template-columns: 1fr; } }
+
 .two-col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
 @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 36px; } }
 
