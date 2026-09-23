@@ -1,53 +1,37 @@
+import { Schibsted_Grotesk, JetBrains_Mono } from 'next/font/google'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
-import ClientEffects from './components/ClientEffects'
+import { site } from './data/site'
 import '../styles/globals.css'
-import '../styles/skill-enhancements.css'
+
+const sans = Schibsted_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-sans', display: 'swap' })
+const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
+
+const title = 'Vishal Tiwari · Freelance full-stack developer in Mumbai'
+const description =
+  'I build websites, online stores, booking and payment systems and business tools for small businesses, and look after them once they are live.'
 
 export const metadata = {
-  title: 'Vishal Tiwari | Full Stack Developer',
-  description: 'Portfolio of Vishal Tiwari, IT Student & Full Stack Developer from Mumbai. React, Next.js, Node.js, React Native, Python, AI tools and more.',
-  keywords: ['Vishal Tiwari', 'Full Stack Developer', 'React', 'Next.js', 'Node.js', 'Mumbai', 'IT Student', 'Portfolio'],
-  authors: [{ name: 'Vishal Tiwari', url: 'https://github.com/vishal8291' }],
-  creator: 'Vishal Tiwari',
-  openGraph: {
-    type: 'website',
-    locale: 'en_IN',
-    title: 'Vishal Tiwari | Full Stack Developer',
-    description: 'IT Student & Full Stack Developer from Mumbai building web apps, mobile apps, and AI tools.',
-    siteName: 'Vishal Tiwari Portfolio',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Vishal Tiwari | Full Stack Developer',
-    description: 'IT Student & Full Stack Developer from Mumbai.',
-    creator: '@vishalT200',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  metadataBase: new URL(site.url),
+  title: { default: title, template: '%s · Vishal Tiwari' },
+  description,
+  keywords: ['freelance web developer Mumbai', 'website for small business', 'Next.js developer', 'Razorpay integration', 'Vishal Tiwari'],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', locale: 'en_IN', url: site.url, siteName: site.name, title, description },
+  twitter: { card: 'summary_large_image', title, description, creator: '@vishalT200' },
+  robots: { index: true, follow: true },
 }
+
+export const viewport = { themeColor: '#ffffff' }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body style={{
-        background: '#ffffff',
-        color: '#0f172a',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        fontFamily: "'Aptos', 'Aptos Display', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif",
-        WebkitFontSmoothing: 'antialiased',
-        MozOsxFontSmoothing: 'grayscale',
-      }}>
-        <ClientEffects />
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+      <body>
         <Navbar />
-        <main style={{ flex: 1 }}>{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

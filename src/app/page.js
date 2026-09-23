@@ -1,430 +1,189 @@
-'use client'
-import { useState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
+import HeroVideo from './components/HeroVideo.jsx'
+import ProjectCard from './components/ProjectCard.jsx'
 import projects from './data/projectsData'
+import { services, steps } from './data/services'
+import { site } from './data/site'
 
-// ── ICONS ─────────────────────────────────────────────────────
-const GithubIcon   = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-const LinkedinIcon = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-const TwitterIcon  = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-const EmailIcon    = ({ size = 20 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-const ExternalIcon = ({ size = 14 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+const mahagro = projects.find((p) => p.title === 'MAHAGRO INDIA')
+const selected = projects.filter((p) => p.featured && p !== mahagro).slice(0, 6)
 
-// ── COUNTER ────────────────────────────────────────────────────
-function Counter({ to, suffix = '+', duration = 1400 }) {
-  const [val, setVal] = useState(0)
-  const ref = useRef(null)
-  const started = useRef(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true
-        const steps = 45
-        const stepVal = Math.ceil(to / steps)
-        let current = 0
-        const interval = setInterval(() => {
-          current = Math.min(current + stepVal, to)
-          setVal(current)
-          if (current >= to) clearInterval(interval)
-        }, duration / steps)
-      }
-    }, { threshold: 0.5 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [to, duration])
-  return <span ref={ref}>{val}{suffix}</span>
-}
-
-// ── HERO ───────────────────────────────────────────────────────
-function Hero() {
-  const ease = [0.22, 1, 0.36, 1]
-  const socials = [
-    { icon: <GithubIcon size={18} />,   href: 'https://github.com/vishal8291',                        label: 'GitHub' },
-    { icon: <LinkedinIcon size={18} />, href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b', label: 'LinkedIn' },
-    { icon: <TwitterIcon size={18} />,  href: 'https://x.com/vishalT200',                             label: 'Twitter' },
-    { icon: <EmailIcon size={18} />,    href: 'mailto:vishal.buildss@gmail.com',                      label: 'Email' },
-  ]
-
-  return (
-    <section className="hero-clean">
-      <div className="hero-glow-orb hero-glow-1" />
-      <div className="hero-glow-orb hero-glow-2" />
-
-      <div className="container hero-clean-inner">
-        {/* Left */}
-        <div className="hero-text">
-
-          <motion.h1 className="hero-greeting" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.08, ease }}>
-            Hi, I'm
-          </motion.h1>
-          <motion.h1 className="hero-name gradient-text" initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.16, ease }}>
-            Vishal Tiwari
-          </motion.h1>
-          <motion.p className="hero-role" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24, ease }}>
-            Full Stack Developer
-          </motion.p>
-          <motion.p className="hero-bio" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.32, ease }}>
-            Engineering scalable platforms and AI integrated systems for production use.
-            B.Sc. IT, Thakur College, Mumbai.
-          </motion.p>
-
-          <motion.div className="hero-cta-row" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.4, ease }}>
-            <Link href="/projects" className="btn-primary">View My Work</Link>
-            <Link href="/contact" className="btn-outline">Contact Me</Link>
-            <a href="/Resume.pdf" download className="btn-ghost">Resume ↗</a>
-          </motion.div>
-
-          <motion.div className="hero-socials-row" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5, ease }}>
-            {socials.map(({ icon, href, label }) => (
-              <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label} className="social-icon-btn"
-                whileHover={{ scale: 1.18, y: -3 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-              >
-                {icon}
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Right: photo */}
-        <motion.div
-          className="hero-photo-wrap"
-          initial={{ opacity: 0, scale: 0.72, x: 60 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.85, delay: 0.12, ease }}
-        >
-          <div className="hero-photo-ring" />
-          <img src="/photo.jpg" alt="Vishal Tiwari" className="hero-photo-img" />
-        </motion.div>
-      </div>
-
-      {/* Stats */}
-      <motion.div className="container" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.58, ease }}>
-        <div className="hero-stats-strip">
-          {[
-            { val: 2,  suffix: '+', label: 'Years Experience' },
-            { val: 18, suffix: '+', label: 'Projects Shipped' },
-            { val: 10, suffix: '+', label: 'Certifications' },
-            { val: 22, suffix: '+', label: 'Technologies' },
-          ].map(({ val, suffix, label }) => (
-            <div key={label} className="hero-stat-item">
-              <span className="hero-stat-num gradient-text"><Counter to={val} suffix={suffix} /></span>
-              <span className="hero-stat-label">{label}</span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  )
-}
-
-// ── TRUSTED BY ─────────────────────────────────────────────────
-function TrustedBy() {
-  return (
-    <div style={{ padding: '48px 24px', textAlign: 'center' }}>
-      <p style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '24px' }}>
-        Trusted By
-      </p>
-      <a href="https://mahagroindia.com" target="_blank" rel="noopener noreferrer"
-        style={{ display: 'inline-flex', alignItems: 'center', gap: '16px', padding: '16px 28px', borderRadius: '16px', textDecoration: 'none', border: '1px solid rgba(0,0,0,0.08)', background: '#ffffff', transition: 'border-color 0.2s, transform 0.2s' }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(239,68,68,0.35)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(0)' }}>
-        <img src="/images/mahagro-logo.png" alt="MAHAGRO INDIA logo" style={{ width: '44px', height: '44px', objectFit: 'contain' }} />
-        <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>MAHAGRO INDIA</div>
-      </a>
-    </div>
-  )
-}
-
-// ── ABOUT ──────────────────────────────────────────────────────
-function About() {
-  const ease = [0.22, 1, 0.36, 1]
-  const stats = [
-    { to: 2,  label: 'Years Coding',   suffix: '+', color: '#ef4444' },
-    { to: 18, label: 'Projects Built', suffix: '+', color: '#dc2626' },
-    { to: 10, label: 'Certificates',   suffix: '+', color: '#f87171' },
-    { to: 22, label: 'Technologies',   suffix: '+', color: '#b91c1c' },
-  ]
-  return (
-    <section className="section">
-      <div className="container about-grid">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.65, ease }}
-        >
-          <p className="section-eyebrow">About me</p>
-          <h2 className="section-heading">
-            Professional <span className="gradient-text">Background</span>
-          </h2>
-          <p className="body-text" style={{ marginBottom: '36px' }}>
-            I'm a Full Stack Developer from{' '}
-            <span style={{ color: 'var(--violet)', fontWeight: 600 }}>Thakur College of Science and Commerce, Mumbai</span>
-            {'. '}B.Sc. IT graduate (2026, CGPA 7.47).
-          </p>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/about" className="btn-primary">My Story →</Link>
-            <a href="/Resume.pdf" download className="btn-outline">Resume ↗</a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="about-stats-grid"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.65, delay: 0.15, ease }}
-        >
-          {stats.map(({ to, label, suffix, color }, i) => (
-            <motion.div
-              key={label}
-              className="about-stat-card card-glass"
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease }}
-              whileHover={{ y: -6, scale: 1.05, boxShadow: '0 18px 40px rgba(239,68,68,0.15)' }}
-            >
-              <span className="about-stat-num" style={{ color }}>
-                <Counter to={to} suffix={suffix} />
-              </span>
-              <span className="about-stat-label">{label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-// ── 3D FLIP PROJECT CARDS ─────────────────────────────────────
-function Projects() {
-  const ease = [0.22, 1, 0.36, 1]
-  const featured = projects.filter(p => p.featured).slice(0, 3)
-
-  return (
-    <section className="section dark-section">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <p className="section-eyebrow">Work</p>
-          <h2 className="section-heading">Selected <span className="gradient-text">Projects</span></h2>
-        </motion.div>
-
-        <div className="projects-grid">
-          {featured.map((project, i) => (
-            <motion.div
-              key={project.title}
-              className="flip-card-wrap"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.65, delay: i * 0.14, ease }}
-            >
-              <div className="flip-card-inner">
-                {/* Front */}
-                <div className="flip-card-face flip-card-front card-glass">
-                  {project.image ? (
-                    <div style={{ height: '130px', overflow: 'hidden', position: 'relative', background: '#0f172a', flexShrink: 0 }}>
-                      <img src={project.image} alt={`${project.title} live preview`}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} loading="lazy" />
-                      <div style={{ position: 'absolute', inset: 0, boxShadow: `inset 0 0 0 2px ${project.accent}55` }} />
-                    </div>
-                  ) : (
-                    <div className="project-accent-bar" style={{ background: project.accent }} />
-                  )}
-                  <div className="project-card-inner" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                      <span className="category-badge" style={{ color: project.accent, background: `${project.accent}18`, border: `1px solid ${project.accent}35` }}>
-                        {project.category}
-                      </span>
-                    </div>
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-desc">{project.description.slice(0, 115)}…</p>
-                    <div style={{ marginTop: 'auto', paddingTop: '16px', textAlign: 'center' }}>
-                      <span style={{ fontSize: '0.75rem', color: '#9ca3af', letterSpacing: '0.05em' }}>Hover to flip ↻</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Back */}
-                <div className="flip-card-face flip-card-back">
-                  <div className="flip-back-accent" style={{ background: project.accent }} />
-                  <span className="flip-back-cat" style={{ color: project.accent }}>{project.category}</span>
-                  <h3 className="flip-back-title">{project.title}</h3>
-                  <div className="flip-back-actions">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '9px 20px', fontSize: '0.82rem', borderRadius: '9px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                      <GithubIcon size={13} /> GitHub
-                    </a>
-                    {project.liveUrl && (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ padding: '9px 20px', fontSize: '0.82rem', borderRadius: '9px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                        <ExternalIcon size={12} /> Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          style={{ textAlign: 'center', marginTop: '52px' }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease }}
-        >
-          <Link href="/projects" className="btn-primary" style={{ padding: '14px 40px', fontSize: '0.96rem' }}>
-            View All {projects.length} Projects →
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-// ── SKILLS with 3D TILT ────────────────────────────────────────
-
-// ── TIMELINE ───────────────────────────────────────────────────
-const timelineItems = [
-  { year: '2026', title: 'B.Sc. IT Graduate',      org: 'Thakur College of Science & Commerce', desc: 'CGPA 7.47, Mumbai University. Specialized in web technologies, databases, software engineering & AI.', color: '#ef4444' },
-  { year: '2025', title: 'Full Stack Developer',    org: 'Freelance & Open Source',              desc: 'Building production SaaS: PDFSolution, AI tools, ecommerce systems. 18+ projects shipped on Vercel & Render.', color: '#dc2626' },
-  { year: '2024', title: 'React Native Developer',  org: 'Personal Projects',                    desc: 'Built DogCare app with Claymorphism design, AI integrations, and real time features using Expo & Firebase.', color: '#f87171' },
-  { year: '2023', title: 'Started Coding',          org: 'Thakur College, Mumbai',               desc: 'First line of code turned into real projects: landing pages, mini games, CLI tools. Fell in love with building.', color: '#b91c1c' },
-]
-
-function Timeline() {
-  const ease = [0.22, 1, 0.36, 1]
-  return (
-    <section className="section dark-section">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <p className="section-eyebrow">Journey</p>
-          <h2 className="section-heading">My <span className="gradient-text">Timeline</span></h2>
-          <p className="body-text muted">Every milestone that shaped who I am as a developer.</p>
-        </motion.div>
-
-        <div className="timeline-wrap">
-          <div className="timeline-spine" />
-          {timelineItems.map((item, i) => (
-            <motion.div
-              key={item.year}
-              className="timeline-item"
-              initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.65, delay: 0.08, ease }}
-            >
-              <motion.div
-                className="timeline-node"
-                style={{ borderColor: item.color, boxShadow: `0 0 0 0 ${item.color}40` }}
-                whileInView={{ boxShadow: [`0 0 0 0 ${item.color}40`, `0 0 0 8px ${item.color}00`] }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <div className="timeline-node-inner" style={{ background: item.color }} />
-              </motion.div>
-              <motion.div
-                className="timeline-card card-glass"
-                whileHover={{ y: -5, boxShadow: '0 20px 50px rgba(239,68,68,0.13)' }}
-                transition={{ type: 'spring', stiffness: 280, damping: 24 }}
-              >
-                <div className="timeline-card-year" style={{ color: item.color }}>{item.year}</div>
-                <h3 className="timeline-card-title">{item.title}</h3>
-                <p className="timeline-card-org">{item.org}</p>
-                <p className="timeline-card-desc">{item.desc}</p>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ── CTA ────────────────────────────────────────────────────────
-function CTA() {
-  const ease = [0.22, 1, 0.36, 1]
-  return (
-    <section className="section cta-section">
-      <div className="cta-glow" />
-      <motion.div
-        className="cta-inner"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease }}
-      >
-        <p className="section-eyebrow">Let's connect</p>
-        <h2 className="section-heading cta-heading">
-          Let's Build Something <span className="gradient-text">Together</span>
-        </h2>
-        <p className="body-text muted cta-sub">
-          Open to full time roles, freelance, and collaborations.
-          Drop a message, I respond within 24 hours.
-        </p>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/contact" className="btn-primary" style={{ padding: '16px 52px', fontSize: '1rem' }}>
-            Get In Touch
-          </Link>
-          <a href="/Resume.pdf" download className="btn-outline" style={{ padding: '16px 52px', fontSize: '1rem' }}>
-            Download Resume ↗
-          </a>
-        </div>
-        <div className="cta-social-row">
-          {[
-            { icon: <GithubIcon size={15} />,   href: 'https://github.com/vishal8291',                       label: 'GitHub',   handle: '@vishal8291' },
-            { icon: <LinkedinIcon size={15} />, href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b', label: 'LinkedIn', handle: 'vishal-tiwari' },
-            { icon: <TwitterIcon size={15} />,  href: 'https://x.com/vishalT200',                            label: 'Twitter',  handle: '@vishalT200' },
-          ].map(({ icon, href, label, handle }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-social-pill"
-              whileHover={{ scale: 1.06, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 380, damping: 22 }}
-            >
-              {icon} {handle}
-            </motion.a>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  )
-}
-
-// ── PAGE ───────────────────────────────────────────────────────
 export default function Home() {
   return (
     <>
-      <Hero />
-      <TrustedBy />
-      <div className="section-divider" />
-      <About />
-      <div className="section-divider" />
-      <Projects />
-      <div className="section-divider" />
-      <Timeline />
-      <div className="section-divider" />
-      <CTA />
+      {/* Hero */}
+      <section className="hero">
+        <div className="wrap hero-grid">
+          <div>
+            <span className="label">Freelance full-stack developer · Mumbai</span>
+            <h1>Websites and business tools that <em>keep working</em> after launch.</h1>
+            <p className="lede">
+              I&apos;m Vishal. I build websites, online stores and booking systems for small businesses, with
+              payments, WhatsApp and email set up properly, and I look after them once they&apos;re live.
+            </p>
+            <div className="btn-row">
+              <Link href="/contact" className="btn btn-primary">Start a project</Link>
+              <Link href="/projects" className="btn btn-ghost">See my work</Link>
+            </div>
+            <ul className="hero-facts">
+              <li><span className="dot" aria-hidden="true" />Taking new projects</li>
+              <li>You deal with me directly</li>
+              <li>Reply within 24 hours</li>
+            </ul>
+          </div>
+          <HeroVideo />
+        </div>
+      </section>
+
+      {/* Proof */}
+      <section className="section alt" style={{ paddingBlock: 40 }}>
+        <div className="wrap">
+          <nav className="proof" aria-label="Live work">
+            <a href="https://mahagroindia.com" target="_blank" rel="noopener noreferrer">
+              <span className="k">Client</span>
+              <span className="t">MAHAGRO INDIA</span>
+              <span className="d"><span className="dot" aria-hidden="true" />Live · mahagroindia.com</span>
+            </a>
+            <a href="https://wonderquest.vishal-tiwari.me" target="_blank" rel="noopener noreferrer">
+              <span className="k">My product</span>
+              <span className="t">Wonder Quest</span>
+              <span className="d"><span className="dot" aria-hidden="true" />Live · takes payments online</span>
+            </a>
+            <a href={site.studio.url} target="_blank" rel="noopener noreferrer">
+              <span className="k">My studio</span>
+              <span className="t">CustomAI</span>
+              <span className="d"><span className="dot" aria-hidden="true" />Live · customeai.tech</span>
+            </a>
+          </nav>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="section" id="services">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="label">What I build</span>
+              <h2>Everything a small business needs online, built to last.</h2>
+            </div>
+            <Link href="/services" className="link-arrow">How I work and what&apos;s included →</Link>
+          </div>
+          <div className="svc">
+            {services.map((s) => (
+              <div className="svc-row" key={s.title}>
+                <h3>{s.title}</h3>
+                <p>{s.what}</p>
+                <p className="eg">For example: <b>{s.proof[0]}</b>, {s.proof[1]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case study */}
+      <section className="section alt">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="label">Client work</span>
+              <h2>MAHAGRO INDIA: bookings in two languages, in one place.</h2>
+            </div>
+            <a href={mahagro.liveUrl} className="link-arrow" target="_blank" rel="noopener noreferrer">Visit mahagroindia.com ↗</a>
+          </div>
+          <div className="case">
+            <div className="case-shot">
+              <img src={mahagro.image} alt="MAHAGRO INDIA home page" width="800" height="500" loading="lazy" />
+            </div>
+            <div>
+              <h3>The problem</h3>
+              <p>{mahagro.caseStudy.problem}</p>
+              <h3>What I built</h3>
+              <ul className="ticks">{mahagro.caseStudy.built.map((b) => <li key={b}>{b}</li>)}</ul>
+              <h3>Where it stands</h3>
+              <ul className="ticks">{mahagro.caseStudy.now.map((b) => <li key={b}>{b}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Selected work */}
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="label">More work</span>
+              <h2>Stores, tools and apps I&apos;ve built.</h2>
+            </div>
+            <Link href="/projects" className="link-arrow">All {projects.length} projects →</Link>
+          </div>
+          <div className="grid-3">
+            {selected.map((p) => <ProjectCard key={p.title} project={p} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="section alt">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="label">How it works</span>
+              <h2>From first call to a site you own.</h2>
+            </div>
+          </div>
+          <ol className="steps">
+            {steps.map((s) => (
+              <li key={s.title}><h3>{s.title}</h3><p>{s.text}</p></li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="section">
+        <div className="wrap about">
+          <img src="/images/vishal-portrait.jpg" alt="Vishal Tiwari speaking at Thakur College" className="portrait" width="640" height="640" loading="lazy" />
+          <div>
+            <span className="label">About me</span>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.1rem)', marginBottom: 16 }}>One person, from the first call to fixes a year later.</h2>
+            <p>
+              I&apos;m a full-stack developer from Borivali, Mumbai. I finished my B.Sc. in IT at Thakur College in 2026
+              and have been building for the web since 2023: client sites, my own online store, and apps in React,
+              Next.js, Node.js, PHP and React Native.
+            </p>
+            <p>
+              When you hire me you deal with me directly. For bigger projects that need more hands, I also run a small
+              studio, <a href={site.studio.url} className="link-arrow" target="_blank" rel="noopener noreferrer">CustomAI</a>.
+            </p>
+            <dl className="facts">
+              <div><dt>Based in</dt><dd>Borivali West, Mumbai</dd></div>
+              <div><dt>Education</dt><dd>B.Sc. IT, Thakur College</dd></div>
+              <div><dt>Projects built</dt><dd>{projects.length}</dd></div>
+            </dl>
+            <p style={{ marginTop: 20 }}><Link href="/about" className="link-arrow">My story, skills and certificates →</Link></p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section" style={{ paddingTop: 0, borderTop: 0 }}>
+        <div className="wrap">
+          <div className="cta">
+            <div>
+              <h2>Have something in mind?</h2>
+              <p>Tell me what&apos;s slowing your business down. I&apos;ll reply within 24 hours with how I&apos;d fix it and what it would cost.</p>
+              <div className="cta-contact">
+                <span>Email <b>{site.email}</b></span>
+                <span>Phone / WhatsApp <b>{site.phone}</b></span>
+              </div>
+            </div>
+            <div className="btn-row" style={{ justifyContent: 'flex-start' }}>
+              <Link href="/contact" className="btn btn-primary">Start a project</Link>
+              <a href={site.whatsapp} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp me</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

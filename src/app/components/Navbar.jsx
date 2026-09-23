@@ -1,134 +1,51 @@
-﻿'use client'
+'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { nav } from '../data/site'
 
 export default function Navbar() {
-  const [scrolled,  setScrolled]  = useState(false)
-  const [progress,  setProgress]  = useState(0)
-  const [menuOpen,  setMenuOpen]  = useState(false)
-  const pathname = usePathname()
+  const path = usePathname()
+  const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40)
-      const total = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(total > 0 ? (window.scrollY / total) * 100 : 0)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  // Close the phone menu whenever the page changes.
+  useEffect(() => { setOpen(false) }, [path])
 
-  const links = [
-    { href: '/',               label: 'Home' },
-    { href: '/about',          label: 'About' },
-    { href: '/projects',       label: 'Projects' },
-    { href: '/skills',         label: 'Skills' },
-    { href: '/certifications', label: 'Certs' },
-    { href: '/college',        label: '🎬 Life' },
-    { href: '/services',       label: 'Services' },
-    { href: '/contact',        label: 'Contact' },
-  ]
+  const isActive = (href) => path === href || path.startsWith(href + '/')
 
   return (
-    <>
-      {/* Scroll progress bar */}
-      <div style={{
-        position: 'fixed', top: 0, left: 0,
-        height: '2px', width: `${progress}%`,
-        background: 'linear-gradient(to right, #dc2626, #ef4444, #ffffff)',
-        zIndex: 200, pointerEvents: 'none',
-        boxShadow: '0 0 8px rgba(239,68,68,0.65)',
-        transition: 'width 0.06s linear',
-      }} />
-
-      <nav style={{
-        position: 'fixed', top: 0, width: '100%', zIndex: 100,
-        transition: 'background 0.35s, border-color 0.35s, box-shadow 0.35s, backdrop-filter 0.35s',
-        ...(scrolled ? {
-          background: 'rgba(255,255,255,0.97)',
-          borderBottom: '1px solid rgba(239,68,68,0.15)',
-          boxShadow: '0 2px 20px rgba(0,0,0,0.08)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-        } : {
-          background: 'rgba(255,255,255,0.85)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
-        }),
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
-
-            {/* Logo */}
-            <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <span style={{ fontSize: '1.45rem', fontWeight: 900, letterSpacing: '-0.03em' }}>
-                <span className="gradient-text">V</span>
-                <span style={{ color: '#111827' }}>ishal</span>
-                <span style={{ color: '#ef4444', fontWeight: 900, fontSize: '1.7rem', lineHeight: 0 }}>.</span>
-              </span>
-            </Link>
-
-            {/* Desktop links */}
-            <div className="hide-mobile" style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-              {links.map(({ href, label }) => (
-                <Link key={href} href={href}
-                  className={`nav-link ${pathname === href ? 'active' : ''}`}
-                  style={{ fontSize: '0.875rem', letterSpacing: '0.025em', padding: '6px 12px', borderRadius: '8px' }}>
-                  {label}
-                </Link>
-              ))}
-              <Link href="/contact"
-                style={{
-                  marginLeft: '10px',
-                  padding: '9px 22px', borderRadius: '9px',
-                  fontWeight: 700, fontSize: '0.875rem', color: '#fff',
-                  textDecoration: 'none', letterSpacing: '0.03em',
-                  background: 'linear-gradient(135deg, #dc2626, #ffffff)',
-                  boxShadow: '0 4px 14px rgba(239,68,68,0.4)',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 22px rgba(239,68,68,0.55)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';   e.currentTarget.style.boxShadow = '0 4px 14px rgba(239,68,68,0.4)' }}>
-                Hire Me
-              </Link>
-            </div>
-
-            {/* Mobile hamburger */}
-            <button className="show-mobile" onClick={() => setMenuOpen(!menuOpen)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '6px', borderRadius: '8px', alignItems: 'center', justifyContent: 'center' }}>
-              {menuOpen
-                ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-              }
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile overlay */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <button onClick={() => setMenuOpen(false)}
-          style={{ position: 'absolute', top: '22px', right: '24px', background: 'none', border: 'none', cursor: 'pointer', color: '#374151' }}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    <header className="nav">
+      <div className="wrap nav-inner">
+        <Link href="/" className="brand">Vishal Tiwari<span>.</span></Link>
+        <nav aria-label="Main">
+          <ul className="nav-links">
+            {nav.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <Link href="/contact" className="btn btn-primary nav-cta">Start a project</Link>
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="nav-sheet"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+            {open ? <path d="M5 5l10 10M15 5L5 15" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
           </svg>
         </button>
-        <div style={{ position: 'absolute', top: '22px', left: '24px', fontSize: '1.3rem', fontWeight: 900 }}>
-          <span className="gradient-text">V</span><span style={{ color: '#111827' }}>ishal</span><span style={{ color: '#ef4444' }}>.</span>
-        </div>
-        {links.map(({ href, label }) => (
-          <Link key={href} href={href} onClick={() => setMenuOpen(false)}
-            style={{ fontSize: '1.7rem', fontWeight: 800, textDecoration: 'none', letterSpacing: '-0.02em', color: pathname === href ? '#ef4444' : '#111827', transition: 'color 0.2s' }}>
-            {label}
-          </Link>
-        ))}
-        <Link href="/contact" onClick={() => setMenuOpen(false)}
-          style={{ marginTop: '12px', padding: '14px 42px', borderRadius: '12px', color: '#fff', fontWeight: 700, fontSize: '1rem', textDecoration: 'none', background: 'linear-gradient(135deg,#dc2626,#ffffff)', boxShadow: '0 6px 20px rgba(239,68,68,0.4)' }}>
-          Hire Me
-        </Link>
       </div>
-    </>
+      <div id="nav-sheet" className="nav-sheet" hidden={!open}>
+        {nav.map(({ href, label }) => (
+          <Link key={href} href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</Link>
+        ))}
+        <Link href="/contact" className="btn btn-primary">Start a project</Link>
+      </div>
+    </header>
   )
 }
-

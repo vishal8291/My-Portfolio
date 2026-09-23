@@ -1,189 +1,144 @@
-'use client'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { site } from '../data/site'
 
-function useScrollReveal() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.1 }
-    )
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+export const metadata = {
+  title: 'About',
+  description: 'Vishal Tiwari: freelance full-stack developer from Borivali, Mumbai. Story, skills, education and certificates.',
+  alternates: { canonical: '/about' },
 }
 
+const journey = [
+  { yr: '2026', title: 'First client, own store, own studio', text: 'Delivered MAHAGRO INDIA\'s booking site, my first paid client project. Launched Wonder Quest, my own online store, and started CustomAI. Finished my B.Sc. IT (CGPA 7.47, Grade A).' },
+  { yr: '2025', title: 'Going full stack', text: 'Built CareOps, LexAgent, the AI Learning Assistant, Paperbag and PDFSolution: real backends, logins, payments and deployment.' },
+  { yr: '2024', title: 'First real projects', text: 'An ATM management system and a railway announcement system in Java, then my first React and Node.js apps.' },
+  { yr: '2023', title: 'B.Sc. IT at Thakur College', text: 'Started my degree and learned the foundations: C, C++, Java and web technologies.' },
+  { yr: '2022', title: 'The spark', text: 'After lockdown, curiosity about how technology works turned into learning to program.' },
+]
+
+const skills = [
+  { group: 'Languages', items: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'Java', 'C', 'HTML', 'CSS'] },
+  { group: 'Frontend and mobile', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'React Native', 'Expo'] },
+  { group: 'Backend', items: ['Node.js', 'Express', 'FastAPI', 'PHP', 'REST APIs'] },
+  { group: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Supabase', 'Firebase', 'Redis'] },
+  { group: 'Payments and messaging', items: ['Razorpay', 'Resend email', 'WhatsApp Cloud API', 'Claude API'] },
+  { group: 'Hosting and tools', items: ['Vercel', 'Hostinger', 'Cloudflare', 'Docker', 'Git', 'GitHub Actions'] },
+]
+
+const certificates = [
+  { title: 'Deloitte Training Certificate', issuer: 'Deloitte', year: '2025', file: '/Deloit.pdf' },
+  { title: 'Python with Data Science', issuer: 'NPTEL', year: '2025', file: '/NPTEL-Python-DataScience.pdf' },
+  { title: 'IIRS Remote Sensing Certificate', issuer: 'IIRS (ISRO)', year: '2024', file: '/IIRS cerificate.pdf' },
+  { title: 'LiveMint Certification', issuer: 'LiveMint', year: '2024', file: '/livemint.pdf' },
+  { title: 'DLLE Udaan Certificate', issuer: 'DLLE', year: '2024', file: '/DLLEUdaan.pdf' },
+  { title: 'Disaster Management Certificate', issuer: 'Thakur College', year: '2024', file: '/Disastermgmt.pdf' },
+  { title: 'Annual Extension Certificate', issuer: 'Thakur College', year: '2024', file: '/Annual Extension.png' },
+  { title: 'TCS Advanced Certification', issuer: 'Tata Consultancy Services', year: '2023', file: '/TCS2.pdf' },
+  { title: 'TCS Certification', issuer: 'Tata Consultancy Services', year: '2023', file: '/TCS.pdf' },
+  { title: 'IIT Participant Certificate', issuer: 'IIT', year: '2023', file: '/IIT.pdf' },
+]
+
 export default function AboutPage() {
-  useScrollReveal()
-
-  const interests = [
-    { name: 'Full Stack Engineering', icon: '🌐', color: '#818cf8' },
-    { name: 'Mobile Engineering',     icon: '📱', color: '#22d3ee' },
-    { name: 'AI / ML',                icon: '🤖', color: '#f472b6' },
-    { name: 'Data Structures',        icon: '🧩', color: '#fbbf24' },
-    { name: 'Entrepreneurship',       icon: '🚀', color: '#34d399' },
-    { name: 'Game Development',       icon: '🎮', color: '#fb923c' },
-  ]
-
-  const journey = [
-    { year: '2022',   title: 'The Spark',             desc: 'After lockdown, curiosity about technology led me to start learning programming. Watching a movie was the unexpected trigger.', color: '#818cf8' },
-    { year: '2023',   title: 'B.Sc. IT, Thakur College', desc: 'Started my degree in Information Technology. Built foundations in C, C++, Java, and web technologies.', color: '#22d3ee' },
-    { year: '2024',   title: 'First Real Projects',   desc: 'Built ATM Management System, Railway Announcement System, and started exploring React and Node.js.', color: '#f472b6' },
-    { year: '2025',   title: 'Going Full Stack',       desc: 'Launched CareOps, LexAgent, AI Learning Assistant, Vistora Chat App and multiple other production level projects.', color: '#fbbf24' },
-    { year: '2026',   title: 'Degree Completed & Building Products', desc: 'Graduated with B.Sc. IT (CGPA 7.47). Building Paperbag, ShaktiCycle, PDFSolution, and DogCare, actively seeking full time opportunities.', color: '#34d399' },
-  ]
-
-  const facts = [
-    { icon: '📍', label: 'Location',   text: 'Borivali West, Mumbai, India' },
-    { icon: '🎓', label: 'Education',  text: 'B.Sc. IT, Thakur College of Science & Commerce' },
-    { icon: '📊', label: 'CGPA',       text: '7.47 · Grade A (2023 to 2026)' },
-    { icon: '💼', label: 'Status',     text: 'Open to full time roles' },
-    { icon: '🧠', label: 'Stack',      text: '22 core technologies' },
-    { icon: '📦', label: 'Projects',   text: '18+ projects built & counting' },
-  ]
-
   return (
-    <div style={{ paddingTop: '68px' }}>
-
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section style={{ padding: '90px 24px 72px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div className="dot-bg" style={{ position: 'absolute', inset: 0, zIndex: 0 }} />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '680px', margin: '0 auto' }}>
-          <div className="line-decoration" style={{ margin: '0 auto 22px' }} />
-          <h1 style={{ fontSize: 'clamp(2.4rem, 7vw, 3.8rem)', fontWeight: 900, marginBottom: '20px', letterSpacing: '-0.035em', lineHeight: 1.05 }}>
-            About <span className="gradient-text">Me</span>
-          </h1>
-          <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.85, maxWidth: '560px', margin: '0 auto' }}>
-            Full Stack Developer based in Mumbai, focused on building scalable platforms and AI integrated systems.
-          </p>
-        </div>
-      </section>
-
-      {/* ── STORY + FACTS ─────────────────────────────────── */}
-      <section style={{ padding: '80px 24px 100px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '72px', alignItems: 'start' }}>
-
-          {/* Story */}
-          <div className="reveal-left">
-            <h2 style={{ fontSize: '1.9rem', fontWeight: 900, marginBottom: '28px', letterSpacing: '-0.025em' }}>
-              My <span className="gradient-text">Story</span>
-            </h2>
-            {[
-              'Full Stack Developer with hands on experience building scalable, production grade platforms and AI integrated systems for real world use cases.',
-              'Proven track record delivering solutions from start to finish across ecommerce, healthcare, and legal technology domains, with strong command of authentication, deployment, and cloud infrastructure practices.',
-              'Completed B.Sc. in Information Technology at Thakur College of Science and Commerce (CGPA: 7.47, Grade A, 2023 to 2026). Shipped production systems including LexAgent, Paperbag, ShaktiCycle, and Vistora.',
-              'Outside engineering, I manage a petrol pump and run the clothing brand Vistora, alongside ongoing business development work.',
-            ].map((para, i) => (
-              <p key={i} style={{ color: '#475569', lineHeight: 1.88, marginBottom: '18px', fontSize: '0.97rem' }}>{para}</p>
-            ))}
-
-            <div style={{ marginTop: '32px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <Link href="/projects" className="btn-primary"
-                style={{ padding: '12px 26px', borderRadius: '10px', fontWeight: 700, fontSize: '0.875rem', color: '#fff', textDecoration: 'none' }}>
-                See Projects →
-              </Link>
-              <Link href="/contact" className="btn-outline"
-                style={{ padding: '12px 26px', borderRadius: '10px', fontWeight: 600, fontSize: '0.875rem', color: '#dc2626', textDecoration: 'none' }}>
-                Get in Touch
-              </Link>
+    <>
+      <header className="page-head">
+        <div className="wrap about">
+          <img src="/images/vishal-portrait.jpg" alt="Vishal Tiwari speaking at Thakur College" className="portrait" width="640" height="640" />
+          <div>
+            <span className="label">About</span>
+            <h1>I&apos;m Vishal, and I build things that have to work.</h1>
+            <p className="lede">
+              A full-stack developer from Borivali, Mumbai. I build websites, online stores and business tools,
+              and I care as much about what happens after launch as before it.
+            </p>
+            <div className="btn-row" style={{ marginTop: 24 }}>
+              <Link href="/contact" className="btn btn-primary">Start a project</Link>
+              <a href={site.resume} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
             </div>
           </div>
+        </div>
+      </header>
 
-          {/* Quick Facts */}
-          <div className="reveal-right">
-            <h2 style={{ fontSize: '1.9rem', fontWeight: 900, marginBottom: '28px', letterSpacing: '-0.025em' }}>
-              Quick <span className="gradient-text">Facts</span>
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
-              {facts.map(({ icon, label, text }) => (
-                <div key={label} className="card-glass" style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderRadius: '12px' }}>
-                  <span style={{ fontSize: '1.15rem', flexShrink: 0 }}>{icon}</span>
-                  <div>
-                    <div style={{ fontSize: '0.67rem', fontWeight: 700, letterSpacing: '0.08em', color: '#475569', textTransform: 'uppercase', marginBottom: '2px' }}>{label}</div>
-                    <div style={{ color: '#475569', fontSize: '0.875rem', fontWeight: 500 }}>{text}</div>
-                  </div>
-                </div>
+      <section className="section">
+        <div className="wrap two-col">
+          <div>
+            <span className="label">My story</span>
+            <h2 style={{ fontSize: '1.7rem', marginBottom: 18 }}>From college projects to a paying client.</h2>
+            <p>
+              I started programming in 2022 and finished my B.Sc. in Information Technology at Thakur College of
+              Science and Commerce in 2026. Along the way I built projects across online stores, healthcare and legal
+              tech, each with real logins, databases, payments and deployment.
+            </p>
+            <p style={{ marginTop: 14 }}>
+              In 2026 I delivered my first paid client project, MAHAGRO INDIA, launched my own online store, Wonder
+              Quest, and started a small studio, <a href={site.studio.url} className="link-arrow" target="_blank" rel="noopener noreferrer">CustomAI</a>.
+              What I learned from running real sites: the hard part isn&apos;t launch day. It&apos;s making sure every
+              booking, payment and message still arrives months later, when nobody is watching.
+            </p>
+            <p style={{ marginTop: 14 }}>
+              Outside engineering, I manage a petrol pump and run the clothing brand Vistora, so I know what running a
+              small business actually takes.
+            </p>
+          </div>
+          <div>
+            <span className="label">Journey</span>
+            <ol className="timeline" style={{ marginTop: 6 }}>
+              {journey.map((j) => (
+                <li key={j.yr}><span className="yr">{j.yr}</span><h3>{j.title}</h3><p>{j.text}</p></li>
               ))}
-            </div>
+            </ol>
+          </div>
+        </div>
+      </section>
 
-            {/* Current Focus */}
-            <div style={{ padding: '24px 26px', borderRadius: '18px', background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.18)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                <span className="status-dot" />
-                <h3 style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: '#ef4444', textTransform: 'uppercase' }}>Current Focus</h3>
+      <section className="section alt" id="skills">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="label">Skills</span>
+              <h2>What I work with.</h2>
+            </div>
+            <p>Every tool listed here is used in a project on this site.</p>
+          </div>
+          <div className="skills">
+            {skills.map((s) => (
+              <div key={s.group}>
+                <h3>{s.group}</h3>
+                <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
               </div>
-              {[
-                'Building Paperbag, ShaktiCycle, PDFSolution & DogCare',
-                'Mastering DSA & System Design',
-                'Seeking full time developer roles',
-                'Exploring AI/ML integrations',
-              ].map(item => (
-                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '11px', color: '#475569', fontSize: '0.875rem' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#ef4444', flexShrink: 0, boxShadow: '0 0 6px #ef4444' }} />
-                  {item}
-                </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="certifications">
+        <div className="wrap two-col">
+          <div>
+            <span className="label">Education</span>
+            <h2 style={{ fontSize: '1.7rem', marginBottom: 18 }}>B.Sc. Information Technology</h2>
+            <ul className="rows">
+              <li><span><span className="r-sub">College</span><br /><span className="r-title">Thakur College of Science and Commerce</span></span></li>
+              <li><span><span className="r-sub">Years</span><br /><span className="r-title">2023 to 2026</span></span></li>
+              <li><span><span className="r-sub">Result</span><br /><span className="r-title">CGPA 7.47, Grade A</span></span></li>
+            </ul>
+            <p style={{ marginTop: 24 }}>
+              Outside the classroom I led campus campaigns, field surveys and Youth Parliament sessions.{' '}
+              <Link href="/college" className="link-arrow">See them →</Link>
+            </p>
+          </div>
+          <div>
+            <span className="label">Certificates</span>
+            <h2 style={{ fontSize: '1.7rem', marginBottom: 18 }}>{certificates.length} certificates, each one viewable.</h2>
+            <ul className="rows">
+              {certificates.map((c) => (
+                <li key={c.title}>
+                  <span><span className="r-title">{c.title}</span><br /><span className="r-sub">{c.issuer} · {c.year}</span></span>
+                  <a href={encodeURI(c.file)} target="_blank" rel="noopener noreferrer">View ↗</a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
-
-      {/* ── JOURNEY TIMELINE ─────────────────────────────── */}
-      <section style={{ padding: '80px 24px 100px', background: 'rgba(239,68,68,0.04)', position: 'relative' }}>
-        <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <div className="line-decoration" style={{ margin: '0 auto 18px' }} />
-            <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.6rem)', fontWeight: 900, letterSpacing: '-0.03em' }}>
-              My <span className="gradient-text">Journey</span>
-            </h2>
-          </div>
-
-          <div style={{ position: 'relative', paddingLeft: '44px' }}>
-            <div className="timeline-line" style={{ left: '6px' }} />
-            {journey.map(({ year, title, desc, color }, i) => (
-              <div key={year} className={`reveal reveal-delay-${i + 1}`}
-                style={{ marginBottom: i === journey.length - 1 ? 0 : '48px', position: 'relative' }}>
-                {/* Dot */}
-                <div style={{
-                  position: 'absolute', left: '-38px', top: '6px',
-                  width: '16px', height: '16px', borderRadius: '50%',
-                  background: color, border: '2px solid #ffffff',
-                  boxShadow: `0 0 14px ${color}80`,
-                }} />
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color, letterSpacing: '0.06em', background: `${color}14`, padding: '2px 10px', borderRadius: '999px', border: `1px solid ${color}30` }}>{year}</span>
-                </div>
-                <h3 style={{ fontSize: '1.08rem', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{title}</h3>
-                <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.78 }}>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── AREAS OF INTEREST ────────────────────────────── */}
-      <section style={{ padding: '80px 24px 100px' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: '52px' }}>
-            <div className="line-decoration" style={{ margin: '0 auto 18px' }} />
-            <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.6rem)', fontWeight: 900, letterSpacing: '-0.03em' }}>
-              Areas of <span className="gradient-text">Interest</span>
-            </h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))', gap: '14px' }}>
-            {interests.map(({ name, icon, color }, i) => (
-              <div key={name} className={`card-glass reveal reveal-delay-${i + 1}`}
-                style={{ borderRadius: '16px', padding: '30px 16px', textAlign: 'center', cursor: 'default', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}60, transparent)` }} />
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(to right, transparent, ${color}20, transparent)` }} />
-                <div style={{ fontSize: '2.4rem', marginBottom: '14px' }}>{icon}</div>
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#334155', lineHeight: 1.3 }}>{name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   )
 }
