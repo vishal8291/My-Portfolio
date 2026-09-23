@@ -3,12 +3,12 @@ import { site } from '../data/site'
 
 export const metadata = {
   title: 'About',
-  description: 'Vishal Tiwari: freelance full-stack developer from Borivali, Mumbai. Story, skills, education and certificates.',
+  description: 'Vishal Tiwari, founder of CustomeAI: full-stack developer from Borivali, Mumbai. Story, skills, education and certificates.',
   alternates: { canonical: '/about' },
 }
 
 const journey = [
-  { yr: '2026', title: 'First client, own store, own studio', text: 'Delivered MAHAGRO INDIA\'s booking site, my first paid client project. Launched Wonder Quest, my own online store, and started CustomAI. Finished my B.Sc. IT (CGPA 7.47, Grade A).' },
+  { yr: '2026', title: 'Founded CustomeAI', text: 'Started CustomeAI, a studio for websites, AI agents and automation. Delivered MAHAGRO INDIA\'s booking site, our first paid client project, and launched Wonder Quest, my own online store. Finished my B.Sc. IT (CGPA 7.47, Grade A).' },
   { yr: '2025', title: 'Going full stack', text: 'Built CareOps, LexAgent, the AI Learning Assistant, Paperbag and PDFSolution: real backends, logins, payments and deployment.' },
   { yr: '2024', title: 'First real projects', text: 'An ATM management system and a railway announcement system in Java, then my first React and Node.js apps.' },
   { yr: '2023', title: 'B.Sc. IT at Thakur College', text: 'Started my degree and learned the foundations: C, C++, Java and web technologies.' },
@@ -45,10 +45,10 @@ export default function AboutPage() {
           <img src="/images/vishal-portrait.jpg" alt="Vishal Tiwari speaking at Thakur College" className="portrait" width="640" height="640" />
           <div>
             <span className="label">About</span>
-            <h1>I&apos;m Vishal, and I build things that have to work.</h1>
+            <h1>I&apos;m Vishal, founder of {site.studio.name}.</h1>
             <p className="lede">
-              A full-stack developer from Borivali, Mumbai. I build websites, online stores and business tools,
-              and I care as much about what happens after launch as before it.
+              A full-stack developer from Borivali, Mumbai. I founded {site.studio.name} to build websites, AI agents and
+              automation tools that small businesses can rely on long after launch day.
             </p>
             <div className="btn-row" style={{ marginTop: 24 }}>
               <Link href="/contact" className="btn btn-primary">Start a project</Link>
@@ -62,7 +62,7 @@ export default function AboutPage() {
         <div className="wrap two-col">
           <div>
             <span className="label">My story</span>
-            <h2 style={{ fontSize: '1.7rem', marginBottom: 18 }}>From college projects to a paying client.</h2>
+            <h2 style={{ fontSize: '1.7rem', marginBottom: 18 }}>From college projects to a studio.</h2>
             <p>
               I started programming in 2022 and finished my B.Sc. in Information Technology at Thakur College of
               Science and Commerce in 2026. Along the way I built projects across online stores, healthcare and legal
@@ -70,7 +70,7 @@ export default function AboutPage() {
             </p>
             <p style={{ marginTop: 14 }}>
               In 2026 I delivered my first paid client project, MAHAGRO INDIA, launched my own online store, Wonder
-              Quest, and started a small studio, <a href={site.studio.url} className="link-arrow" target="_blank" rel="noopener noreferrer">CustomAI</a>.
+              Quest, and founded <a href={site.studio.url} className="link-arrow" target="_blank" rel="noopener noreferrer">{site.studio.name}</a> to do this work properly for other small businesses.
               What I learned from running real sites: the hard part isn&apos;t launch day. It&apos;s making sure every
               booking, payment and message still arrives months later, when nobody is watching.
             </p>

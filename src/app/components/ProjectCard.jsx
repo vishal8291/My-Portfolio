@@ -1,4 +1,4 @@
-const KIND_LABEL = { Client: 'Client work', Product: 'My product', Studio: 'My studio', Personal: 'Personal' }
+const KIND_LABEL = { Client: 'Client work', Product: 'Own product', Studio: 'The studio', Personal: 'Personal' }
 
 export default function ProjectCard({ project, priority = false }) {
   const { title, kind, year, category, summary, tech, liveUrl, githubUrl, image } = project

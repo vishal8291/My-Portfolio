@@ -236,6 +236,27 @@ img { height: auto; }
 @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
 
+.promises { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 44px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
+.promises > div { padding: 18px 20px; border-right: 1px solid var(--border); }
+.promises > div:last-child { border-right: 0; }
+.promises h3 { font-size: 1rem; margin-bottom: 6px; }
+.promises p { font-size: 0.93rem; color: var(--muted); }
+@media (max-width: 900px) {
+  .promises { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .promises > div:nth-child(2) { border-right: 0; }
+  .promises > div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 560px) {
+  .promises { grid-template-columns: 1fr; }
+  .promises > div { border-right: 0; border-bottom: 1px solid var(--border); }
+  .promises > div:last-child { border-bottom: 0; }
+}
+
+/* ── Join band ──────────────────────────────────────────── */
+.join-band { display: grid; grid-template-columns: minmax(0, 1.6fr) auto; gap: 28px 48px; align-items: end; }
+.join-band h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+@media (max-width: 760px) { .join-band { grid-template-columns: 1fr; } }
+
 /* ── About strip ────────────────────────────────────────── */
 .about { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: start; }
 .portrait { width: 220px; aspect-ratio: 1; border-radius: var(--radius); object-fit: cover; border: 1px solid var(--border); }

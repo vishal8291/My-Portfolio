@@ -1,23 +1,12 @@
 import Link from 'next/link'
-import { services, steps } from '../data/services'
+import { offerings, capabilities, promises, steps } from '../data/services'
 import { site } from '../data/site'
 
 export const metadata = {
-  title: 'Services',
-  description: 'Websites, bookings and payments, online stores, admin panels, automation and care after launch, for small businesses.',
+  title: 'What we build',
+  description: `${site.studio.name} builds websites, AI agents and automation tools for small businesses in India, around the problem each one brings us.`,
   alternates: { canonical: '/services' },
 }
-
-const included = [
-  'A fixed quote in writing before any work starts',
-  'A live preview link while it is being built',
-  'Works on phones first, and loads fast',
-  'Domain and hosting set up in your name, not mine',
-  'Email sent from your domain, so it reaches the inbox, not spam',
-  'The source code and every login, handed to you',
-  'A plain-language guide to running your site',
-  'Automatic uptime checks after launch',
-]
 
 const goodFit = [
   ['Training institutes and coaches', 'who take bookings and deposits'],
@@ -31,11 +20,11 @@ export default function ServicesPage() {
     <>
       <header className="page-head">
         <div className="wrap">
-          <span className="label">Services</span>
-          <h1>What I can build for your business.</h1>
+          <span className="label">What we build · {site.studio.name}</span>
+          <h1>Websites, AI agents and automation, built around your problem.</h1>
           <p className="lede">
-            Everything below is something I&apos;ve built and run for real. Not sure which one you need?
-            Describe the problem and I&apos;ll suggest the simplest thing that fixes it.
+            You don&apos;t pick a package off a list. Tell us what&apos;s going wrong and we&apos;ll suggest the simplest
+            thing that fixes it, whether that&apos;s a website, an AI agent or an automation tool.
           </p>
         </div>
       </header>
@@ -43,13 +32,22 @@ export default function ServicesPage() {
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="wrap">
           <div className="svc">
-            {services.map((s) => (
+            {offerings.map((s) => (
               <div className="svc-row" key={s.title}>
                 <h3>{s.title}</h3>
                 <p>{s.what}</p>
                 <p className="eg">For example: <b>{s.proof[0]}</b>, {s.proof[1]}</p>
               </div>
             ))}
+          </div>
+          <div className="section-head" style={{ marginTop: 56, marginBottom: 20 }}>
+            <div>
+              <span className="label">Also inside our projects</span>
+              <h2 style={{ fontSize: '1.6rem' }}>The parts that make it work for a real business.</h2>
+            </div>
+          </div>
+          <div className="promises" style={{ marginTop: 0 }}>
+            {capabilities.map((c) => <div key={c.title}><h3>{c.title}</h3><p>{c.what}</p></div>)}
           </div>
         </div>
       </section>
@@ -58,8 +56,8 @@ export default function ServicesPage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <span className="label">How it works</span>
-              <h2>Four steps, no surprises.</h2>
+              <span className="label">How we work</span>
+              <h2>Four stages, each ending in a checkpoint.</h2>
             </div>
           </div>
           <ol className="steps">
@@ -71,12 +69,19 @@ export default function ServicesPage() {
       <section className="section">
         <div className="wrap two-col">
           <div>
-            <span className="label">Included in every project</span>
-            <h2 style={{ fontSize: '1.7rem', marginBottom: 20 }}>What you get.</h2>
-            <ul className="ticks">{included.map((i) => <li key={i}>{i}</li>)}</ul>
+            <span className="label">Our promises</span>
+            <h2 style={{ fontSize: '1.7rem', marginBottom: 20 }}>What you can count on.</h2>
+            <ul className="rows">
+              {promises.map((p) => (
+                <li key={p.title}><span><span className="r-title">{p.title}</span><br /><span className="r-sub">{p.text}</span></span></li>
+              ))}
+            </ul>
+            <p style={{ marginTop: 18 }}>
+              <a href={site.studio.pricing} className="link-arrow" target="_blank" rel="noopener noreferrer">See {site.studio.name} pricing ↗</a>
+            </p>
           </div>
           <div>
-            <span className="label">Who I work with best</span>
+            <span className="label">Who we work with best</span>
             <h2 style={{ fontSize: '1.7rem', marginBottom: 20 }}>Small businesses that are ready to grow.</h2>
             <ul className="rows">
               {goodFit.map(([who, why]) => (
@@ -91,8 +96,8 @@ export default function ServicesPage() {
         <div className="wrap">
           <div className="cta">
             <div>
-              <h2>Get a quote.</h2>
-              <p>A few lines about your business is enough. You&apos;ll get a fixed price and a plan within 24 hours.</p>
+              <h2>Tell us the problem.</h2>
+              <p>A few lines about your business is enough. You&apos;ll get an honest read and a real price within 24 hours.</p>
               <div className="cta-contact">
                 <span>Email <b>{site.email}</b></span>
                 <span>Phone / WhatsApp <b>{site.phone}</b></span>

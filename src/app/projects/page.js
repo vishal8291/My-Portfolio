@@ -17,7 +17,7 @@ export default function ProjectsPage() {
           <span className="label">Work</span>
           <h1>Everything I&apos;ve built, and what it was for.</h1>
           <p className="lede">
-            {projects.length} projects: client work, my own products, and apps built to learn. Each is labelled
+            {projects.length}{' '}projects: client work, my own products, and apps built to learn. Each is labelled
             honestly, and {live} have a live link you can open right now.
           </p>
         </div>

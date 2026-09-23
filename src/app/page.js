@@ -2,7 +2,7 @@ import Link from 'next/link'
 import HeroVideo from './components/HeroVideo.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
 import projects from './data/projectsData'
-import { services, steps } from './data/services'
+import { offerings, promises, steps } from './data/services'
 import { site } from './data/site'
 
 const mahagro = projects.find((p) => p.title === 'MAHAGRO INDIA')
@@ -15,19 +15,20 @@ export default function Home() {
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
-            <span className="label">Freelance full-stack developer · Mumbai</span>
-            <h1>Websites and business tools that <em>keep working</em> after launch.</h1>
+            <span className="label">Founder, {site.studio.name} · Mumbai</span>
+            <h1>I build software small businesses can <em>trust with real work.</em></h1>
             <p className="lede">
-              I&apos;m Vishal. I build websites, online stores and booking systems for small businesses, with
-              payments, WhatsApp and email set up properly, and I look after them once they&apos;re live.
+              I&apos;m Vishal Tiwari, founder of {site.studio.name}. We build websites, AI agents and automation
+              tools for small businesses in India, around the specific problem each one brings us, and we keep
+              them running long after launch.
             </p>
             <div className="btn-row">
               <Link href="/contact" className="btn btn-primary">Start a project</Link>
-              <Link href="/projects" className="btn btn-ghost">See my work</Link>
+              <Link href="/join" className="btn btn-ghost">Join the team</Link>
             </div>
             <ul className="hero-facts">
               <li><span className="dot" aria-hidden="true" />Taking new projects</li>
-              <li>You deal with me directly</li>
+              <li>You own everything we build</li>
               <li>Reply within 24 hours</li>
             </ul>
           </div>
@@ -39,37 +40,37 @@ export default function Home() {
       <section className="section alt" style={{ paddingBlock: 40 }}>
         <div className="wrap">
           <nav className="proof" aria-label="Live work">
+            <a href={site.studio.url} target="_blank" rel="noopener noreferrer">
+              <span className="k">The studio</span>
+              <span className="t">{site.studio.name}</span>
+              <span className="d"><span className="dot" aria-hidden="true" />Live · customeai.tech</span>
+            </a>
             <a href="https://mahagroindia.com" target="_blank" rel="noopener noreferrer">
               <span className="k">Client</span>
               <span className="t">MAHAGRO INDIA</span>
               <span className="d"><span className="dot" aria-hidden="true" />Live · mahagroindia.com</span>
             </a>
             <a href="https://wonderquest.vishal-tiwari.me" target="_blank" rel="noopener noreferrer">
-              <span className="k">My product</span>
+              <span className="k">Own product</span>
               <span className="t">Wonder Quest</span>
               <span className="d"><span className="dot" aria-hidden="true" />Live · takes payments online</span>
-            </a>
-            <a href={site.studio.url} target="_blank" rel="noopener noreferrer">
-              <span className="k">My studio</span>
-              <span className="t">CustomAI</span>
-              <span className="d"><span className="dot" aria-hidden="true" />Live · customeai.tech</span>
             </a>
           </nav>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="section" id="services">
+      {/* What we build */}
+      <section className="section" id="build">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <span className="label">What I build</span>
-              <h2>Everything a small business needs online, built to last.</h2>
+              <span className="label">What we build</span>
+              <h2>Three things, each built around your actual problem.</h2>
             </div>
-            <Link href="/services" className="link-arrow">How I work and what&apos;s included →</Link>
+            <Link href="/services" className="link-arrow">Everything we build →</Link>
           </div>
           <div className="svc">
-            {services.map((s) => (
+            {offerings.map((s) => (
               <div className="svc-row" key={s.title}>
                 <h3>{s.title}</h3>
                 <p>{s.what}</p>
@@ -97,7 +98,7 @@ export default function Home() {
             <div>
               <h3>The problem</h3>
               <p>{mahagro.caseStudy.problem}</p>
-              <h3>What I built</h3>
+              <h3>What we built</h3>
               <ul className="ticks">{mahagro.caseStudy.built.map((b) => <li key={b}>{b}</li>)}</ul>
               <h3>Where it stands</h3>
               <ul className="ticks">{mahagro.caseStudy.now.map((b) => <li key={b}>{b}</li>)}</ul>
@@ -112,7 +113,7 @@ export default function Home() {
           <div className="section-head">
             <div>
               <span className="label">More work</span>
-              <h2>Stores, tools and apps I&apos;ve built.</h2>
+              <h2>Stores, AI tools and apps we&apos;ve built.</h2>
             </div>
             <Link href="/projects" className="link-arrow">All {projects.length} projects →</Link>
           </div>
@@ -122,42 +123,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process */}
+      {/* Process + promises */}
       <section className="section alt">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <span className="label">How it works</span>
-              <h2>From first call to a site you own.</h2>
+              <span className="label">How we work</span>
+              <h2>Four stages, each ending in a checkpoint.</h2>
             </div>
           </div>
           <ol className="steps">
-            {steps.map((s) => (
-              <li key={s.title}><h3>{s.title}</h3><p>{s.text}</p></li>
-            ))}
+            {steps.map((s) => <li key={s.title}><h3>{s.title}</h3><p>{s.text}</p></li>)}
           </ol>
+          <div className="promises">
+            {promises.map((p) => (
+              <div key={p.title}><h3>{p.title}</h3><p>{p.text}</p></div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* About */}
+      {/* Founder */}
       <section className="section">
         <div className="wrap about">
           <img src="/images/vishal-portrait.jpg" alt="Vishal Tiwari speaking at Thakur College" className="portrait" width="640" height="640" loading="lazy" />
           <div>
-            <span className="label">About me</span>
-            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.1rem)', marginBottom: 16 }}>One person, from the first call to fixes a year later.</h2>
+            <span className="label">The founder</span>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.1rem)', marginBottom: 16 }}>Why I started {site.studio.name}.</h2>
             <p>
-              I&apos;m a full-stack developer from Borivali, Mumbai. I finished my B.Sc. in IT at Thakur College in 2026
-              and have been building for the web since 2023: client sites, my own online store, and apps in React,
-              Next.js, Node.js, PHP and React Native.
+              Small businesses get sold websites that look fine on launch day and quietly break after: bookings that
+              never arrive, emails in spam, payments nobody recorded. I started {site.studio.name} in 2026 to build the
+              opposite, software that keeps working when nobody is watching.
             </p>
             <p>
-              When you hire me you deal with me directly. For bigger projects that need more hands, I also run a small
-              studio, <a href={site.studio.url} className="link-arrow" target="_blank" rel="noopener noreferrer">CustomAI</a>.
+              I&apos;m a full-stack developer from Borivali, Mumbai, with a B.Sc. in IT from Thakur College. I lead every
+              project myself, so clients deal with the person building their system, not a salesperson.
             </p>
             <dl className="facts">
+              <div><dt>Founded</dt><dd>{site.studio.name}, 2026</dd></div>
               <div><dt>Based in</dt><dd>Borivali West, Mumbai</dd></div>
-              <div><dt>Education</dt><dd>B.Sc. IT, Thakur College</dd></div>
               <div><dt>Projects built</dt><dd>{projects.length}</dd></div>
             </dl>
             <p style={{ marginTop: 20 }}><Link href="/about" className="link-arrow">My story, skills and certificates →</Link></p>
@@ -165,19 +169,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Join */}
+      <section className="section alt" id="join">
+        <div className="wrap join-band">
+          <div>
+            <span className="label">Join us</span>
+            <h2>Good at something? Build with us.</h2>
+            <p className="lede" style={{ marginTop: 14 }}>
+              {site.studio.name}{' '}is a small studio growing project by project. If you&apos;re strong in development,
+              design, AI, content or sales, show me your work. Freshers welcome: I care about what you&apos;ve built,
+              not your marks.
+            </p>
+          </div>
+          <div className="btn-row">
+            <Link href="/join" className="btn btn-primary">Send your work</Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="section" style={{ paddingTop: 0, borderTop: 0 }}>
+      <section className="section" style={{ borderTop: 0 }}>
         <div className="wrap">
           <div className="cta">
             <div>
-              <h2>Have something in mind?</h2>
-              <p>Tell me what&apos;s slowing your business down. I&apos;ll reply within 24 hours with how I&apos;d fix it and what it would cost.</p>
+              <h2>Have a problem worth solving?</h2>
+              <p>Tell us what&apos;s slowing your business down. You&apos;ll get an honest answer within 24 hours on what would fix it and what it would cost.</p>
               <div className="cta-contact">
                 <span>Email <b>{site.email}</b></span>
                 <span>Phone / WhatsApp <b>{site.phone}</b></span>
               </div>
             </div>
-            <div className="btn-row" style={{ justifyContent: 'flex-start' }}>
+            <div className="btn-row">
               <Link href="/contact" className="btn btn-primary">Start a project</Link>
               <a href={site.whatsapp} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp me</a>
             </div>

@@ -46,7 +46,7 @@ const projects = [
     featured: true,
   },
   {
-    title: 'CustomAI',
+    title: 'CustomeAI',
     kind: 'Studio',
     year: 2026,
     category: 'Website',

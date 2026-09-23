@@ -76,7 +76,7 @@ export default function HeroVideo() {
         {sound ? 'Sound on' : 'Play with sound'}
       </button>
       <figcaption className="stage-caption">
-        <span><b>Vishal Tiwari</b> · that&apos;s me, animated</span>
+        <span><b>Vishal Tiwari</b> · Founder, CustomeAI</span>
         <span className="mono">Mumbai</span>
       </figcaption>
     </figure>

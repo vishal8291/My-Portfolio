@@ -7,15 +7,15 @@ import '../styles/globals.css'
 const sans = Schibsted_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-sans', display: 'swap' })
 const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
 
-const title = 'Vishal Tiwari · Freelance full-stack developer in Mumbai'
+const title = 'Vishal Tiwari · Founder of CustomeAI'
 const description =
-  'I build websites, online stores, booking and payment systems and business tools for small businesses, and look after them once they are live.'
+  'Vishal Tiwari is the founder of CustomeAI, a Mumbai studio building websites, AI agents and automation tools for small businesses in India.'
 
 export const metadata = {
   metadataBase: new URL(site.url),
   title: { default: title, template: '%s · Vishal Tiwari' },
   description,
-  keywords: ['freelance web developer Mumbai', 'website for small business', 'Next.js developer', 'Razorpay integration', 'Vishal Tiwari'],
+  keywords: ['Vishal Tiwari', 'CustomeAI', 'founder', 'website for small business', 'AI agents', 'automation', 'Mumbai'],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   alternates: { canonical: '/' },

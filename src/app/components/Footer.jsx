@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="brand">Vishal Tiwari<span>.</span></Link>
             <p className="muted" style={{ marginTop: 12, maxWidth: '36ch' }}>
-              Freelance full-stack developer in {site.city}. Websites, stores and business tools for small businesses.
+              Founder of {site.studio.name}. Websites, AI agents and automation tools for small businesses in India.
             </p>
           </div>
           <div>
@@ -24,7 +24,7 @@ export default function Footer() {
             <ul>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
               <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp {site.phone}</a></li>
-              <li><a href={site.studio.url} target="_blank" rel="noopener noreferrer">{site.studio.name} studio</a></li>
+              <li><a href={site.studio.url} target="_blank" rel="noopener noreferrer">{site.studio.name} (customeai.tech)</a></li>
             </ul>
           </div>
           <div>
