@@ -3,18 +3,18 @@
 export const offerings = [
   {
     title: 'Websites',
-    what: 'Fast business websites that explain what you do and turn visitors into bookings, calls and WhatsApp messages. Online payments, bilingual content and an admin panel when you need them.',
-    proof: ['MAHAGRO INDIA', 'booking site in English and Marathi'],
+    what: 'Business websites with bookings, online payments and an admin panel.',
+    proof: ['MAHAGRO INDIA', 'bookings in English and Marathi'],
   },
   {
     title: 'AI agents',
-    what: 'Assistants that read documents, answer common customer questions from your own information, and pull out the details your team would otherwise type by hand.',
-    proof: ['LexAgent', 'reads legal documents and flags risky clauses'],
+    what: 'Assistants that read documents and answer customer questions from your own data.',
+    proof: ['LexAgent', 'flags risky clauses in contracts'],
   },
   {
     title: 'Automation tools',
-    what: 'Enquiries collected and saved automatically, email and WhatsApp replies that send themselves, daily summaries, and one dashboard instead of five spreadsheets.',
-    proof: ['CustomeAI', 'enquiries saved, emailed and monitored automatically'],
+    what: 'Enquiries, emails and WhatsApp replies that run themselves, in one dashboard.',
+    proof: ['CustomeAI', 'enquiries saved and alerted automatically'],
   },
 ]
 
@@ -25,20 +25,20 @@ export const capabilities = [
   { title: 'Care after launch', what: 'Automatic uptime checks, fixes and updates once you are live.' },
 ]
 
-// CustomeAI's published promises (customeai.tech), not new ones.
+// CustomeAI's published promises (customeai.tech), said as briefly as possible.
 export const promises = [
-  { title: 'You own everything', text: 'The website, code, database and all files are yours. No lock-in.' },
-  { title: 'Clear, fixed quotes', text: 'You know exactly what you are paying for before any work starts. No hidden fees.' },
-  { title: 'Free support after launch', text: '30 to 90 days of support to fix anything and help you settle in.' },
-  { title: 'You deal with the builder', text: 'I lead every project myself, from the first call to support after launch.' },
+  { title: 'You own the code', text: 'Website, code, database and files are yours. No lock-in.' },
+  { title: 'Fixed quotes', text: 'The price is agreed before work starts. No hidden fees.' },
+  { title: '30 to 90 days of support', text: 'Free fixes and help after launch.' },
+  { title: 'Direct line to the builder', text: 'I lead every project myself.' },
 ]
 
-// CustomeAI's four stages, as published on customeai.tech.
+// CustomeAI's four stages, kept to one line each.
 export const steps = [
-  { title: 'Understand', text: 'We learn about your goals and write down exactly what needs to be built.' },
-  { title: 'Design', text: 'We design how it will look and feel, and show you before building it.' },
-  { title: 'Build', text: 'We build it to be fast, clean and reliable from day one, with previews as we go.' },
-  { title: 'Launch and support', text: 'We put it live, then stay on for 30 to 90 days to fix anything and help you settle in.' },
+  { title: 'Understand', text: 'Goals and scope, written down.' },
+  { title: 'Plan', text: 'Architecture and screens agreed before any code.' },
+  { title: 'Build', text: 'Fast, clean and reliable, with previews as we go.' },
+  { title: 'Launch', text: 'Live, plus 30 to 90 days of support.' },
 ]
 
 // Skills the studio actually uses. Used by the Join us form.
