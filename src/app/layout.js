@@ -1,11 +1,15 @@
-import { Schibsted_Grotesk, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { site } from './data/site'
 import '../styles/globals.css'
 
-const sans = Schibsted_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-sans', display: 'swap' })
-const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
+// Fonts are self-hosted (variable woff2, latin subset, from Google Fonts).
+// next/font/google downloads them during every build, and on Next 16.2.3
+// that intermittently fails ("next/font/google queries have exactly one
+// entry") — it broke a Vercel deploy on 2026-09-23. Local files can't.
+const sans = localFont({ src: './fonts/SchibstedGrotesk-latin.woff2', weight: '400 700', variable: '--font-sans', display: 'swap' })
+const mono = localFont({ src: './fonts/JetBrainsMono-latin.woff2', weight: '400 500', variable: '--font-mono', display: 'swap' })
 
 const title = 'Vishal Tiwari · Founder of CustomeAI'
 const description =
