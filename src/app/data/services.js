@@ -27,7 +27,6 @@ export const capabilities = [
 
 // CustomeAI's published promises (customeai.tech), said as briefly as possible.
 export const promises = [
-  { title: 'You own the code', text: 'Website, code, database and files are yours. No lock-in.' },
   { title: 'Fixed quotes', text: 'The price is agreed before work starts. No hidden fees.' },
   { title: '30 to 90 days of support', text: 'Free fixes and help after launch.' },
   { title: 'Direct line to the builder', text: 'I lead every project myself.' },

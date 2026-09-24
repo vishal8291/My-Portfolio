@@ -27,7 +27,6 @@ export default function Home() {
             </div>
             <ul className="hero-facts">
               <li><span className="dot" aria-hidden="true" />Taking new projects</li>
-              <li>You own the code</li>
               <li>Reply within 24 hours</li>
             </ul>
           </div>
