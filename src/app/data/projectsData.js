@@ -5,47 +5,6 @@
 
 const projects = [
   {
-    title: 'MAHAGRO INDIA',
-    kind: 'Client',
-    year: 2026,
-    category: 'Website',
-    summary:
-      'Booking website for a mushroom-farming training institute in Mumbai, in English and Marathi, with online payments and an admin panel.',
-    tech: ['Vite', 'JavaScript', 'PHP 8', 'MySQL', 'Razorpay', 'Resend'],
-    liveUrl: 'https://mahagroindia.com',
-    githubUrl: null, // private: client code
-    image: '/images/projects/mahagro.jpg',
-    featured: true,
-    caseStudy: {
-      problem:
-        'MAHAGRO runs a 2-day training course. Most students are more comfortable in Marathi, bookings came in over phone and WhatsApp, and nothing was recorded in one place.',
-      built: [
-        'A fast site in English and Marathi, switchable on every page',
-        'Seat booking for the ₹999 deposit, with Razorpay ready and a WhatsApp/UPI route that always works',
-        'An admin panel with every registration, message and review, plus CSV export',
-        'An email to the owner for every booking and message, and a daily summary',
-      ],
-      now: [
-        'Live at mahagroindia.com since September 2026',
-        'Checked automatically around the clock',
-        'Handed over with a written guide, source code and technical docs',
-      ],
-    },
-  },
-  {
-    title: 'Wonder Quest',
-    kind: 'Product',
-    year: 2026,
-    category: 'Online store',
-    summary:
-      'My own online store for printable adventure kits for children. Takes payments and delivers each paid PDF through a private download link.',
-    tech: ['React', 'Vite', 'Vercel Functions', 'Supabase', 'Razorpay', 'Tailwind CSS'],
-    liveUrl: 'https://wonderquest.vishal-tiwari.me',
-    githubUrl: null, // repo is private or gone: a link here would 404
-    image: '/images/projects/wonderquest.jpg',
-    featured: true,
-  },
-  {
     title: 'CustomeAI',
     kind: 'Studio',
     year: 2026,
@@ -97,127 +56,48 @@ const projects = [
     featured: true,
   },
   {
-    title: 'ShaktiCycle',
+    title: 'HealthMap AI',
     kind: 'Personal',
-    year: 2025,
-    category: 'Mobile app',
-    summary: 'Cycle-tracking and wellness app with an AI companion, reminders and secure data storage.',
-    tech: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'MongoDB'],
+    year: 2026,
+    category: 'AI',
+    summary:
+      'Health portal with an AI symptom checker, a vitals and ECG dashboard, medication reminders and health reports.',
+    tech: ['JavaScript', 'Node.js', 'Express', 'MongoDB', 'Gemini API', 'WebSockets'],
     liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/shakticycle',
-    image: '/images/projects/shakticycle.jpg',
+    githubUrl: null, // not published yet
+    image: '/images/projects/healthmap.jpg',
     featured: true,
   },
-  {
-    title: 'CareOps',
-    kind: 'Personal',
-    year: 2025,
-    category: 'Web app',
-    summary: 'Operations dashboard for a clinic: patient and staff workflows, reports and live status.',
-    tech: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL'],
-    liveUrl: 'https://careops-frontend-one.vercel.app',
-    githubUrl: null, // repo is private or gone: a link here would 404
-  },
-  {
-    title: 'AI Learning Assistant',
-    kind: 'Personal',
-    year: 2025,
-    category: 'AI',
-    summary: 'Study assistant with streaming AI chat and an accessible interface.',
-    tech: ['Next.js', 'TypeScript', 'Vercel AI SDK', 'Radix UI'],
-    liveUrl: 'https://ai-learning-assistant-self.vercel.app',
-    githubUrl: null, // repo is private or gone: a link here would 404
-  },
-  {
-    title: 'Partners',
-    kind: 'Personal',
-    year: 2025,
-    category: 'Web app',
-    summary: 'Partner management tool for tracking relationships and shared work.',
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    liveUrl: 'https://partners-roan.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/partners',
-  },
-  {
-    title: 'DogCare',
-    kind: 'Personal',
-    year: 2025,
-    category: 'Mobile app',
-    summary: 'Pet-sitting app with pet profiles, care schedules and bookings.',
-    tech: ['React Native', 'Expo', 'TypeScript'],
-    liveUrl: null,
-    githubUrl: null, // repo is private or gone: a link here would 404
-  },
-  {
-    title: 'Vistora Chat',
-    kind: 'Personal',
-    year: 2025,
-    category: 'Mobile app',
-    summary: 'Real-time chat app with rooms, online status and an AI reply assistant.',
-    tech: ['React Native', 'TypeScript', 'Node.js', 'WebSockets'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/vistora-chat-app',
-  },
-  {
-    title: 'Aaple Sarkar',
-    kind: 'Personal',
-    year: 2024,
-    category: 'Mobile app',
-    summary: 'App for finding Indian government services, organised by department.',
-    tech: ['React Native', 'Expo', 'TypeScript'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/aaple-sarkar',
-  },
-  {
-    title: 'Expense Tracker',
-    kind: 'Personal',
-    year: 2024,
-    category: 'Mobile app',
-    summary: 'Expense tracker with categories, spending charts and reminders.',
-    tech: ['React Native', 'Expo', 'Firebase', 'TypeScript'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/ExpenseTracker',
-  },
-  {
-    title: 'ContextOS',
-    kind: 'Personal',
-    year: 2025,
-    category: 'AI',
-    summary: 'Keeps context across multi-step AI agent workflows.',
-    tech: ['Python', 'Anthropic SDK'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/contextOS',
-  },
-  {
-    title: 'Cancer Awareness',
-    kind: 'Personal',
-    year: 2024,
-    category: 'Website',
-    summary: 'Clear, accessible information site about cancer awareness.',
-    tech: ['React', 'TypeScript', 'Tailwind CSS'],
-    liveUrl: 'https://cancer-awareness-xi.vercel.app',
-    githubUrl: 'https://github.com/vishal8291/cancer-awareness',
-  },
-  {
-    title: 'ATM Management System',
-    kind: 'Personal',
-    year: 2023,
-    category: 'Early work',
-    summary: 'ATM simulator with PIN login, deposits, withdrawals and statements.',
-    tech: ['Java'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/Atm-Management-System',
-  },
-  {
-    title: 'Railway Announcement System',
-    kind: 'Personal',
-    year: 2023,
-    category: 'Early work',
-    summary: 'Automatic spoken announcements for train times, platforms and delays.',
-    tech: ['Java'],
-    liveUrl: null,
-    githubUrl: 'https://github.com/vishal8291/Railway-Announcement-System',
-  },
 ]
+
+// MAHAGRO is shown in its own client-work section on the homepage, not in the project grid.
+export const clientProject = {
+    title: 'MAHAGRO INDIA',
+    kind: 'Client',
+    year: 2026,
+    category: 'Website',
+    summary:
+      'Booking website for a mushroom-farming training institute in Mumbai, in English and Marathi, with online payments and an admin panel.',
+    tech: ['Vite', 'JavaScript', 'PHP 8', 'MySQL', 'Razorpay', 'Resend'],
+    liveUrl: 'https://mahagroindia.com',
+    githubUrl: null, // private: client code
+    image: '/images/projects/mahagro.jpg',
+    featured: true,
+    caseStudy: {
+      problem:
+        'MAHAGRO runs a 2-day training course. Most students are more comfortable in Marathi, bookings came in over phone and WhatsApp, and nothing was recorded in one place.',
+      built: [
+        'A fast site in English and Marathi, switchable on every page',
+        'Seat booking for the ₹999 deposit, with Razorpay ready and a WhatsApp/UPI route that always works',
+        'An admin panel with every registration, message and review, plus CSV export',
+        'An email to the owner for every booking and message, and a daily summary',
+      ],
+      now: [
+        'Live at mahagroindia.com since September 2026',
+        'Checked automatically around the clock',
+        'Handed over with a written guide, source code and technical docs',
+      ],
+    },
+  }
 
 export default projects

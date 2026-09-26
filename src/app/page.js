@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import HeroVideo from './components/HeroVideo.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
-import projects from './data/projectsData'
+import projects, { clientProject as mahagro } from './data/projectsData'
 import { offerings, promises, steps } from './data/services'
 import { site } from './data/site'
 
-const mahagro = projects.find((p) => p.title === 'MAHAGRO INDIA')
-const selected = projects.filter((p) => p.featured && p !== mahagro).slice(0, 6)
+const selected = projects.filter((p) => p.featured).slice(0, 6)
 
 export default function Home() {
   return (
