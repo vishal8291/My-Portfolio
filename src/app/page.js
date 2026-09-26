@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import HeroVideo from './components/HeroVideo.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
-import projects, { clientProject as mahagro } from './data/projectsData'
+import projects, { clientProject as mahagro, showcase } from './data/projectsData'
 import { offerings, promises, steps } from './data/services'
 import { site } from './data/site'
 
-const selected = projects.filter((p) => p.featured).slice(0, 6)
 
 export default function Home() {
   return (
@@ -109,7 +108,7 @@ export default function Home() {
             <Link href="/projects" className="link-arrow">All {projects.length} projects →</Link>
           </div>
           <div className="grid-3">
-            {selected.map((p) => <ProjectCard key={p.title} project={p} />)}
+            {showcase.map((p) => <ProjectCard key={p.title} project={p} />)}
           </div>
         </div>
       </section>

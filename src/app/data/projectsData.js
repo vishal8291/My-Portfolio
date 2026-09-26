@@ -100,4 +100,34 @@ export const clientProject = {
     },
   }
 
+// Premium work shown on the homepage (with MAHAGRO). Both are live concept
+// sites built by the studio to show what a real-estate client would get.
+export const showcase = [
+  clientProject,
+  {
+    title: 'Veyra Residences',
+    kind: 'Studio',
+    year: 2026,
+    category: 'Real estate',
+    summary:
+      'Launch site for a 42-storey tower in Dubai Marina: explore every floor in 3D, see availability and prices, and book a viewing.',
+    tech: ['React', 'TypeScript', 'Three.js', 'React Three Fiber', 'GSAP', 'Tailwind CSS'],
+    liveUrl: 'https://veyra-residences.vercel.app',
+    githubUrl: null,
+    image: '/images/projects/veyra.jpg',
+  },
+  {
+    title: 'Kaaya Realty',
+    kind: 'Studio',
+    year: 2026,
+    category: 'Real estate',
+    summary:
+      'Mumbai property agency site: search homes to buy or rent, filter listings, and book a visit on WhatsApp.',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    liveUrl: 'https://kaaya-realty.vercel.app',
+    githubUrl: null,
+    image: '/images/projects/kaaya.jpg',
+  },
+]
+
 export default projects
