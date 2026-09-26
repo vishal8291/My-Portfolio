@@ -1,7 +1,10 @@
 const KIND_LABEL = { Client: 'Client work', Product: 'Own product', Studio: 'The studio', Personal: 'Personal' }
 
+// Kept deliberately short: screenshot, what it is, one line, one link.
+// Tech stack and year stay in projectsData for the detail views.
 export default function ProjectCard({ project, priority = false }) {
-  const { title, kind, year, category, summary, tech, liveUrl, githubUrl, image } = project
+  const { title, kind, category, summary, liveUrl, githubUrl, image } = project
+  const href = liveUrl || githubUrl
   return (
     <article className="card">
       {image && (
@@ -12,17 +15,15 @@ export default function ProjectCard({ project, priority = false }) {
       <div className="card-body">
         <div className="card-meta">
           <span className={`kind kind-${kind.toLowerCase()}`}>{KIND_LABEL[kind]}</span>
-          <span>{category} · {year}</span>
+          <span>{category}</span>
         </div>
         <h3>{title}</h3>
-        <p>{summary}</p>
-        <ul className="tags" aria-label="Built with">
-          {tech.map((t) => <li key={t}>{t}</li>)}
-        </ul>
-        <div className="card-links">
-          {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer">Visit site ↗</a>}
-          {githubUrl && <a href={githubUrl} target="_blank" rel="noopener noreferrer">Code ↗</a>}
-        </div>
+        <p className="card-summary">{summary}</p>
+        {href && (
+          <a className="card-link" href={href} target="_blank" rel="noopener noreferrer">
+            {liveUrl ? 'Visit site' : 'View code'} <span aria-hidden="true">↗</span>
+          </a>
+        )}
       </div>
     </article>
   )
