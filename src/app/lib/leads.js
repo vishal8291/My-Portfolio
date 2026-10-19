@@ -10,7 +10,7 @@ import { NextResponse } from 'next/server'
  * Only a real success is reported as success; anything else tells the
  * visitor how to reach Vishal directly, so nothing is silently dropped.
  */
-const LEADS_API = 'https://customeai.tech/api/consultation'
+const LEADS_API = 'https://customeai.in/api/consultation'
 
 export const clean = (v, max) => String(v ?? '').trim().slice(0, max)
 

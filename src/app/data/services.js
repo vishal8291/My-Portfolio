@@ -1,5 +1,5 @@
 // What CustomeAI builds, each tied to real work that proves it. Kept in step
-// with customeai.tech: same three offerings, same promises, same process.
+// with customeai.in: same three offerings, same promises, same process.
 export const offerings = [
   {
     title: 'Websites',
@@ -25,7 +25,7 @@ export const capabilities = [
   { title: 'Care after launch', what: 'Automatic uptime checks, fixes and updates once you are live.' },
 ]
 
-// CustomeAI's published promises (customeai.tech), said as briefly as possible.
+// CustomeAI's published promises (customeai.in), said as briefly as possible.
 export const promises = [
   { title: 'Fixed quotes', text: 'The price is agreed before work starts. No hidden fees.' },
   { title: '30 to 90 days of support', text: 'Free fixes and help after launch.' },

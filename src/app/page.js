@@ -39,7 +39,7 @@ export default function Home() {
             <a href={site.studio.url} target="_blank" rel="noopener noreferrer">
               <span className="k">The studio</span>
               <span className="t">{site.studio.name}</span>
-              <span className="d"><span className="dot" aria-hidden="true" />Live · customeai.tech</span>
+              <span className="d"><span className="dot" aria-hidden="true" />Live · customeai.in</span>
             </a>
             <a href="https://mahagroindia.com" target="_blank" rel="noopener noreferrer">
               <span className="k">Client</span>

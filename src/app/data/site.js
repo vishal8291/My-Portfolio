@@ -9,8 +9,8 @@ export const site = {
   phone: '+91 82915 69470',
   whatsapp: 'https://wa.me/918291569470',
   resume: '/Resume.pdf',
-  // Spelled exactly as on customeai.tech.
-  studio: { name: 'CustomeAI', url: 'https://customeai.tech', pricing: 'https://customeai.tech/#pricing' },
+  // Spelled exactly as on customeai.in.
+  studio: { name: 'CustomeAI', url: 'https://customeai.in', pricing: 'https://customeai.in/#pricing' },
   socials: [
     { label: 'GitHub', href: 'https://github.com/vishal8291' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vishal-tiwari-158a5216b' },

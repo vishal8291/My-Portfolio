@@ -23,7 +23,7 @@ export default function Footer() {
             <ul>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
               <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp {site.phone}</a></li>
-              <li><a href={site.studio.url} target="_blank" rel="noopener noreferrer">{site.studio.name} (customeai.tech)</a></li>
+              <li><a href={site.studio.url} target="_blank" rel="noopener noreferrer">{site.studio.name} (customeai.in)</a></li>
             </ul>
           </div>
           <div>

@@ -12,7 +12,7 @@ const projects = [
     summary:
       'Site for my small-business studio. Enquiry form with an admin dashboard, email alerts, and automatic checks that post a test enquiry.',
     tech: ['Next.js', 'TypeScript', 'MongoDB', 'Resend', 'GitHub Actions'],
-    liveUrl: 'https://customeai.tech',
+    liveUrl: 'https://customeai.in',
     githubUrl: null, // private: business code
     image: '/images/projects/customai.jpg',
     featured: true,
