@@ -5,7 +5,7 @@ export const site = {
   url: 'https://www.vishal-tiwari.me',
   role: 'Founder, CustomeAI',
   city: 'Mumbai',
-  email: 'vishal.buildss@gmail.com',
+  email: 'vishal@customeai.in',
   phone: '+91 82915 69470',
   whatsapp: 'https://wa.me/918291569470',
   resume: '/Resume.pdf',
